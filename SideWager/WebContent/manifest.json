@@ -1,0 +1,28 @@
+{
+  "short_name": "Side Wager",
+  "name": "Side Wager App",
+  "icons": [
+    {
+      "src": "resources/sw/images/ic_launcher_42.png",
+      "type": "image/png",
+      "sizes": "42x42"
+    },
+    {
+      "src": "resources/sw/images/ic_launcher_96.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "resources/sw/images/ic_launcher_192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "resources/sw/html/welcomefcm.html",
+  "background_color": "#EEEEEE",
+  "theme_color": "#262626",
+  "orientation": "portrait",
+  "display": "standalone",
+  
+  "gcm_sender_id": "103953800507"
+}
