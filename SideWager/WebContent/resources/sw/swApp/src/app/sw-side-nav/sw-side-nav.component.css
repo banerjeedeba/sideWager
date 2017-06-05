@@ -12,5 +12,18 @@
 }
 
 .sw-sidenav {
-  padding: 20px;
+  padding: 0px;
+}
+md-sidenav {
+  width: 60%;
+}
+.spacer{
+  -webkit-box-flex: auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  text-align: center;
+}
+.mat-primary{
+    background-color:#d00;
+
 }
