@@ -1,6 +1,6 @@
 .sw-sidenav-container {
   width: 100%;
-  height:800px;
+  height:100%;
   border: 0px solid rgba(0, 0, 0, 0.5);
 }
 
@@ -15,7 +15,10 @@
   padding: 0px;
 }
 md-sidenav {
-  width: 60%;
+  width: 70%;
+}
+.sw-sidenav-searchBox{
+width: 100%;
 }
 .spacer{
   -webkit-box-flex: auto;
@@ -24,6 +27,24 @@ md-sidenav {
   text-align: center;
 }
 .mat-primary{
-    background-color:#d00;
-
+  background-color:#d00;
+  color: #fff;
 }
+.mat-card-subtitle{
+  color: white;
+}
+.profile-image {
+  background-image: url('../../assets/img/user.png');
+  background-size: cover;
+  background-color:#ccc;
+}
+.profile-card{
+  background-color:#d00;
+   color: #fff;
+   padding-bottom: 0;
+}
+/*.sw-tabs{
+  position: relative;
+    top: -308px;
+    left: -47px;
+}*/
