@@ -1,0 +1,16 @@
+.profile-image {
+  background-image: url('../../assets/img/user.png');
+  background-size: cover;
+  background-color:#ccc;
+}
+.profile-card{
+  background-color:#d00;
+   color: #fff;
+   padding-bottom: 0;
+}
+.sw-sidenav-searchBox{
+width: 100%;
+}
+.mat-card-subtitle{
+  color: white;
+}

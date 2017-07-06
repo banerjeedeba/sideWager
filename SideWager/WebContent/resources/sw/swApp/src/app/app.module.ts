@@ -7,12 +7,18 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import 'hammerjs';
 import { AppComponent } from './app.component';
 import { SwSideNavComponent } from './sw-side-nav/sw-side-nav.component';
+import { SwSideNavCardComponent } from './sw-side-nav-card/sw-side-nav-card.component';
+import { SwSideNavListComponent } from './sw-side-nav-list/sw-side-nav-list.component';
+import { SwTabListComponent } from './sw-tab-list/sw-tab-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SwSideNavComponent
+    SwSideNavComponent,
+    SwSideNavCardComponent,
+    SwSideNavListComponent,
+    SwTabListComponent
   ],
   imports: [
     BrowserModule,
