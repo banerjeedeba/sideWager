@@ -14,9 +14,7 @@ export class SwSideNavComponent implements OnInit {
   ngOnInit() {
   }
   logout(){
-    console.log('signout worked sidenav');
     this.authService.Logout();
     this.router.navigate(['login']);
-    console.log('signout worked sidenav end');
   }
 }

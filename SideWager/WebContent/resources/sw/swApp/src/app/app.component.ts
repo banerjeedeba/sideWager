@@ -18,7 +18,6 @@ export class AppComponent {
          this.router.navigate(['login']);
        }
        else{
-         console.log(user.email);
           this.isLoggedin=true;
           this.router.navigate(['']);
        }
