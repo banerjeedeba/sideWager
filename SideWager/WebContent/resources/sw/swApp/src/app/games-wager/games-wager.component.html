@@ -1,0 +1,48 @@
+
+
+<header>
+  <h1 class="wager-header">NBA</h1>
+</header>
+<div class="card-container" *ngFor="let game of gamesList">
+<md-card class="md-card-padd">
+<md-grid-list cols="5" rowHeight="5em">
+  <md-grid-tile>
+    <ul class="md-list-item-inner">
+      <li>
+        <span class="game-team-fullname">{{game.Team1FullName}}</span>
+      </li>
+      <li>
+        <span class="game-team-fullname">{{game.Team2FullName}}</span>
+      </li>
+    </ul>
+  </md-grid-tile>
+  <md-grid-tile>
+    <ul class="md-list-item-inner">
+      <li>
+        <span class="game-team-name">{{game.Team1Name}}</span>
+      </li>
+      <li>
+        <span class="game-team-name">{{game.Team2Name}}</span>
+      </li>
+    </ul>
+  </md-grid-tile>
+  <md-grid-tile>
+    <ul class="md-list-item-inner md-list-item-inner-child">
+      <li>
+        <span class="game-team-name">{{game.Team1Ind}}</span>
+      </li>
+      <li>
+        <span class="game-team-name">{{game.Team2Ind}}</span>
+      </li>
+    </ul>
+  </md-grid-tile>
+  <md-grid-tile>
+    <span class="game-time">{{game.Time}}</span>
+    <md-divider class="vertical-divider"></md-divider>
+   </md-grid-tile>
+  <md-grid-tile>
+    <button md-raised-button class="btn-wager"> WAGER</button>
+  </md-grid-tile>
+</md-grid-list>
+</md-card>
+</div>

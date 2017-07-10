@@ -1,0 +1,53 @@
+.wager-header{
+font-size: 1.5em;
+color:#4D4D4D;
+margin: 0.5em 0;
+padding-left: 1em;
+}
+.game-time{
+color:#969696;
+font-size: 0.8em;
+padding-right: 0.4em;
+}
+
+.game-team-fullname{
+    font-size: 0.8em;
+    font-weight: 700;
+     white-space: nowrap;
+    overflow: hidden;
+    width: calc(80%-20px);
+}
+.game-team-name{
+    font-size: 0.8em;
+   padding-left: 0 !important;
+   font-weight:500; 
+}
+.md-list-item-inner {
+    padding: 0 !important;
+    margin: 0 !important;
+    list-style: none;
+    line-height: 2em;
+}
+.md-list-item-inner-child{
+    line-height: 1em;
+}
+.md-card-padd{
+    padding: 0.5em !important;
+}
+.btn-wager {
+color: #FFFFFF;
+font-size: 0.8em;
+font-weight: 400;
+background-color:#2A9FD8;
+}
+.card-container{
+margin: 0.5em;   
+padding: 0.5em;
+}
+.vertical-divider {
+  border-top-width: 0;
+  border-right-width: 1px;
+  border-right-style: solid;
+  color:#969696;
+  height: 65%;
+}

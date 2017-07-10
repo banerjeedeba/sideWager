@@ -1,4 +1,29 @@
 
-md-tab{
-font-weight: bold;
+.sw-tabs{
+font-weight: 600 !important;
 }
+.sw-tabs:visited{
+    font-weight: bold !important;
+color: orange !important;
+}
+.mat-tab-label-active{
+font-weight: bold !important;
+color: orange !important;
+}
+.mat-primary{
+  background-color:#d00;
+  color: #fff;
+}
+.btn-add{
+  position: relative;
+  left: 78%;
+  bottom: 10px;
+}
+.tab-content{
+  z-index: 1;
+  height: 100%;
+}
+.tab-group-container{
+height: 100%;
+}
+

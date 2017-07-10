@@ -1,5 +1,6 @@
-<md-sidenav-container fullscreen>
+<md-sidenav-container fullscreen class="side-nav-height">
   <md-sidenav #sidenav class="sw-sidenav">
+   
    <app-sw-side-nav-card></app-sw-side-nav-card>
    <app-sw-side-nav-list></app-sw-side-nav-list>   
   </md-sidenav>
@@ -7,6 +8,7 @@
    <button md-icon-button (click)="sidenav.open()">
       <md-icon>menu</md-icon>
   </button>
+   <button md-button (click)="logout()">Logout</button>
   <span class="spacer">Side <b>WAGER</b></span>
   <button md-icon-button [mdMenuTriggerFor]="menu">
     <md-icon>more_vert</md-icon>

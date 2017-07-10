@@ -1,5 +1,29 @@
-<md-tab-group class="sw-tabs" md-stretch-tabs>
-  <md-tab label="Games">Content 1</md-tab>
+<div  class="indicator orange" class="tab-content">
+<md-tab-group md-stretch-tabs class="tab-group-container">
+   <md-tab class="tab-container">
+    <ng-template md-tab-label>
+      <b class="sw-tabs">Games</b>
+    </ng-template>
+    <app-games-wager></app-games-wager>
+    <button md-fab color="warn" class="btn-add"><md-icon>add</md-icon></button>
+  </md-tab>
+  <md-tab>
+    <ng-template md-tab-label>
+      <b class="sw-tabs">Live Wager</b>
+    </ng-template>
+    <h1>Content-2</h1>
+    <p>Conten-2</p>
+  </md-tab>
+  <md-tab>
+    <ng-template md-tab-label>
+      <b class="sw-tabs">Open Wager</b>
+      <md-chip color="primary">2</md-chip>
+    </ng-template>
+    <h1>Content-3</h1>
+    <p>Content-3</p>
+  </md-tab>
+  <!--<md-tab label="Games" class="blue-text">Content 1</md-tab>
   <md-tab label="Live Wager">Content 2</md-tab>
-  <md-tab label="Open Wager">Content 3</md-tab>
+  <md-tab label="Open Wager">Content 3</md-tab>-->
 </md-tab-group>
+</div>

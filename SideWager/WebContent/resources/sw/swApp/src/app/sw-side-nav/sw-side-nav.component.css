@@ -19,3 +19,7 @@ md-sidenav {
   background-color:#d00;
   color: #fff;
 }
+.sw-sidenav-content, .tab-container{
+height: 100%;
+}
+

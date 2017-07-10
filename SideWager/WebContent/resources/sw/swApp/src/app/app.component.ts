@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {Router} from '@angular/router';
+import {AuthService} from './provider/auth.service';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  private isLoggedin:Boolean;
+   constructor(public authService: AuthService,private router:Router) { 
+   this.authService.af.authState.subscribe(
+     (user)=>{
+       if(user==null){
+         this.isLoggedin=false;
+         this.router.navigate(['login']);
+       }
+       else{
+         console.log(user.email);
+          this.isLoggedin=true;
+          this.router.navigate(['']);
+       }
+     }
+   )
+   }
 }

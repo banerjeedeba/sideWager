@@ -1,3 +1,11 @@
-
-<app-sw-side-nav></app-sw-side-nav>
-
+<div class="parent-container">
+    <!--<div *ngIf="!isLoggedIn">
+      <ul>
+        <li><a (click)="logout()">Logout</a></li>
+      </ul>
+    </div>-->
+    <router-outlet></router-outlet>
+    
+<!--<app-login-screen></app-login-screen>-->
+<!--<app-sw-side-nav></app-sw-side-nav>-->
+</div>
