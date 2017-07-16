@@ -21,6 +21,12 @@ import { environment } from '../environments/environment';
 import {AuthService} from './provider/auth.service';
 import { LoginScreenComponent } from './login-screen/login-screen.component';
 import { SplashScreenComponent } from './splash-screen/splash-screen.component';
+import { LiveWagersComponent } from './live-wagers/live-wagers.component';
+import { OpenWagersRequestsComponent } from './open-wagers-requests/open-wagers-requests.component';
+import { OpenWagersWinningsComponent } from './open-wagers-winnings/open-wagers-winnings.component';
+import { OpenWagersLossesComponent } from './open-wagers-losses/open-wagers-losses.component';
+import { OpenWagersTabComponent } from './open-wagers-tab/open-wagers-tab.component';
+import { OpenWagersComponent } from './open-wagers/open-wagers.component';
 
 export const routes:Routes=[
   {path:'',component:SwSideNavComponent},
@@ -35,7 +41,13 @@ export const routes:Routes=[
     SwTabListComponent,
     GamesWagerComponent,
     LoginScreenComponent,
-    SplashScreenComponent
+    SplashScreenComponent,
+    LiveWagersComponent,
+    OpenWagersRequestsComponent,
+    OpenWagersWinningsComponent,
+    OpenWagersLossesComponent,
+    OpenWagersTabComponent,
+    OpenWagersComponent
   ],
   imports: [
     BrowserModule,

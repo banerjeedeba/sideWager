@@ -1,0 +1,23 @@
+.tab-content{
+  z-index: 1;
+  height: 100%;
+}
+.tab-group-container{
+height: 100%;
+}
+.mat-primary{
+  background-color:#d00;
+  color: #fff;
+}
+.mat-warn{
+      background-color:#d00;
+  color: #fff;
+}
+.open-wager-tabs{
+    font-size: 0.8em;
+    font-weight: 500;
+    color: #d00;
+}
+.md-tab-header md-ink-bar {
+    background-color: #00b1ff;
+}

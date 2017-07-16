@@ -2,14 +2,7 @@
 .sw-tabs{
 font-weight: 600 !important;
 }
-.sw-tabs:visited{
-    font-weight: bold !important;
-color: orange !important;
-}
-.mat-tab-label-active{
-font-weight: bold !important;
-color: orange !important;
-}
+
 .mat-primary{
   background-color:#d00;
   color: #fff;
