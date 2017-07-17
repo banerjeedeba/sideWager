@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
+import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -21,7 +23,7 @@ public class HttpURLConnectionUtil {
 		HttpURLConnectionUtil http = new HttpURLConnectionUtil();
 
 		System.out.println("Testing 1 - Send Http GET request");
-		http.sendGet("http://www.google.com/search?q=mkyong");
+		http.sendGet("http://www.google.com/search?q=mkyong",null,null);
 
 		System.out.println("\nTesting 2 - Send Http POST request");
 		http.sendPost("https://www.mkyong.com/java/how-to-send-http-request-getpost-in-java/","");
@@ -29,7 +31,7 @@ public class HttpURLConnectionUtil {
 	}
 
 	// HTTP GET request
-	public void sendGet(String url) throws Exception {
+	public String sendGet(String url, Map<String, String> headerParams,  List<String> params) throws Exception {
 
 
 		URL obj = new URL(url);
@@ -39,8 +41,35 @@ public class HttpURLConnectionUtil {
 		con.setRequestMethod("GET");
 
 		//add request header
-		con.setRequestProperty("User-Agent", USER_AGENT);
+		//con.setRequestProperty("User-Agent", USER_AGENT);
+		//con.setRequestProperty("Content-Type", "application/json");
+		
+		
+		
+		if(headerParams!=null)
+		{
+			for(Map.Entry<String, String> entry : headerParams.entrySet())
+			{
+				con.setRequestProperty(entry.getKey(), entry.getValue());
+			}
+		}
+		
+		con.setDoOutput(true);
 
+		// 5.2 Get connection output stream
+        //DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+
+
+        // 5.3 Copy Content "JSON" into
+        //wr.writeUTF(param.getBytes("UTF-8"));
+        if(params!=null){
+        	for (String param : params) {
+        		//wr.write(param.getBytes("UTF-8"));
+        	}
+        }
+        //wr.flush();
+
+        //wr.close();
 		int responseCode = con.getResponseCode();
 		System.out.println("\nSending 'GET' request to URL : " + url);
 		System.out.println("Response Code : " + responseCode);
@@ -57,7 +86,7 @@ public class HttpURLConnectionUtil {
 
 		//print result
 		System.out.println(response.toString());
-
+		return response.toString();
 	}
 
 	// HTTP POST request
@@ -118,7 +147,10 @@ public class HttpURLConnectionUtil {
 
 	        // 4. Set the headers
 	        conn.setRequestProperty("Content-Type", "application/json");
-	        conn.setRequestProperty("Authorization", "key=" + apiKey);
+	        if(apiKey!=null){
+	        	conn.setRequestProperty("Authorization", "key=" + apiKey);
+	        }
+	        
 
 	        conn.setDoOutput(true);
 

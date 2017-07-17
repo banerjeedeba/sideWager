@@ -16,7 +16,19 @@
     <url-pattern>/rest/*</url-pattern>
   </servlet-mapping>
   
+  	<servlet>
+		<servlet-name>sidewager-web</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>sidewager-web</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+  
  <welcome-file-list>
-    <welcome-file>resources/sw/html/welcomefcm.html</welcome-file>
+    <welcome-file>resources/sw/swApp/distt/index.html</welcome-file>
   </welcome-file-list>
+  
 </web-app>

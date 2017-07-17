@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="manifest" href="manifest.json">
+<link rel="manifest" href="/manifest.json">
 <meta charset="ISO-8859-1">
 <title>Side Wager</title>
-<link rel="stylesheet" type="text/css" href="resources/sw/css/welcome.css">
-<link rel="stylesheet" type="text/css" href="resources/sw/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../css/welcome.css">
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
 
 <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <!--Import Google Icon Font-->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!--Import materialize.css-->
-<link type="text/css" rel="stylesheet" href="resources/sw/css/materialize.min.css"  media="screen,projection"/>
+<link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
 
 <!--Let browser know website is optimized for mobile-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<script type="text/javascript" src="resources/sw/js/materialize.min.js"></script>
+<script type="text/javascript" src="../js/materialize.min.js"></script>
 
-<link rel="import" href="resources/sw/html/app.html">
-<script type="text/javascript" src="resources/sw/js/app-messaging.js"></script>
+<link rel="import" href="app.html">
+<script type="text/javascript" src="../js/app-messaging.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
     $("#createTopicBtn").click(function(event){
@@ -30,7 +30,13 @@ $(document).ready(function() {
     	registerTopic(topic);
 		
     });
-    
+	$("#dbEntryBtn").click(function(event){
+		dbEntry();
+    });
+	
+	$("#dbFetchBtn").click(function(event){
+		dbFetch();
+    });
     
 	$("#sendMsgBtn").click(function(event){
     	
@@ -43,7 +49,7 @@ $(document).ready(function() {
    	  
    			var user = $("#Username").val();
    			var pass = $("#Password").val();
-   			writeUserData(user,pass,user);
+   			//writeUserData(user,pass,user);
    	       	
    });
     
@@ -101,7 +107,7 @@ $(document).ready(function() {
           var user = result.user;
           // [START_EXCLUDE]
           console.log(user);
-		  writeUserData(user.uid,user.displayName, user.email);
+		  //writeUserData(user.uid,user.displayName, user.email);
           // [END_EXCLUDE]
         }).catch(function(error) {
           // Handle Errors here.
@@ -142,7 +148,7 @@ $(document).ready(function() {
           // [START_EXCLUDE]
           console.log(token);
           console.log(user);
-		  writeUserData(user.uid,user.displayName, user.email);
+		  //writeUserData(user.uid,user.displayName, user.email);
           // [END_EXCLUDE]
         }).catch(function(error) {
           // Handle Errors here.
@@ -189,12 +195,16 @@ const auth = firebase.auth();
 
 firebase.auth().onAuthStateChanged(firebaseUser =>{
 if(firebaseUser){
-	//console.log(firebaseUser);
-	//console.dir(JSON.stringify(firebaseUser));
+	console.log(firebaseUser);
+	console.dir(JSON.stringify(firebaseUser));
+	var fbuser = JSON.parse(JSON.stringify(firebaseUser));
 	$(".form-signin").addClass("hidden");
 	$(".preview__actions_btn").removeClass("hidden");
 	resetMessagingUI();
 	starCountRef.on('value', onValueChange);
+	writeUserData(firebaseUser.uid,firebaseUser.displayName, firebaseUser.email, fbuser.stsTokenManager.accessToken, fbuser.stsTokenManager.expirationTime);
+	userLogin( fbuser.stsTokenManager.accessToken,fbuser.stsTokenManager.expirationTime)
+	console.log('dbentry');
 	topics.on('value', onTopicChange)
 } else {
 	console.log('not logged in');
@@ -219,10 +229,12 @@ function deleteUser(userId)
 	  firebase.database().ref('users/' + userId).remove();
 }
  
-function writeUserData(userId, name, email, imageUrl) {
+function writeUserData(userId, name, email,ckey,expirationTime, imageUrl) {
   firebase.database().ref('users/' + userId).set({
     username: name,
-    email: email
+    email: email,
+    ckey: ckey,
+    expirationTime: expirationTime
   });
 }
 
@@ -337,7 +349,9 @@ function updateUserTable(data){
             <button class="btn btn-lg btn-primary btn-block" onclick="deleteToken()">Delete Token</button>
 			<input type="text" class="form-control" id="topicName" name="topicName" placeholder="Topic name"  />
 			<button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Login" id="createTopicBtn" >Create Topic</button>
-			<button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Login" id="sendMsgBtn" >Send message</button>			
+			<button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Login" id="sendMsgBtn" >Send message</button>
+			<button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Login" id="dbEntryBtn" >DB entry</button>
+			<button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Login" id="dbFetchBtn" >DB fetch</button>			
 		</div>
 		<div id="div1">			
 		</div>
@@ -367,7 +381,7 @@ function updateUserTable(data){
             <div class="card-content white-text hoverable">
               <span class="card-title notyApp"></span>
               <p class="notyTitle"></p>
-              <button class="btn btn-lg btn-primary btn-block regTopic"  name="Submit" value="Register"  >Register</button>
+              <button class="btn btn-lg btn-primary btn-block regTopic"  name="Submit" value="Register"  >Register</button> 
             </div>
           </div>
         </div>

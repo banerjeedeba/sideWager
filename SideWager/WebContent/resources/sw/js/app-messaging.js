@@ -54,7 +54,7 @@ function resetMessagingUI() {
     .then(function(currentToken) {
       if (currentToken) {
     	token = currentToken;
-        sendTokenToServer(currentToken);
+        //sendTokenToServer(currentToken);
         updateUIForPushEnabled(currentToken);
       } else {
         // Show permission request.
@@ -200,6 +200,111 @@ function showToken(currentToken) {
  	    		
  	    	}
  	   	});
+  }
+  
+  function dbEntry()
+  {
+	  console.log('dbentry');
+	  
+     	//var url="http://localhost:8080/AmbulanceLabs/rest/notifications/registerTopic?topic="+user+"&ckey="+token;
+     	var url="https://www.sidewagerapp.com/rest/notifications/createdb";
+     	
+ 	   	$.ajax({url: url,
+ 	   		data: {
+ 	      		format: 'json'
+ 	   		},
+ 	   		
+ 	   		type: 'POST',
+ 	   		success: function(data){
+	   	   		
+ 	   			var rowCount = 0;
+ 	   			$.each(data,function(key,value){
+ 	   				if(value.error != undefined){
+ 	   				alert("db error..."+value.error);
+	   	   	    		return;
+ 	   				}else{
+ 	   					alert("db success..."+value.success);
+ 	   				}
+ 	   	    		
+ 	   			});
+	   	    },
+ 	    	error: function(xhr,status,error){
+ 	    		alert("db error..."+error+"--"+status);
+ 	    		
+ 	    	}
+ 	   	});
+  }
+  
+  function dbFetch()
+  {
+	  console.log('dbentry');
+	  
+	  	firebase.auth().currentUser.getToken(true).then(function(idToken) {
+	  		var url="https://www.sidewagerapp.com/rest/notifications/readdb?ckey="+idToken;
+	     	
+	 	   	$.ajax({url: url,
+	 	   		data: {
+	 	      		format: 'json'
+	 	   		},
+	 	   		
+	 	   		type: 'POST',
+	 	   		success: function(data){
+		   	   		
+	 	   			var rowCount = 0;
+	 	   			$.each(data,function(key,value){
+	 	   				if(value.error != undefined){
+	 	   				alert("db read error..."+value.error);
+		   	   	    		return;
+	 	   				}else{
+	 	   					alert("db read success..."+value.success);//+value.email+".."+value.username);
+	 	   				}
+	 	   	    		
+	 	   			});
+		   	    },
+	 	    	error: function(xhr,status,error){
+	 	    		alert("db read error..."+error+"--"+status);
+	 	    		
+	 	    	}
+	 	   	});
+		}).catch(function(error) {
+		  // Handle error
+		});
+     	//var url="http://localhost:8080/AmbulanceLabs/rest/notifications/registerTopic?topic="+user+"&ckey="+token;
+     	
+  }
+  
+  function userLogin(ckey,extime)
+  {
+	
+	var url="https://www.sidewagerapp.com/rest/notifications/userlogin?ckey="+ckey+"&extime="+extime;
+ 	
+   	$.ajax({url: url,
+   		data: {
+      		format: 'json'
+   		},
+   		
+   		type: 'POST',
+   		success: function(data){
+   	   		
+   			var rowCount = 0;
+   			$.each(data,function(key,value){
+   				if(value.error != undefined){
+   				alert("db read error..."+value.error);
+   	   	    		return;
+   				}else{
+   					console.log("success..."+value.success);
+   				}
+   	    		
+   			});
+   	    },
+    	error: function(xhr,status,error){
+    		alert("db read error..."+error+"--"+status);
+    		
+    	}
+   	});
+		
+     	//var url="http://localhost:8080/AmbulanceLabs/rest/notifications/registerTopic?topic="+user+"&ckey="+token;
+     	
   }
   
   function sendMsg(topic){
