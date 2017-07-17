@@ -13,6 +13,18 @@ export class AuthService {
    return this.af.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
 
+  LoginWithFaceBook(){
+   return this.af.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
+  }
+
+  LoginWithEmail(email: string, password: string){
+   return this.af.auth.signInWithEmailAndPassword(email,password);
+  }
+
+  RegisterWithEmail(email: string, password: string){
+   return this.af.auth.createUserWithEmailAndPassword(email,password);
+  }
+
   Logout(){
     return this.af.auth.signOut();
    

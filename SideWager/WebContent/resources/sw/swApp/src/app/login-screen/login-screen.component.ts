@@ -8,13 +8,34 @@ import {AuthService} from '../provider/auth.service';
 })
 export class LoginScreenComponent implements OnInit {
 
+  public email: string;
+  public password: string;
   constructor(public authService: AuthService,private router:Router) { }
 
   ngOnInit() {
   }
-  login(){
+  loginWithGoogle(){
   this.authService.LoginWithGoogle().then((data)=>{
     this.router.navigate(['']);
   })
   }
+
+  loginWithFaceBook(){
+  this.authService.LoginWithFaceBook().then((data)=>{
+    this.router.navigate(['']);
+  })
+  }
+
+  loginWithEmail(){
+  this.authService.LoginWithEmail(this.email,this.password).then((data)=>{
+    //this.router.navigate(['']);
+  })
+  }
+
+  registerWithEmail(){
+  this.authService.RegisterWithEmail(this.email,this.password).then((data)=>{
+    //this.router.navigate(['']);
+  })
+  }
+  
 }

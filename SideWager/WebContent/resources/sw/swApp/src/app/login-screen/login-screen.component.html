@@ -3,19 +3,24 @@
   <p>A peer to peer SPORTSBOOK</p> 
   <ul class="login-list-items">
     <li> 
-        <input placeholder="Email" value="">
+        <input placeholder="Email" value="" required 
+            [(ngModel)] = "email">
     </li>
     <li> 
-        <input placeholder="Password" value="" type="password">  
+        <input placeholder="Password" value="" type="password" required 
+            [(ngModel)] = "password">  
      </li>
      <li>
-       <button md-raised-button class="btn-ann">Login</button>
+       <button md-raised-button class="btn-ann" (click)="loginWithEmail()">Login</button>
+     </li>
+     <li>
+       <button md-raised-button class="btn-ann" (click)="registerWithEmail()">Register</button>
      </li>
     <li> 
-      <button md-raised-button class="btn-google" (click)="login()"><md-icon>input</md-icon>Login with Google</button>
+      <button md-raised-button class="btn-google" (click)="loginWithGoogle()"><md-icon>input</md-icon>Login with Google</button>
     </li>
     <li> 
-     <button md-raised-button class="btn-fb"><md-icon>perm_identity</md-icon>Login with facebook</button>
+     <button md-raised-button class="btn-fb" (click)="loginWithFaceBook()"><md-icon>perm_identity</md-icon>Login with facebook</button>
      </li>
   </ul>
  </div>
