@@ -27,9 +27,11 @@ import { OpenWagersWinningsComponent } from './open-wagers-winnings/open-wagers-
 import { OpenWagersLossesComponent } from './open-wagers-losses/open-wagers-losses.component';
 import { OpenWagersTabComponent } from './open-wagers-tab/open-wagers-tab.component';
 import { OpenWagersComponent } from './open-wagers/open-wagers.component';
+import { MakeWagerStep1Component } from './make-wager-step-1/make-wager-step-1.component';
 
 export const routes:Routes=[
-  {path:'',component:SwSideNavComponent},
+  {path:'',component:SplashScreenComponent},
+  {path:'home',component:SwSideNavComponent},
   {path:'login',component:LoginScreenComponent}
 ];
 @NgModule({
@@ -47,7 +49,8 @@ export const routes:Routes=[
     OpenWagersWinningsComponent,
     OpenWagersLossesComponent,
     OpenWagersTabComponent,
-    OpenWagersComponent
+    OpenWagersComponent,
+    MakeWagerStep1Component
   ],
   imports: [
     BrowserModule,

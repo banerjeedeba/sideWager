@@ -1,0 +1,29 @@
+.splash-container{
+     height: 100%;
+    background-color: #F44336;
+    color: #fff;
+    align-content: center;
+    text-align: center;
+    background: #F44336; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#F44336, #B71C1C); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#F44336, #B71C1C); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#F44336, #B71C1C); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#F44336, #B71C1C); /* Standard syntax */
+}
+p{
+    font-size: 0.8em;
+    margin-top: 1em;
+    margin-left: 2em;
+    padding-left: 4em; 
+}
+h1{
+    margin:0; 
+    font-weight: 400;
+    padding-top:6em; 
+    
+}
+span{
+    border: 0.1em solid #fff;
+    color: #fff !important;
+    padding: 0.2em 1em;
+}

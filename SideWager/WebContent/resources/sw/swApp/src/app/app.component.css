@@ -1,8 +1,5 @@
 .parent-container{
-     background-color: #F44336;
-    color: #fff;
-    height: auto;
-    padding: 10%;
+    height: 100%;
     align-content: center;
     font-family: Roboto;
 }

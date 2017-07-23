@@ -1,40 +1,48 @@
 .login-container{
+    height: 100%;
     background-color: #F44336;
     color: #fff;
     align-content: center;
     text-align: center;
+    background: #F44336; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#F44336, #B71C1C); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#F44336, #B71C1C); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#F44336, #B71C1C); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#F44336, #B71C1C); /* Standard syntax */
     /*background: linear-gradient(135deg, #F44336 0%, #B71C1C 100%);*/
 }
 .btn-ann{
-    background-color: #F44336;
+    background-color: transparent;
     color: #fff;
-    width: 15em;
+    width: 20em;
 }
 p{
     font-size: 0.8em;
     margin-top: 0;
 }
 h1{
-    margin-bottom:0; 
+    margin:0; 
     font-weight: 400;
-
+    padding-top:2em; 
 }
 .btn-google{
  background-color: #F44336;
     color: #fff;
+    padding:0.2em;
 }
 .btn-fb{
  background-color: #3963C7;
     color: #fff;
+    padding:0.2em;
 }
 input{
     border: 0.1em solid #fff;
     color: #fff !important;
-     background-color: #F44336;
+    background-color: transparent;
     padding: 0.7em;
-     margin: 1.25em;
-     width: 14em;
-     border-radius: 0.4em;
+    margin: 1.25em;
+    width: 20em;
+    border-radius: 0.4em;
 }
 .login-list-items{
 list-style: none;
@@ -44,7 +52,7 @@ padding-left:0;
 button{
     border: 0.2em solid #fff;
     border-radius: 0.4em;
-     padding: 0.7em;
+     padding: 0.5em;
      margin: 1.25em;
      width: 14em;
 }

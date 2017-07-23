@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-live-wagers',
   templateUrl: './live-wagers.component.html',
@@ -7,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LiveWagersComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private router:Router) { }
+accept(){
+  this.router.navigate(['home']);
+}
   ngOnInit() {
   }
 public gamesList=[{
