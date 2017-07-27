@@ -14,7 +14,7 @@ private timeSlash;
       window.clearInterval(this.timeSlash);
       this.router.navigate(['login']);
 
-    },3000);
+    },30000);
     
   }
 

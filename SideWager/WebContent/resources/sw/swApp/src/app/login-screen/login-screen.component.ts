@@ -16,13 +16,13 @@ export class LoginScreenComponent implements OnInit {
   }
   loginWithGoogle(){
   this.authService.LoginWithGoogle().then((data)=>{
-    this.router.navigate(['home']);
+    this.router.navigate(['']);
   })
   }
 
   loginWithFaceBook(){
   this.authService.LoginWithFaceBook().then((data)=>{
-    this.router.navigate(['home']);
+    this.router.navigate(['']);
   })
   }
 
