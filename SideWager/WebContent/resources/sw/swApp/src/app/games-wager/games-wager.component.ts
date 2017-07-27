@@ -8,7 +8,7 @@ import {GamelistService} from '../provider/gamelist.service';
 })
 export class GamesWagerComponent implements OnInit {
 
-  test: any = {};
+  public test: any = {};
   constructor(public gls:GamelistService) { 
     this.test = gls.items;
   }
