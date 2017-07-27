@@ -5,7 +5,7 @@
 </div>
 
 <header>
-  <h1 class="wager-header">NBA </h1>
+  <h1 class="wager-header">NBA  {{testobj?.success}}</h1>
 </header>
 <div class="card-container" *ngFor="let game of gamesList">
 <md-card class="md-card-padd">
@@ -52,6 +52,4 @@
 </md-grid-list>
 </md-card>
 </div>
-<div class="card-container" *ngFor="let testobj of test">
-  {{testobj.success}}
-</div>
+
