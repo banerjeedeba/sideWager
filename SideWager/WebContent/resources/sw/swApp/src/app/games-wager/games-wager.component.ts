@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-
+import {GamelistService} from '../provider/gamelist.service';
 @Component({
   selector: 'app-games-wager',
   templateUrl: './games-wager.component.html',
-  styleUrls: ['./games-wager.component.css']
+  styleUrls: ['./games-wager.component.css'],
+  providers: [GamelistService]
 })
 export class GamesWagerComponent implements OnInit {
 
-  constructor() { }
+  test: any = {};
+  constructor(public gls:GamelistService) { 
+    this.test = gls.items;
+  }
 
   ngOnInit() {
   }
