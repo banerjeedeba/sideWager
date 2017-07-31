@@ -7,7 +7,7 @@
     <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
     <init-param>
       <param-name>jersey.config.server.provider.packages</param-name>
-      <param-value>com.sw</param-value>
+      <param-value>com.sw;com.sw.service</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
@@ -28,7 +28,7 @@
 	</servlet-mapping>
   
  <welcome-file-list>
-    <welcome-file>resources/sw/swApp/distt/index.html</welcome-file>
+    <welcome-file>resources/sw/swApp/dist/index.html</welcome-file>
   </welcome-file-list>
   
 </web-app>

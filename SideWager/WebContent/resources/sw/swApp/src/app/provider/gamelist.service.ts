@@ -10,17 +10,13 @@ export class GamelistService {
   items: any = {};
 
   constructor(public afdb: AngularFireDatabase, public http:Http) { 
-    this.getGameList();
   }
 
-  getGameList(){
-    this.getData().subscribe(data => {
-      console.log(data);
-      this.items = data;
-    })
-  }
-
-  getData(){
-    return this.http.get('https://www.sidewagerapp.com/rest/notifications/gameList').map((res : Response) => res.json());
+  getListData(token){
+    console.log("getdata");
+    //http://localhost:8080/SideWager/rest/data/gamelist
+    //https://www.sidewagerapp.com/rest/data/gamelist
+    
+    return this.http.get('https://www.sidewagerapp.com/rest/data/gamelist?ckey='+token).map((res : Response) => res.json());
   }
 }

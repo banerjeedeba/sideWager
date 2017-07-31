@@ -1,22 +1,40 @@
 package com.sw.entities;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Odds {
 
+	@SerializedName("ID")
 	private String id;
+	@SerializedName("EventID")
 	private String eventId; //match id;
-	private Source siteId; //Source
+	@SerializedName("SiteID")
+	private int siteId; //Source
+	@SerializedName("MoneyLineHome")
 	private String moneyLineHome;
+	@SerializedName("MoneyLineAway")
 	private String moneyLineAway;
+	@SerializedName("DrawLine")
 	private String drawLine;
+	@SerializedName("PointSpreadHome")
 	private String pointSpreadHome;
+	@SerializedName("PointSpreadAway")
 	private String pointSpreadAway;
+	@SerializedName("PointSpreadHomeLine")
 	private String pointSpreadHomeLine;
+	@SerializedName("PointSpreadAwayLine")
 	private String pointSpreadAwayLine;
+	@SerializedName("TotalNumber")
 	private String totalNumber;
+	@SerializedName("OverLine")
 	private String overLine;
+	@SerializedName("UnderLine")
 	private String underLine;
+	@SerializedName("LastUpdated")
 	private String lastUpdated;
-	private OddType oddType;
+	@SerializedName("OddType")
+	private String oddType;
+	@SerializedName("Participant")
 	private String participant;
 	public String getId() {
 		return id;
@@ -30,10 +48,10 @@ public class Odds {
 	public void setEventId(String eventId) {
 		this.eventId = eventId;
 	}
-	public Source getSiteId() {
+	public int getSiteId() {
 		return siteId;
 	}
-	public void setSiteId(Source siteId) {
+	public void setSiteId(int siteId) {
 		this.siteId = siteId;
 	}
 	public String getMoneyLineHome() {
@@ -102,10 +120,10 @@ public class Odds {
 	public void setLastUpdated(String lastUpdated) {
 		this.lastUpdated = lastUpdated;
 	}
-	public OddType getOddType() {
+	public String getOddType() {
 		return oddType;
 	}
-	public void setOddType(OddType oddType) {
+	public void setOddType(String oddType) {
 		this.oddType = oddType;
 	}
 	public String getParticipant() {
@@ -114,9 +132,9 @@ public class Odds {
 	public void setParticipant(String participant) {
 		this.participant = participant;
 	}
-	public Odds(String id, String eventId, Source siteId, String moneyLineHome, String moneyLineAway, String drawLine,
+	public Odds(String id, String eventId, int siteId, String moneyLineHome, String moneyLineAway, String drawLine,
 			String pointSpreadHome, String pointSpreadAway, String pointSpreadHomeLine, String pointSpreadAwayLine,
-			String totalNumber, String overLine, String underLine, String lastUpdated, OddType oddType,
+			String totalNumber, String overLine, String underLine, String lastUpdated, String oddType,
 			String participant) {
 		super();
 		this.id = id;

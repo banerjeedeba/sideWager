@@ -5,43 +5,43 @@
 </div>
 
 <header>
-  <h1 class="wager-header">NBA  {{test?.success}}</h1>
+  <h1 class="wager-header">NBA</h1>
 </header>
-<div class="card-container" *ngFor="let game of gamesList">
+<div class="card-container" *ngFor="let game of gameList">
 <md-card class="md-card-padd">
 <md-grid-list cols="6" rowHeight="5em">
   <md-grid-tile>
     <ul class="md-list-item-inner">
       <li>
-        <span class="game-team-fullname">{{game.Team1FullName}}</span>
+        <span class="game-team-fullname">{{game.homeTeam}}</span>
       </li>
       <li>
-        <span class="game-team-fullname">{{game.Team2FullName}}</span>
+        <span class="game-team-fullname">{{game.awayTeam}}</span>
       </li>
     </ul>
   </md-grid-tile>
   <md-grid-tile>
     <ul class="md-list-item-inner">
       <li>
-        <span class="game-team-name">{{game.Team1Name}}</span>
+        <span class="game-team-name">{{game.homeTeamShortName}}</span>
       </li>
       <li>
-        <span class="game-team-name">{{game.Team2Name}}</span>
+        <span class="game-team-name">{{game.awayTeamShortName}}</span>
       </li>
     </ul>
   </md-grid-tile>
   <md-grid-tile>
     <ul class="md-list-item-inner md-list-item-inner-child">
       <li>
-        <span class="game-team-name">{{game.Team1Ind}}</span>
+        <span class="game-team-name">{{game.pointSpread}}</span>
       </li>
       <li>
-        <span class="game-team-name">{{game.Team2Ind}}</span>
+        <span class="game-team-name">{{game.underLine}}</span>
       </li>
     </ul>
   </md-grid-tile>
   <md-grid-tile>
-    <span class="game-time">{{game.Time}}</span>
+    <span class="game-time">{{game.matchTime}}</span>
    </md-grid-tile>
    <md-grid-tile>
     <md-divider class="vertical-divider"></md-divider>

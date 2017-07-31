@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {GamelistService} from '../provider/gamelist.service';
+import {AuthService} from '../provider/auth.service';
 @Component({
   selector: 'app-games-wager',
   templateUrl: './games-wager.component.html',
@@ -8,12 +9,33 @@ import {GamelistService} from '../provider/gamelist.service';
 })
 export class GamesWagerComponent implements OnInit {
 
-  public test: any = {};
-  constructor(public gls:GamelistService) { 
-    this.test = gls.items;
+  public gameList = [];
+ 
+  constructor(public gls:GamelistService,public authService: AuthService) {
+    
   }
 
   ngOnInit() {
+    
+    console.log("init test: "+this.gameList);   
+    this.authService.af.authState.subscribe(
+     (user)=>{
+       if(user==null){
+         console.log("no user")
+       }
+       else{
+          console.log(user);
+          user.getIdToken().then(token =>{
+            console.log(token);
+            this.gls.getListData(token).subscribe(data => {
+              console.log("getListData subscribe ");
+              console.log(data);
+              this.gameList = data;
+            })
+          })
+       }
+     }
+   )
   }
 private todaysDate=new Date(Date.now());
 currentDate = new Date( this.todaysDate.getFullYear(),
@@ -23,6 +45,7 @@ nextDate(){
   this.currentDate = new Date( this.currentDate.getFullYear(),
                  this.currentDate.getMonth(),
                  this.currentDate.getDate()+1);
+
 }
 prevDate(){
      this.currentDate = new Date( this.currentDate.getFullYear(),
