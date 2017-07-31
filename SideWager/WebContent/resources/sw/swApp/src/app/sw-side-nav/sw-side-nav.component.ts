@@ -18,6 +18,6 @@ private wager;
   }
   logout(){
     this.authService.Logout();
-    this.router.navigate(['login']);
+    this.router.navigate(['']);
   }
 }

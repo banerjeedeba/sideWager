@@ -18,6 +18,10 @@ height: 100%;
     font-weight: 500;
     color: #d00;
 }
-.md-tab-header md-ink-bar {
+.md-tab-header .md-ink-bar {
     background-color: #00b1ff;
+}
+.mat-tab-label .mat-ripple .mat-tab-label-active{
+background-color: transparent;
+color: orange;
 }

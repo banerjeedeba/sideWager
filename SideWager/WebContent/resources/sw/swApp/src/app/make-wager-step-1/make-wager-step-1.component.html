@@ -1,21 +1,96 @@
-<div class="">
-<h1><span> Who's it gona be?</span><span>X</span></h1>
-<md-grid-list cols="2" rowHeight="2:1">
-  <md-grid-tile>
-    <md-card>
-      <h2></h2>
-      <h3></h3>
-      <h4></h4>
-      <button md-raised-button>Pick</button>
+<div class="make-wager-container">
+<h2><span> Who's it gona be?</span><span class="close" (click)="gotoTabs()"><i class="material-icons">clear</i></span></h2>
+<md-grid-list cols="13" rowHeight="12em">
+  <md-grid-tile [colspan]="6" [rowspan]="1">
+    <md-card class="md-card-padd">
+      <ul>
+        <li>
+            <span class="caption-text">Sacramento</span>
+        </li>
+        <li>
+            <span class="short-name">SAC</span>
+        </li>
+        <li>
+            <span class="record-text">Record: 32-33</span>
+        </li>
+        <li>
+            <button md-raised-button class="btn-pick">Pick</button>
+        </li>
+      </ul>
     </md-card>
   </md-grid-tile>
-  <md-grid-tile>
-    <md-card>
-      <h2></h2>
-      <h3></h3>
-      <h4></h4>
-      <button md-raised-button>Pick</button>
+  <md-grid-tile [colspan]="1" [rowspan]="1">
+    vs
+  </md-grid-tile>
+  <md-grid-tile [colspan]="6" [rowspan]="1">
+    <md-card class="md-card-padd">
+      <ul>
+        <li>
+      <span class="caption-text">Los Angeles</span>
+       </li>
+        <li>
+      <span class="short-name">LAL</span>
+       </li>
+        <li>
+      <span class="record-text">Record: 26-29</span>
+       </li>
+        <li>
+      <button md-raised-button class="btn-pick">Pick</button>
+       </li>
+      </ul>
     </md-card>
   </md-grid-tile>
 </md-grid-list>
+  <div>
+      <ul>
+        <li>
+          <span class="game-info">Game Info:</span>
+        </li>
+        <li>
+          <span class="game-info">Oct 13th, 2017 @10:30PM</span>
+        </li>
+        <li>
+          <span class="head-info">LAL -2</span>
+        </li>
+        <li>
+          <ul class="hline">
+            <li>
+              <!--<md-divider md-inset></md-divider>-->
+            </li>
+            <li>
+                <span class="game-info"> OR</span>
+            </li>
+            <li>
+                <!--<md-divider md-inset></md-divider>-->
+            </li>
+          </ul>
+        </li>
+      </ul>
+  </div>
+  <md-grid-list cols="10" rowHeight="8em">
+    <md-grid-tile [colspan]="1" [rowspan]="1">
+    </md-grid-tile>
+  <md-grid-tile [colspan]="8" [rowspan]="1">
+    <md-card class="md-card-padd">
+      <ul>
+        <li>
+            <span class="over-under">Over/Under</span>
+        </li>
+        <li>
+            <button md-raised-button class="btn-pick">u 101.5</button>
+            <button md-raised-button class="btn-pick">a 101.5</button>
+        </li>
+      </ul>
+    </md-card>
+  </md-grid-tile>
+  <md-grid-tile [colspan]="1" [rowspan]="1">
+  </md-grid-tile>
+  </md-grid-list>
 </div>
+<div class="footer-parent">
+<div class="footer-links">
+      <a href="#" class="back-link"><i class="material-icons">keyboard_arrow_left</i><span>Back</span></a>
+      <a href="#" class="next-link"><span>Next</span><i class="material-icons">keyboard_arrow_right</i></a>
+ </div>
+</div>
+ 

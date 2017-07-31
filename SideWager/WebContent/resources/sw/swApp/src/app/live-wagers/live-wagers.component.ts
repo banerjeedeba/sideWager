@@ -13,6 +13,20 @@ accept(){
 }
   ngOnInit() {
   }
+  private todaysDate=new Date(Date.now());
+currentDate = new Date( this.todaysDate.getFullYear(),
+                 this.todaysDate.getMonth(),
+                 this.todaysDate.getDate());
+nextDate(){
+  this.currentDate = new Date( this.currentDate.getFullYear(),
+                 this.currentDate.getMonth(),
+                 this.currentDate.getDate()+1);
+}
+prevDate(){
+     this.currentDate = new Date( this.currentDate.getFullYear(),
+                 this.currentDate.getMonth(),
+                 this.currentDate.getDate()-1);
+}
 public gamesList=[{
   "Team1FullName":"Toranto",
   "Team2FullName":"Chicago",

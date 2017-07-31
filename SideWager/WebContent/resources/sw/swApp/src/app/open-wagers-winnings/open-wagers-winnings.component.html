@@ -3,38 +3,44 @@
     <span class="text-content">Weekly Total:</span><span class="color-green">$550</span>
   </div>
 <div class="header-section">
- <md-grid-list cols="4" rowHeight="3em">
-  <md-grid-tile class="text-content">Friend</md-grid-tile>
-  <md-grid-tile class="text-content">HTP</md-grid-tile>
-  <md-grid-tile class="text-content">Amount</md-grid-tile>
-  <md-grid-tile class="text-content">Payment Status</md-grid-tile>
+ <md-grid-list cols="13" rowHeight="3em">
+  <md-grid-tile [colspan]="4" [rowspan]="1" class="text-content">Friend</md-grid-tile>
+  <md-grid-tile [colspan]="2" [rowspan]="1" class="text-content">HTP</md-grid-tile>
+  <md-grid-tile [colspan]="2" [rowspan]="1" class="text-content">Amount</md-grid-tile>
+  <md-grid-tile [colspan]="5" [rowspan]="1" class="text-content">Payment Status</md-grid-tile>
 </md-grid-list>
 <div class="card-container" *ngFor="let win of listWinnings">
 <md-card class="no-padding">
-<md-grid-list cols="4" rowHeight="4em">
-  <md-grid-tile>
+<md-grid-list cols="13" rowHeight="4em">
+  <md-grid-tile [colspan]="4" [rowspan]="1">
     <div class="friends">
       <img class="img-circle" src="{{win.imgSource}}" alt=""/>
       <!--<div md-card-avatar><i class="material-icons">account_circle</i></div>-->
       <span class="text-content">{{win.Name}}</span>
     </div>
   </md-grid-tile>
-  <md-grid-tile>
+  <md-grid-tile [colspan]="2" [rowspan]="1">
     <span>{{win.weeklyHTP}}</span>
   </md-grid-tile>
-  <md-grid-tile>
+  <md-grid-tile [colspan]="2" [rowspan]="1">
     <span>${{win.Amount}}</span>
   </md-grid-tile>
-  <md-grid-tile>
+   <md-grid-tile [colspan]="1" [rowspan]="1">
+   <div *ngIf="win.paymentStatus == 'Y'">
+     <i class="material-icons color-green">check_circle</i>
+    </div>
+    <div *ngIf="win.paymentStatus == 'W'">
+        <i class="material-icons color-gray">schedule</i>
+    </div>
+   </md-grid-tile>
+  <md-grid-tile [colspan]="4" [rowspan]="1">
       <div *ngIf="win.paymentStatus == 'N'">
 	      <button md-raised-button class="btn-confirm-payment">Confirm<br/> Payment</button>
       </div> 	
       <div *ngIf="win.paymentStatus == 'Y'">
-         <i class="material-icons color-green">done</i>
         <span class="color-green">Payment Confirmed</span>
       </div> 	
       <div *ngIf="win.paymentStatus == 'W'">
-        <i class="material-icons color-gray">schedule</i>
         <span class="color-gray">Waiting on Payment</span>
       </div> 
   </md-grid-tile>

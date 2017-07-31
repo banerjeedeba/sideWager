@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {GamelistService} from '../provider/gamelist.service';
 import {AuthService} from '../provider/auth.service';
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-games-wager',
   templateUrl: './games-wager.component.html',
@@ -11,7 +12,7 @@ export class GamesWagerComponent implements OnInit {
 
   public gameList = [];
  
-  constructor(public gls:GamelistService,public authService: AuthService) {
+  constructor(public gls:GamelistService,public authService: AuthService,private router:Router) {
     
   }
 
@@ -24,12 +25,8 @@ export class GamesWagerComponent implements OnInit {
          console.log("no user")
        }
        else{
-          console.log(user);
           user.getIdToken().then(token =>{
-            console.log(token);
             this.gls.getListData(token).subscribe(data => {
-              console.log("getListData subscribe ");
-              console.log(data);
               this.gameList = data;
             })
           })
@@ -37,6 +34,9 @@ export class GamesWagerComponent implements OnInit {
      }
    )
   }
+  makeWager(){
+ this.router.navigate(['home','mkwagerstep1']);
+}
 private todaysDate=new Date(Date.now());
 currentDate = new Date( this.todaysDate.getFullYear(),
                  this.todaysDate.getMonth(),

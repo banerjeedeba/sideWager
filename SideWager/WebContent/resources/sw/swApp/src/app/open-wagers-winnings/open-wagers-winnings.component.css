@@ -16,11 +16,15 @@ background-color:#4CAF50;
 color: #06C957;
 font-weight: 500;
 font-size: 0.9em;
+text-align: center;
+float: right;
 }
 .color-gray{
 color: #969696;
 font-weight: 500;
 font-size: 0.9em;
+text-align: center;
+float: right;
 }
 .friends{
    font-weight: bold; 

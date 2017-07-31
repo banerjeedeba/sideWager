@@ -1,0 +1,111 @@
+.make-wager-container{
+    padding: 0.5em;
+}
+.make-wager-container h2{
+    color: #969696;
+    font-weight: 200;
+    text-align: center;
+    margin-bottom:0; 
+}
+.make-wager-container .close{
+    color: #969696;
+    font-weight: 200;
+    text-align: center;
+    float: right;
+}
+.make-wager-container .close i{
+    font-size: 1.2em;
+}
+.make-wager-container ul{
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+.make-wager-container ul li{
+    list-style: none;
+        padding: 0.5em;
+    text-align: center;
+    font-size: 0.9em;
+}
+.make-wager-container .caption-text{
+    font-size: 1.2em;
+    font-weight: 600;
+}
+.make-wager-container .short-name{
+    font-size: 1em;
+}
+.make-wager-container .record-text{
+    font-size: 0.9em;
+    color: #969696;
+}
+.md-card-padd{
+    padding: 0.5em !important;
+}
+.btn-pick {
+    color: #FFFFFF;
+    font-size: 1em;
+    font-weight: 400;
+    background-color:#2A9FD8;
+    text-align: center;
+    align-content: center;
+    margin: 0.3em;
+}
+.game-info{
+    color: #9B9B9B;
+    font-size: 1.2em;
+}
+.head-info{
+    color:#384951;
+    font-size: 1.5em;
+}
+.over-under{
+    color: #000000;
+    font-size: 1.5em;
+    font-weight: 300;
+}
+.hline{
+    overflow: hidden;
+}
+.hline li{
+    display: inline-block;
+}
+.hline li:nth-of-type(odd)
+{
+    width:35%;
+    border-bottom: 1px solid #ccc;
+     
+}
+.hline li:nth-of-type(even)
+{
+    width:10%;
+}
+.footer-parent{
+position: relative;   
+    
+}
+.footer-links{
+    width:100%;
+    height:1.5em; 
+    position: fixed;
+    bottom:2em; 
+    border-top: 1px solid #ccc; 
+}
+.footer-links a{
+    text-decoration:none;
+    color: #384951;
+    padding: 0.5em;
+    font-size: 1.5em;
+}
+.footer-links .back-link{
+    display: inline-block;
+    float: left;
+}
+.footer-links .next-link{
+    float: right;
+    display: inline-block;
+}
+.footer-links a i{
+font-size: 1.5em;
+color: #D02c27;
+vertical-align: top;
+}

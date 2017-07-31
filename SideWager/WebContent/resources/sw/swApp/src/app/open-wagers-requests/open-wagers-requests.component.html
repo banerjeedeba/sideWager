@@ -3,29 +3,29 @@
     <span class="text-content">Weekly Total:</span><span class="color-green">$550</span>
   </div>
 <div class="header-section">
- <md-grid-list cols="4" rowHeight="1.5em">
-  <md-grid-tile class="text-content">Friend</md-grid-tile>
-  <md-grid-tile class="text-content">HTP</md-grid-tile>
-  <md-grid-tile class="text-content">Amount</md-grid-tile>
-  <md-grid-tile></md-grid-tile>
+ <md-grid-list cols="12" rowHeight="1.5em">
+  <md-grid-tile [colspan]="4" [rowspan]="1" class="text-content">Friend</md-grid-tile>
+  <md-grid-tile [colspan]="2" [rowspan]="1" class="text-content">HTP</md-grid-tile>
+  <md-grid-tile [colspan]="2" [rowspan]="1" class="text-content">Amount</md-grid-tile>
+  <md-grid-tile [colspan]="4" [rowspan]="1"></md-grid-tile>
 </md-grid-list>
 <div class="card-container" *ngFor="let frnd of listFrinds">
 <md-card class="no-padding">
-<md-grid-list cols="4" rowHeight="4em">
-  <md-grid-tile>
+<md-grid-list cols="12" rowHeight="4em">
+  <md-grid-tile [colspan]="4" [rowspan]="1">
     <div class="friends">
       <img class="img-circle" src="{{frnd.imgSource}}" alt=""/>
       <!--<div md-card-avatar><i class="material-icons">account_circle</i></div>-->
       <span class="text-content">{{frnd.Name}}</span>
     </div>
   </md-grid-tile>
-  <md-grid-tile>
+  <md-grid-tile [colspan]="2" [rowspan]="1">
     <span>{{frnd.HTP}}</span>
   </md-grid-tile>
-  <md-grid-tile>
+  <md-grid-tile [colspan]="2" [rowspan]="1">
     <span>${{frnd.Amount}}</span>
   </md-grid-tile>
-  <md-grid-tile>
+  <md-grid-tile [colspan]="4" [rowspan]="1">
       <button md-raised-button class="btn-wager">View Wager</button>
   </md-grid-tile>
 </md-grid-list>  

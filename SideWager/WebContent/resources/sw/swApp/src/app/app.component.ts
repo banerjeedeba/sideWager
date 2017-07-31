@@ -15,11 +15,11 @@ export class AppComponent {
      (user)=>{
        if(user==null){
          this.isLoggedin=false;
-         this.router.navigate(['login']);
+         this.router.navigate(['']);
        }
        else{
           this.isLoggedin=true;
-          this.router.navigate(['']);
+          this.router.navigate(['home','swtab']);
        }
      }
    )

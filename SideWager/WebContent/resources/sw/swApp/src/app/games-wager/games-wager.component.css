@@ -39,6 +39,8 @@ color: #FFFFFF;
 font-size: 0.8em;
 font-weight: 400;
 background-color:#2A9FD8;
+text-align: center;
+align-content: center;
 }
 .card-container{
 margin: 0.5em;   

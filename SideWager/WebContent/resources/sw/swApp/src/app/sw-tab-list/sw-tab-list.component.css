@@ -2,7 +2,9 @@
 .sw-tabs{
 font-weight: 600 !important;
 }
-
+.sw-tabs:active{
+color:orange !important;
+}
 .mat-primary{
   background-color:#d00;
   color: #fff;
@@ -19,4 +21,6 @@ font-weight: 600 !important;
 .tab-group-container{
 height: 100%;
 }
-
+.mat-tab-label:focus{
+  background-color: transparent !important;
+}

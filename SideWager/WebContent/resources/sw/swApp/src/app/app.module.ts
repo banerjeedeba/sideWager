@@ -30,8 +30,14 @@ import { OpenWagersComponent } from './open-wagers/open-wagers.component';
 import { MakeWagerStep1Component } from './make-wager-step-1/make-wager-step-1.component';
 
 export const routes:Routes=[
-  {path:'',component:SwSideNavComponent},
-  {path:'login',component:LoginScreenComponent}
+  {path:'home',component:SwSideNavComponent,
+  children:[
+    { path: '', redirectTo: 'swtab', pathMatch: 'full' },
+    {path:'mkwagerstep1',component:MakeWagerStep1Component},
+    {path:'swtab',component:SwTabListComponent}
+  ]
+  },
+  {path:'',component:LoginScreenComponent}
 ];
 @NgModule({
   declarations: [
