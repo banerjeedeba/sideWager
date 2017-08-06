@@ -12,6 +12,7 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.ws.rs.GET;
@@ -187,7 +188,6 @@ public class NotificationService {
 				count++;
 			}*/
 			result = NotificationService.updateUser();
-						
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -318,6 +318,8 @@ public class NotificationService {
 		return "[{\"success\": \"DB created\"}]";
 	}
 	
+	
+	
 	private void testCreateDB(){
 		DatabaseReference usersDBRef =database.child("users");
 		usersDBRef.setValue("{\"test\":{ \"username\": \"name\",\"email\": \"email\"}");
@@ -379,6 +381,18 @@ public class NotificationService {
 		OddsUpdate.expirationTime = extime!=null?Long.parseLong(extime):0;
 		log.info("key updated: "+new Date());
 		return "[{\"success\": \"key updated\"}]";
+	}
+	
+	@GET
+	@Path("/gameList")
+	@Produces({ MediaType.APPLICATION_JSON })
+	public String gameList(@QueryParam("ckey") String ckey) {
+		
+		String response = "";
+		//OddsUpdate.key=ckey;
+		//OddsUpdate.expirationTime = extime!=null?Long.parseLong(extime):0;
+		//log.info("key updated: "+new Date());
+		return "[{\"success\": \"gameListt"+ckey+"\"}]";
 	}
 	
 	public static void main(String[] args) {

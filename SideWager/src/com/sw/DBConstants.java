@@ -6,8 +6,10 @@ public class DBConstants {
 
 	public static final String DB_BASE_URL = "https://sidewager-163802.firebaseio.com/";
 	public static final String TABLE_TOURNAMENT = "tournament.json";
-	public static HashMap<Integer, String> SPORTS = new HashMap<Integer, String>();
-	static{
+	public static final String TABLE_SPORTS = "sports.json";
+	public static final String TABLE_NICKNAME = "nickname.json";
+	
+	/*static{
 		SPORTS.put(1, "MLB");
 		SPORTS.put(2, "NBA");
 		SPORTS.put(3, "NCAAB");
@@ -31,5 +33,5 @@ public class DBConstants {
 		SPORTS.put(22, "RUGBY");
 		SPORTS.put(23, "WBC");
 		SPORTS.put(24, "CFL");
-	}
+	}*/
 }

@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 })
 export class GamesWagerComponent implements OnInit {
 
-  public gameList = [];
+  public sportsList = [];
  
   constructor(public gls:GamelistService,public authService: AuthService,private router:Router) {
     
@@ -18,7 +18,7 @@ export class GamesWagerComponent implements OnInit {
 
   ngOnInit() {
     
-    console.log("init test: "+this.gameList);   
+    console.log("init test: "+this.sportsList);   
     this.authService.af.authState.subscribe(
      (user)=>{
        if(user==null){
@@ -27,7 +27,7 @@ export class GamesWagerComponent implements OnInit {
        else{
           user.getIdToken().then(token =>{
             this.gls.getListData(token).subscribe(data => {
-              this.gameList = data;
+              this.sportsList = data;
             })
           })
        }

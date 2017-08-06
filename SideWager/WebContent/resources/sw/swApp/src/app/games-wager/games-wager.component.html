@@ -3,11 +3,11 @@
 <button md-button><i class="material-icons">today</i>{{currentDate| date: 'yMMMMEEEEd'}}</button>
 <button md-button (click)="nextDate()"><i class="material-icons">keyboard_arrow_right</i></button>
 </div>
-
+<div *ngFor="let sports of sportsList">
 <header>
-  <h1 class="wager-header">NBA </h1>
+  <h1 class="wager-header">{{sports.shortName | uppercase}}</h1>
 </header>
-<div class="card-container" *ngFor="let game of gameList">
+<div class="card-container" *ngFor="let game of sports.gameList">
 <md-card class="md-card-padd">
 <md-grid-list cols="16" rowHeight="5em">
   <md-grid-tile [colspan]="4" [rowspan]="1">
@@ -52,4 +52,4 @@
 </md-grid-list>
 </md-card>
 </div>
-
+</div>
