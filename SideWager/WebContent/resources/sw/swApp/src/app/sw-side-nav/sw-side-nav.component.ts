@@ -10,7 +10,7 @@ import {AuthService} from '../provider/auth.service';
 })
 export class SwSideNavComponent implements OnInit {
 private wager;
- constructor(public authService: AuthService,private router:Router,private activeroute:ActivatedRoute) { }
+ constructor(public authService: AuthService,private router:Router) { }
 
   ngOnInit() {
     // const wagerType=this.activeroute.snapshot.params['wagerType'];
@@ -19,5 +19,8 @@ private wager;
   logout(){
     this.authService.Logout();
     this.router.navigate(['']);
+  }
+   getFriends(){
+    this.router.navigate(['home','friends']);
   }
 }

@@ -13,20 +13,7 @@ accept(){
 }
   ngOnInit() {
   }
-  private todaysDate=new Date(Date.now());
-currentDate = new Date( this.todaysDate.getFullYear(),
-                 this.todaysDate.getMonth(),
-                 this.todaysDate.getDate());
-nextDate(){
-  this.currentDate = new Date( this.currentDate.getFullYear(),
-                 this.currentDate.getMonth(),
-                 this.currentDate.getDate()+1);
-}
-prevDate(){
-     this.currentDate = new Date( this.currentDate.getFullYear(),
-                 this.currentDate.getMonth(),
-                 this.currentDate.getDate()-1);
-}
+
 public gamesList=[{
   "Team1FullName":"Toranto",
   "Team2FullName":"Chicago",
@@ -34,7 +21,7 @@ public gamesList=[{
   "Team2Name":"CHI",
   "Team1Ind":"TOR-6.5",
   "Team2Ind":"u 102.5",
-  "Time":"8:00PM",
+  "Time":"Aug 15 8:00PM",
 },
 {
   "Team1FullName":"Cavaliers",
@@ -43,7 +30,7 @@ public gamesList=[{
   "Team2Name":"MIN",
   "Team1Ind":"CLE-4.5",
   "Team2Ind":"u 105.5",
-  "Time":"8:00PM",
+  "Time":"Sep 10 8:00PM",
 },
 {
   "Team1FullName":"Sacremento",
@@ -52,6 +39,6 @@ public gamesList=[{
   "Team2Name":"LAL",
   "Team1Ind":"TOR-6.5",
   "Team2Ind":"u 101",
-  "Time":"10:30PM",
+  "Time":"Oct 17 10:30PM",
 }];
 }

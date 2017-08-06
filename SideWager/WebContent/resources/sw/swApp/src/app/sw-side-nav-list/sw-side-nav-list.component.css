@@ -2,3 +2,7 @@
   background-color:#d00;
   color: #fff;
 }
+.chip-custom{
+  padding: 0.2em 0.8em !important;
+  font-size: 0.6em !important;
+}

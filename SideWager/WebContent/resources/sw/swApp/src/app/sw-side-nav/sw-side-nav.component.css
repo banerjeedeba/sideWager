@@ -6,6 +6,14 @@
 .sw-sidenav {
   padding: 0px;
 }
+.wager-tab{
+   background: #F44336; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#F44336, #B71C1C); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#F44336, #B71C1C); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#F44336, #B71C1C); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#F44336, #B71C1C); 
+    color: white;
+}
 md-sidenav {
   width: 70%;
 }
@@ -19,7 +27,11 @@ md-sidenav {
   background-color:#d00;
   color: #fff;
 }
-.sw-sidenav-content, .tab-container{
-/*height: 100%;*/
+.chip-custom{
+  padding: 0.2em 0.8em !important;
+  font-size: 0.6em !important;
 }
+/*.sw-sidenav-content, .tab-container{
+height: 100%;
+}*/
 

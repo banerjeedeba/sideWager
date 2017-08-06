@@ -28,13 +28,17 @@ import { OpenWagersLossesComponent } from './open-wagers-losses/open-wagers-loss
 import { OpenWagersTabComponent } from './open-wagers-tab/open-wagers-tab.component';
 import { OpenWagersComponent } from './open-wagers/open-wagers.component';
 import { MakeWagerStep1Component } from './make-wager-step-1/make-wager-step-1.component';
+import { SwFriendsTabComponent } from './sw-friends-tab/sw-friends-tab.component';
+import { MyFriendsComponentComponent } from './my-friends-component/my-friends-component.component';
+import { AddFriendsComponentComponent } from './add-friends-component/add-friends-component.component';
 
 export const routes:Routes=[
   {path:'home',component:SwSideNavComponent,
   children:[
     { path: '', redirectTo: 'swtab', pathMatch: 'full' },
     {path:'mkwagerstep1',component:MakeWagerStep1Component},
-    {path:'swtab',component:SwTabListComponent}
+    {path:'swtab',component:SwTabListComponent},
+    {path:'friends',component:SwFriendsTabComponent}
   ]
   },
   {path:'',component:LoginScreenComponent}
@@ -55,7 +59,10 @@ export const routes:Routes=[
     OpenWagersLossesComponent,
     OpenWagersTabComponent,
     OpenWagersComponent,
-    MakeWagerStep1Component
+    MakeWagerStep1Component,
+    SwFriendsTabComponent,
+    MyFriendsComponentComponent,
+    AddFriendsComponentComponent
   ],
   imports: [
     BrowserModule,

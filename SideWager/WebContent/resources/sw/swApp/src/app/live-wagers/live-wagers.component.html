@@ -1,14 +1,13 @@
-<div class="date-comp">
-<button md-button (click)="prevDate()"><i class="material-icons">keyboard_arrow_left</i></button>
-<button md-button><i class="material-icons">today</i>{{currentDate| date: 'yMMMMEEEEd'}}</button>
-<button md-button (click)="nextDate()"><i class="material-icons">keyboard_arrow_right</i></button>
-</div>
+
 <div class="card-container" *ngFor="let game of gamesList">
 <md-card class="md-card-padd">
   <div class="bordered-bottom">
     <md-card-subtitle>
       <span class="selection">Matt Frisch Selected:TOR</span>
-      <span class="pull-right amount">upto $550</span>
+      <div class="pull-right">
+        <span class="upto-text">up to</span> 
+        <span class="amount">$550</span>
+      </div>
     </md-card-subtitle>
   </div>
 <md-grid-list cols="16" rowHeight="5em">
@@ -49,7 +48,7 @@
     <md-divider class="vertical-divider"></md-divider>
    </md-grid-tile>
   <md-grid-tile [colspan]="3" [rowspan]="1">
-    <button md-raised-button class="btn-wager" (click)="accept()"> ACCEPT</button>
+    <button md-raised-button class="btn-accept" (click)="accept()"> ACCEPT</button>
   </md-grid-tile>
 </md-grid-list>
 </md-card>

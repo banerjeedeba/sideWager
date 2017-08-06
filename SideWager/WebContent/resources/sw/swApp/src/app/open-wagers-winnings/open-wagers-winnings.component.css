@@ -41,7 +41,11 @@ float: right;
 .header-section{
     margin: 1.5em auto;
 }
-
+.upto-text{
+font-size: 0.6em;
+margin-right: 0.4em;
+font-weight: 500;
+}
 .text-content{
     font-size: 0.8em;
     font-weight: 500;

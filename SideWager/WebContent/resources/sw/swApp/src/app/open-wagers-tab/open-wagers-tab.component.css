@@ -14,8 +14,8 @@ height: 100%;
   color: #fff;
 }
 .open-wager-tabs{
-    font-size: 0.8em;
-    font-weight: 500;
+    font-size: 0.9em;
+    font-weight: 600;
     color: #d00;
 }
 .md-tab-header .md-ink-bar {
@@ -24,4 +24,8 @@ height: 100%;
 .mat-tab-label .mat-ripple .mat-tab-label-active{
 background-color: transparent;
 color: orange;
+}
+.chip-custom{
+  padding: 0.1em 0.8em;
+  font-size: 0.6em;
 }

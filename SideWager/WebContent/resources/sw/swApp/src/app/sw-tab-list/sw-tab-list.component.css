@@ -24,3 +24,7 @@ height: 100%;
 .mat-tab-label:focus{
   background-color: transparent !important;
 }
+.chip-custom{
+  padding: 0.1em 0.8em;
+  font-size: 0.6em;
+}

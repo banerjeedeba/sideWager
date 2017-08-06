@@ -1,0 +1,28 @@
+.pull-right{
+float: left;
+background-color:white; 
+ padding: 0;
+ display: block;
+}
+.pull-right i{
+ color: #979797;
+ font-size:2.5em;
+ font-weight: 300;
+}
+.frindes-tab{
+  width: 100%;
+}
+.no-padding div{
+    padding:0 !important; 
+}
+.mat-nav-list[dense] .mat-list-item .mat-list-item-content{
+    padding:0 !important; 
+}
+.chip-custom{
+  padding: 0.1em 0.8em;
+  font-size: 0.6em;
+}
+.mat-primary{
+  background-color:#d00;
+  color: #fff;
+}

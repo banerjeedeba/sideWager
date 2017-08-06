@@ -1,0 +1,14 @@
+.full-width{
+    width: 90%;
+    margin: 0 1em;
+}
+.friends-head{
+    width: 100%;
+    display: block;
+    margin: 2em;
+    font-weight: 600;
+}
+.challenge-friends{
+    font-size: 1em;
+    margin: 1em 0;
+}

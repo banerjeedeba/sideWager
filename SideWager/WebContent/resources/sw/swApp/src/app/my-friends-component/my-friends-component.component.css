@@ -1,0 +1,18 @@
+.btn-add {
+color: #2A9FD8;
+font-size: 0.7em;
+font-weight: 600;
+background-color:#FFFFFF;
+text-align: center;
+align-content: center;
+padding: 0;
+margin: 0;
+border:2px solid #2A9FD8;
+width: 2em;
+border-radius: 0.5em;
+height: 3em;
+line-height: 2em;
+}
+.pull-right{
+    float: right;
+}

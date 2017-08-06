@@ -6,16 +6,21 @@ padding-left: 1em;
 }
 .game-time{
 color:#969696;
-font-size: 0.8em;
+font-size: 0.6em;
 padding-left: 0.8em;
 }
 
 .game-team-fullname{
     font-size: 0.8em;
     font-weight: 700;
-     white-space: nowrap;
     overflow: hidden;
-    width: calc(80%-20px);
+    text-align: left;
+    display: block;
+    width: 90%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+    margin-left:0.2em;
 }
 .game-team-name{
     font-size: 0.8em;
@@ -36,11 +41,13 @@ padding-left: 0.8em;
 }
 .btn-wager {
 color: #FFFFFF;
-font-size: 0.8em;
+font-size: 0.6em;
 font-weight: 400;
 background-color:#2A9FD8;
 text-align: center;
 align-content: center;
+height: 3em;
+line-height: 1.5em;
 }
 .card-container{
 margin: 0.5em;   

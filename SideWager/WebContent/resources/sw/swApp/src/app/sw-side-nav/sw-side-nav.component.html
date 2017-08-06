@@ -1,26 +1,42 @@
 <md-sidenav-container fullscreen class="side-nav-height">
   <md-sidenav #sidenav class="sw-sidenav">
-   
    <app-sw-side-nav-card></app-sw-side-nav-card>
-   <app-sw-side-nav-list></app-sw-side-nav-list>   
+  <md-nav-list>
+  <a md-list-item (click)="sidenav.close();getFriends();"><span>Friends &nbsp;</span>
+   <md-chip-list> <md-chip color="primary" class="chip-custom"> 3</md-chip></md-chip-list>
+  </a>
+  <a md-list-item routerLink="#">Wager History</a>
+  <a md-list-item routerLink="#">FAQs</a>
+  <a md-list-item routerLink="#"><i>SideWAGER</i> &nbsp;Feedback</a>
+  <hr/>
+  <a md-list-item routerLink="#"><b>Sports</b></a>
+  <a md-list-item routerLink="#">Pro Football </a>
+  <a md-list-item routerLink="#">Pro Basketball</a>
+  <a md-list-item routerLink="#">Pro Baseball</a>
+  <a md-list-item routerLink="#">College Football</a>  
+  <a md-list-item routerLink="#">College Basketball</a>  
+  <a md-list-item routerLink="#">Soccer</a>  
+  <a md-list-item routerLink="#">Golf</a>  
+</md-nav-list>
+   <!--<app-sw-side-nav-list></app-sw-side-nav-list>   -->
   </md-sidenav>
-<md-toolbar color="primary">
+<md-toolbar class="wager-tab">
    <button md-icon-button (click)="sidenav.open()">
       <md-icon>menu</md-icon>
   </button>
-   <button md-button (click)="logout()">Logout</button>
+   <!--<button md-button >Logout</button>-->
   <span class="spacer">Side <b>WAGER</b></span>
   <button md-icon-button [mdMenuTriggerFor]="menu">
     <md-icon>more_vert</md-icon>
   </button>
   <md-menu #menu="mdMenu">
-    <button md-menu-item>
-      <md-icon>dialpad</md-icon>
-      <span>Redial</span>
+    <button md-menu-item (click)="logout()">
+      <md-icon><i class="material-icons">power_settings_new</i></md-icon>
+      <span>Logout</span>
     </button>
-    <button md-menu-item disabled>
-      <md-icon>voicemail</md-icon>
-      <span>Check voicemail</span>
+    <button md-menu-item (click)="getFriends()">
+      <md-icon><i class="material-icons">group</i></md-icon>
+      <span>Friends</span>
     </button>
     <button md-menu-item>
       <md-icon>notifications_off</md-icon>

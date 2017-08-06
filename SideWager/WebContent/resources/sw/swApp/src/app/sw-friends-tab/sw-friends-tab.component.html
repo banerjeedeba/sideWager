@@ -1,0 +1,21 @@
+<div class="pull-right">
+    <span (click)="gotoWager()"><i class="material-icons">navigate_before</i></span> 
+</div>
+<md-tab-group md-stretch-tabs class="frindes-tab">
+  <md-tab>
+    <ng-template md-tab-label>
+      <b>My Feiends</b>
+     <sup><md-chip color="primary" class="chip-custom">2</md-chip></sup>
+    </ng-template>
+   <app-my-friends-component></app-my-friends-component>
+  </md-tab>
+  <md-tab>
+    <ng-template md-tab-label>
+      <b>Add Friends</b>
+    </ng-template>
+    <app-add-friends-component></app-add-friends-component>
+  </md-tab>
+</md-tab-group> 
+ 
+
+
