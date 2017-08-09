@@ -52,7 +52,39 @@ prevDate(){
                  this.currentDate.getMonth(),
                  this.currentDate.getDate()-1);
 }
-
+public sportsLists=[{
+"shortName":"ABC",
+"gameList":[{
+  "homeTeam":"Toranto",
+  "awayTeam":"Chicago",
+  "homeTeamShortName":"TOR",
+  "awayTeamShortName":"CHI",
+  "pointSpread":"TOR-6.5",
+  "underLine":"u 102.5",
+  "matchTime":"11/25 8:00PM",
+}]},
+{"shortName":"PQR",
+"gameList":[{
+  "homeTeam":"Cavaliers",
+  "awayTeam":"Minnesota",
+  "homeTeamShortName":"CLE",
+  "awayTeamShortName":"MIN",
+  "pointSpread":"CLE-4.5",
+  "underLine":"u 105.5",
+  "matchTime":"8/25 8:00PM",
+}]},
+{"shortName":"XYZ",
+"gameList":[{
+  "homeTeam":"Sacremento",
+  "awayTeam":"Los Angeles",
+  "homeTeamShortName":"SAC",
+  "awayTeamShortName":"LAL",
+  "pointSpread":"TOR-6.5",
+  "underLine":"u 101",
+  "matchTime":"9/15 10:30PM",
+}]
+}
+];
 public gamesList=[{
   "Team1FullName":"Toranto",
   "Team2FullName":"Chicago",

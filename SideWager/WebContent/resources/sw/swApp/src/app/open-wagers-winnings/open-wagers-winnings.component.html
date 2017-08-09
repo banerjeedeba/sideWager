@@ -1,41 +1,42 @@
 <div class="request-container">
   <div class="pull-right">
-    <span class="upto-text">Weekly Total:</span><span class="color-green">$550</span>
+    <span class="upto-text">Weekly Total:</span><span class="color-green">550 sc</span>
   </div>
 <div class="header-section">
  <md-grid-list cols="13" rowHeight="3em">
   <md-grid-tile [colspan]="4" [rowspan]="1" class="text-content">Friend</md-grid-tile>
-  <md-grid-tile [colspan]="2" [rowspan]="1" class="text-content">HTP</md-grid-tile>
-  <md-grid-tile [colspan]="2" [rowspan]="1" class="text-content">Amount</md-grid-tile>
-  <md-grid-tile [colspan]="5" [rowspan]="1" class="text-content">Payment Status</md-grid-tile>
+  <md-grid-tile [colspan]="2" [rowspan]="1" class="text-content"></md-grid-tile>
+  <md-grid-tile [colspan]="3" [rowspan]="1" class="text-content">Side Credits</md-grid-tile>
+  <md-grid-tile [colspan]="3" [rowspan]="1" class="text-content">Games</md-grid-tile>
 </md-grid-list>
 <div class="card-container" *ngFor="let win of listWinnings">
 <md-card class="no-padding">
 <md-grid-list cols="13" rowHeight="4em">
-  <md-grid-tile [colspan]="4" [rowspan]="1">
+  <md-grid-tile [colspan]="6" [rowspan]="1">
     <div class="friends">
-      <img class="img-circle" src="{{win.imgSource}}" alt=""/>
-      <!--<div md-card-avatar><i class="material-icons">account_circle</i></div>-->
+      <img class="img-circle" src="{{win.imgSource}}" alt="Picture of {{win.Name}}"/>
+      </div>
       <span class="text-content">{{win.Name}}</span>
-    </div>
+      <!--<div md-card-avatar><i class="material-icons">account_circle</i></div>-->
+    
   </md-grid-tile>
-  <md-grid-tile [colspan]="2" [rowspan]="1">
-    <span>{{win.weeklyHTP}}</span>
+  <!--<md-grid-tile [colspan]="5" [rowspan]="1">
+    
+  </md-grid-tile>-->
+  <md-grid-tile [colspan]="3" [rowspan]="1">
+    <span>{{win.Amount}}</span>
   </md-grid-tile>
-  <md-grid-tile [colspan]="2" [rowspan]="1">
-    <span>${{win.Amount}}</span>
-  </md-grid-tile>
-   <md-grid-tile [colspan]="1" [rowspan]="1">
+   <!--<md-grid-tile [colspan]="1" [rowspan]="1">
    <div *ngIf="win.paymentStatus == 'Y'">
      <i class="material-icons color-green">check_circle</i>
     </div>
     <div *ngIf="win.paymentStatus == 'W'">
         <i class="material-icons color-gray">schedule</i>
     </div>
-   </md-grid-tile>
+   </md-grid-tile>-->
   <md-grid-tile [colspan]="4" [rowspan]="1">
       <div *ngIf="win.paymentStatus == 'N'">
-	      <button md-raised-button class="btn-confirm-payment">Confirm<br/> Payment</button>
+	      <button md-raised-button class="btn-confirm-payment">View<br/> Games</button>
       </div> 	
       <div *ngIf="win.paymentStatus == 'Y'">
         <span class="color-green">Payment Confirmed</span>

@@ -17,7 +17,7 @@ public listWinnings=[
     "imgSource":"..\\assets\\img\\user.png",
     "weeklyHTP":"15",
     "HTPind":"Red",
-    "Amount":"250",
+    "Amount":"250 sc",
     "paymentStatus":"N"
   },
   {
@@ -25,16 +25,16 @@ public listWinnings=[
     "imgSource":"..\\assets\\img\\user.png",
     "weeklyHTP":"56",
     "HTPind":"Amber",
-    "Amount":"500",
-    "paymentStatus":"W"
+    "Amount":"500 sc",
+    "paymentStatus":"N"
   },
   {
     "Name":"Michael Adams",
     "imgSource":"..\\assets\\img\\user.png",
     "weeklyHTP":"12",
     "HTPind":"Green",
-    "Amount":"650",
-    "paymentStatus":"Y"
+    "Amount":"650 sc",
+    "paymentStatus":"N"
   },
 ];
 }
