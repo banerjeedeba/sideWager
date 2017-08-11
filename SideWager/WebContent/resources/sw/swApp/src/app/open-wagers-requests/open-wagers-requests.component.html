@@ -1,4 +1,68 @@
-<div class="request-container">
+<div class="header-container">
+  <span class="side-credit">SC- Side Credit</span>
+  <div class="pull-right">
+    <span class="upto-text-summary">weekly Total:</span>
+    <span class="amount color-green">550SC</span>
+  </div>
+</div>
+<div class="card-container" *ngFor="let game of gamesList">
+<md-card class="md-card-padd">
+  <div class="bordered-bottom">
+    <md-card-subtitle>
+      <span class="selection">Matt Frisch Selected:TOR</span>
+      <div class="pull-right">
+        <span>sc:</span> 
+        <span>550</span>
+      </div>
+    </md-card-subtitle>
+  </div>
+<md-grid-list cols="16" rowHeight="5em">
+  <md-grid-tile [colspan]="4" [rowspan]="1">
+    <ul class="md-list-item-inner">
+      <li>
+        <span class="game-team-fullname">{{game.Team1FullName}}</span>
+      </li>
+      <li>
+        <span class="game-team-fullname color-green">{{game.Team2FullName}}</span>
+      </li>
+    </ul>
+  </md-grid-tile>
+  <md-grid-tile [colspan]="2" [rowspan]="1">
+    <ul class="md-list-item-inner">
+      <li>
+        <span class="game-team-name">{{game.Team1Name}}</span>
+      </li>
+      <li>
+        <span class="game-team-name">{{game.Team2Name}}</span>
+      </li>
+    </ul>
+  </md-grid-tile>
+  <md-grid-tile [colspan]="3" [rowspan]="1">
+    <ul class="md-list-item-inner md-list-item-inner-child">
+      <li>
+        <span class="game-team-name">{{game.Team1Ind}}</span>
+      </li>
+      <!--<li>
+        <span class="game-team-name">{{game.Team2Ind}}</span>
+      </li>-->
+    </ul>
+  </md-grid-tile>
+  <md-grid-tile [colspan]="3" [rowspan]="1">
+    <span class="game-time">{{game.Time}}</span>
+   </md-grid-tile>
+   <md-grid-tile [colspan]="1" [rowspan]="1">
+    <md-divider class="vertical-divider"></md-divider>
+   </md-grid-tile>
+  <md-grid-tile [colspan]="3" [rowspan]="1">
+    <button md-raised-button class="btn-accept" (click)="accept()"> ACCEPT</button>
+  </md-grid-tile>
+</md-grid-list>
+</md-card>
+</div>
+
+
+
+<!--<div class="request-container">
   <div class="pull-right">
     <span class="upto-text">Weekly Total:</span><span class="color-green">$550</span>
   </div>
@@ -15,7 +79,7 @@
   <md-grid-tile [colspan]="4" [rowspan]="1">
     <div class="friends">
       <img class="img-circle" src="{{frnd.imgSource}}" alt=""/>
-      <!--<div md-card-avatar><i class="material-icons">account_circle</i></div>-->
+      
       <span class="text-content">{{frnd.Name}}</span>
     </div>
   </md-grid-tile>
@@ -32,4 +96,4 @@
 </md-card>
 </div>
   </div>
-</div>
+</div>-->
