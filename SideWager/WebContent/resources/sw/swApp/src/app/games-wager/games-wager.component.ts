@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {GamelistService} from '../provider/gamelist.service';
 import {AuthService} from '../provider/auth.service';
 import {Router} from '@angular/router';
+import {UpdateUser} from '../provider/updateuser.service';
 @Component({
   selector: 'app-games-wager',
   templateUrl: './games-wager.component.html',
@@ -12,27 +13,31 @@ export class GamesWagerComponent implements OnInit {
 
   public sportsList = [];
  
-  constructor(public gls:GamelistService,public authService: AuthService,private router:Router) {
+  constructor(public gls:GamelistService,public authService: AuthService,private router:Router
+    , private user : UpdateUser) {
     
   }
 
   ngOnInit() {
     
-    console.log("init test: "+this.sportsList);   
-    this.authService.af.authState.subscribe(
+    this.gls.getListData(this.user.user.ckey).subscribe(data => {
+      this.sportsList = data;
+    })
+    /*this.authService.af.authState.subscribe(
      (user)=>{
        if(user==null){
          console.log("no user")
        }
        else{
           user.getIdToken().then(token =>{
+            console.log("latest token: "+ token);
             this.gls.getListData(token).subscribe(data => {
               this.sportsList = data;
             })
           })
        }
      }
-   )
+   )*/
   }
   makeWager(){
  this.router.navigate(['home','mkwagerstep1']);

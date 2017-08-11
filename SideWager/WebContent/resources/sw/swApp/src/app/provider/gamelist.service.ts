@@ -13,7 +13,7 @@ export class GamelistService {
   }
 
   getListData(token){
-    console.log("getdata");
+    //console.log("getdata");
     //http://localhost:8080/SideWager/rest/data/gamelist
     //https://www.sidewagerapp.com/rest/data/gamelist
     

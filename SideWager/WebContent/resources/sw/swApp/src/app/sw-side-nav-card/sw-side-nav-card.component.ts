@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {UpdateUser} from '../provider/updateuser.service';
 
 @Component({
   selector: 'app-sw-side-nav-card',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SwSideNavCardComponent implements OnInit {
 
-  constructor() { }
+  public displayName : string;
+  public photoUrl: string;
+  constructor(private user : UpdateUser) {
+    this.displayName = this.user.user.displayName;
+    this.photoUrl = this.user.user.photoUrl;
+   }
+
 
   ngOnInit() {
   }
