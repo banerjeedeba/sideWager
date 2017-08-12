@@ -18,3 +18,11 @@ width: 100%;
 .mat-card-subtitle{
   color: white;
 }
+
+.img-circle {
+    border-radius: 50%;
+    width: 3.5em;
+    height: 3.5em;
+    display: block;
+    margin:0;
+}
