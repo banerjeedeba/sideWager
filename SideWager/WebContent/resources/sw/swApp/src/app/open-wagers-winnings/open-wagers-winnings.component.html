@@ -24,7 +24,7 @@
     
   </md-grid-tile>-->
   <md-grid-tile [colspan]="3" [rowspan]="1">
-    <span>{{win.Amount}}</span>
+    <span class="color-green">{{win.Amount}}</span>
   </md-grid-tile>
    <!--<md-grid-tile [colspan]="1" [rowspan]="1">
    <div *ngIf="win.paymentStatus == 'Y'">
@@ -36,7 +36,7 @@
    </md-grid-tile>-->
   <md-grid-tile [colspan]="4" [rowspan]="1">
       <div *ngIf="win.paymentStatus == 'N'">
-	      <button md-raised-button class="btn-confirm-payment">View<br/> Games</button>
+	      <button md-raised-button class="btn-view-games">View<br/> Games</button>
       </div> 	
       <div *ngIf="win.paymentStatus == 'Y'">
         <span class="color-green">Payment Confirmed</span>

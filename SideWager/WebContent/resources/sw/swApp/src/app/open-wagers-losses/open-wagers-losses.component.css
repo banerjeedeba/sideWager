@@ -15,7 +15,7 @@ background-color:#F44336;
 .color-green{
 color: #06C957;
 font-weight: 500;
-font-size: 0.9em;
+font-size: 1em;
 text-align: center;
 float: right;
 }
@@ -26,10 +26,14 @@ font-size: 0.9em;
 text-align: center;
 float: right;
 }
+.color-red{
+color:#F44336;
+font-size: 1em;
+}
 .friends{
    font-weight: bold; 
-   font-size: 0.7em;
-    width:100%;
+   font-size: 1em !important;
+    /*width:100%;*/
     text-align: center;
 }
 .img-circle {
@@ -44,7 +48,8 @@ float: right;
 
 .text-content{
     font-size: 0.8em;
-    font-weight: 500;
+    font-weight: 600;
+    color: black;
 }
 .card-container{
 /*margin: 0.5em;   */
@@ -58,4 +63,12 @@ padding: 0.5em;
 font-size: 0.6em;
 margin-right: 0.4em;
 font-weight: 500;
+}
+.btn-view-games {
+color: #FFFFFF;
+font-size: 0.8em;
+font-weight: 400;
+padding:0.5em 0;
+line-height:1.2em;
+background-color:#4CAF50;
 }

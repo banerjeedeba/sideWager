@@ -32,6 +32,7 @@ padding-left: 0.8em;
     margin: 0 !important;
     list-style: none;
     line-height: 2em;
+    width: 100%;
 }
 .md-list-item-inner-child{
     line-height: 1em;
