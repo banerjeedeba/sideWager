@@ -2,23 +2,40 @@
    <span class="friends-head">Friend Search</span> 
     <md-input-container class="full-width" color="warn">
       <span mdPrefix>To &nbsp;</span>
-     <input mdInput placeholder="Search Friends or Phone #">
+     <input #frndsearchBox mdInput placeholder="Search Friends Email" (blur)="frndSearch(frndsearchBox.value)">
     </md-input-container>
-<md-list>
-  <h3 md-subheader>Suggested Friends</h3>
-  <md-list-item>
-    <img md-list-avatar src="../../assets/img/user.png" alt="...">
-    <h3 md-line>Justin Neil</h3>
-    <p md-line><p>
-  </md-list-item>
-  <md-list-item>
-    <img md-list-avatar src="../../assets/img/user.png" alt="...">
-    <h3 md-line>Sean Schultz</h3>
-    <p md-line>Schultz34@gmail.com<p>
-  </md-list-item>
-  <md-list-item>
-    <img md-list-avatar src="../../assets/img/user.png" alt="...">
-    <h3 md-line>Julia Parker</h3>
-    <p md-line><p>
-  </md-list-item>
-</md-list>
+    <div *ngIf="results?.length > 0">
+    <md-list>
+      <h3 md-subheader>Search Result</h3>
+      <div *ngFor="let user of results">
+      <md-list-item >
+        <img md-list-avatar src="{{user.photoUrl}}" alt="...">
+        <h3 md-line>{{user.displayName}}</h3>
+        <p md-line><p>
+      </md-list-item>
+      </div>
+    </md-list>
+    </div>
+    <div *ngIf="results == 0">
+      <md-list>
+        <h3 md-subheader>No results found!!</h3>
+      </md-list>
+    </div>
+    <md-list>
+      <h3 md-subheader>Suggested Friends</h3>
+      <md-list-item>
+        <img md-list-avatar src="../../assets/img/user.png" alt="...">
+        <h3 md-line>Justin Neil</h3>
+        <p md-line><p>
+      </md-list-item>
+      <md-list-item>
+        <img md-list-avatar src="../../assets/img/user.png" alt="...">
+        <h3 md-line>Sean Schultz</h3>
+        <p md-line>Schultz34@gmail.com<p>
+      </md-list-item>
+      <md-list-item>
+        <img md-list-avatar src="../../assets/img/user.png" alt="...">
+        <h3 md-line>Julia Parker</h3>
+        <p md-line><p>
+      </md-list-item>
+    </md-list>

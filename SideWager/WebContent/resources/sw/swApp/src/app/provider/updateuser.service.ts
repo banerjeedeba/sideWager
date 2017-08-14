@@ -27,6 +27,14 @@ export class UpdateUser{
     return this.items
     }
 
+    getSearchUserList(query): FirebaseListObservable<User[]> {
+        console.log("search sservice"+query);
+    this.items = this.db.list(this.basePath, {
+        query: query
+    });
+    return this.items
+    }
+
     createItem(item: User): void  {
     this.items.push(item)
         .catch(error => this.handleError(error))
