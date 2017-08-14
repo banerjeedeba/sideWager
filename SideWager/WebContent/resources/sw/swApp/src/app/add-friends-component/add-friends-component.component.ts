@@ -21,15 +21,12 @@ export class AddFriendsComponentComponent implements OnInit {
   }
 
   frndSearch(searchString : string){
-    console.log("search string"+searchString);
     const query= {
         orderByChild: 'email',
         equalTo: searchString
     };
     this.user.getSearchUserList(query).subscribe(data => {
       this.results = data;
-      console.log("result");
-      console.log(this.results);
     })
   }
 }
