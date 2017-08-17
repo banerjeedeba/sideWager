@@ -3,14 +3,21 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2/database';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import {User} from '../entities/user';
+import {AuthService} from '../provider/auth.service';
 @Injectable()
 export class UpdateUser{
     private basePath: string = '/users';
+    private userListPath: string = '/users';
+    private requestedPath: string = '/requested';
+    private pendingPath: string = '/pending';
+    private friendPath: string = '/friend'; 
+    private requestPending
     items: FirebaseListObservable<User[]> = null; //  list of objects
     item: FirebaseObjectObservable<User> = null; //   single object
+    pendingList: FirebaseListObservable<User[]> = null;
     public user : User;
 
-    constructor(private af: AngularFireModule,
+    constructor(private auth: AuthService,
               private db: AngularFireDatabase) { }
 
     // Return a single observable item
@@ -32,6 +39,48 @@ export class UpdateUser{
         query: query
     });
     return this.items
+    }
+
+    getPendingList(){
+
+        const pendingFullPath = `${this.pendingPath}/${this.auth.user.uid}`;
+        this.pendingList = this.db.list(pendingFullPath);
+        return this.pendingList;
+    }
+
+    sendRequest(to :User, tokey : string) : void{
+        console.log(this.auth.user);
+        let fromkey =  this.auth.user.uid;
+        const requestedFullPath =  `${this.requestedPath}/${fromkey}/${tokey}`;
+        this.db.object(requestedFullPath).set(to).catch(error => this.handleError(error));
+
+        const pendingFullPath =  `${this.pendingPath}/${tokey}/${fromkey}`;
+        this.db.object(pendingFullPath).set(this.user).catch(error => this.handleError(error));
+    }
+
+    acceptRequest(to :User, tokey : string) : void{
+        console.log(this.auth.user);
+        let fromkey =  this.auth.user.uid;
+        const requestFriendPath = `${this.friendPath}/${fromkey}/${tokey}`;
+        this.db.object(requestFriendPath).set(to).catch(error => this.handleError(error));
+
+        const pendingFriendPath =  `${this.friendPath}/${tokey}/${fromkey}`;
+        this.db.object(pendingFriendPath).set(this.user).catch(error => this.handleError(error));
+
+        const requestedFullPath =  `${this.requestedPath}/${tokey}/${fromkey}`;
+        this.db.object(requestedFullPath).remove().catch(error => this.handleError(error));
+
+        const pendingFullPath =  `${this.pendingPath}/${fromkey}/${tokey}`;
+        this.db.object(pendingFullPath).remove().catch(error => this.handleError(error));
+    }
+
+    rejectRequest(to :User, tokey : string) : void{
+        let fromkey =  this.auth.user.uid;
+        const requestedFullPath =  `${this.requestedPath}/${tokey}/${fromkey}`;
+        this.db.object(requestedFullPath).remove().then(_=> console.log("removed 1")).catch(error => this.handleError(error));
+
+        const pendingFullPath =  `${this.pendingPath}/${fromkey}/${tokey}`;
+        this.db.object(pendingFullPath).remove().then(_=> console.log("removed 2")).catch(error => this.handleError(error));
     }
 
     createItem(item: User): void  {

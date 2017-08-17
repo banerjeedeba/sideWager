@@ -11,7 +11,8 @@
       <md-list-item >
         <img md-list-avatar src="{{user.photoUrl}}" alt="...">
         <h3 md-line>{{user.displayName}}</h3>
-        <p md-line><p>
+        <p md-line >{{user.email}}<p>
+        <span class="pull-right"><button md-raised-button class="btn-add" (click)="sendRequest(user,user.$key)">+ Add</button></span>
       </md-list-item>
       </div>
     </md-list>

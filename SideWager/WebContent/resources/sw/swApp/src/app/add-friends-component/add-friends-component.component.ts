@@ -29,4 +29,8 @@ export class AddFriendsComponentComponent implements OnInit {
       this.results = data;
     })
   }
+
+  sendRequest(to : User, toKey : string){
+    this.user.sendRequest(to,toKey);
+  }
 }
