@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UpdateUser } from '../provider/updateuser.service';
 import { User } from '../entities/User';
 
@@ -7,16 +7,18 @@ import { User } from '../entities/User';
   templateUrl: './my-friends-component.component.html',
   styleUrls: ['./my-friends-component.component.css']
 })
-export class MyFriendsComponentComponent implements OnInit {
+export class MyFriendsComponentComponent implements OnInit, OnDestroy {
 
-  private pendingList : User[] = [];
-  private frndList: User[] = null;
-  private pendingKeys : string[] =[];
+  public pendingList : User[] = [];
+  public frndList: User[] = null;
+  public pendingKeys : string[] =[];
 
   constructor(private user:UpdateUser) { }
 
+  pendingListSubscribe;
+  
   ngOnInit() {
-    this.user.getPendingList().subscribe(
+    this.pendingListSubscribe = this.user.getPendingList().subscribe(
       list => {
         this.pendingList = list;
         //for(var item of list){
@@ -34,6 +36,10 @@ export class MyFriendsComponentComponent implements OnInit {
 
   rejectRequest(to:User, toKey:string){
     this.user.rejectRequest(to,toKey);
+  }
+
+  ngOnDestroy(){
+    this.pendingListSubscribe.unsubscribe();
   }
 
 }

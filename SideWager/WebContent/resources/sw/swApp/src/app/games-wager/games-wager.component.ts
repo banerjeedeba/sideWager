@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {GamelistService} from '../provider/gamelist.service';
 import {AuthService} from '../provider/auth.service';
 import {Router} from '@angular/router';
@@ -9,7 +9,7 @@ import {UpdateUser} from '../provider/updateuser.service';
   styleUrls: ['./games-wager.component.css'],
   providers: [GamelistService]
 })
-export class GamesWagerComponent implements OnInit {
+export class GamesWagerComponent implements OnInit, OnDestroy {
 
   public sportsList = [];
  
@@ -18,9 +18,11 @@ export class GamesWagerComponent implements OnInit {
     
   }
 
+  gameListSubscribe;
+
   ngOnInit() {
     
-    this.gls.getListData(this.user.user.ckey).subscribe(data => {
+    this.gameListSubscribe = this.gls.getListData(this.user.user.ckey).subscribe(data => {
       this.sportsList = data;
     })
     /*this.authService.af.authState.subscribe(
@@ -56,6 +58,10 @@ prevDate(){
      this.currentDate = new Date( this.currentDate.getFullYear(),
                  this.currentDate.getMonth(),
                  this.currentDate.getDate()-1);
+}
+
+ngOnDestroy(){
+  this.gameListSubscribe.unsubscribe();
 }
 public sportsLists=[{
 "shortName":"ABC",
