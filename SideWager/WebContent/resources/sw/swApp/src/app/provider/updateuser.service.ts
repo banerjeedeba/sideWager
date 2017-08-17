@@ -15,6 +15,7 @@ export class UpdateUser{
     items: FirebaseListObservable<User[]> = null; //  list of objects
     item: FirebaseObjectObservable<User> = null; //   single object
     pendingList: FirebaseListObservable<User[]> = null;
+    friendList: FirebaseListObservable<User[]> = null;
     public user : User;
 
     constructor(private auth: AuthService,
@@ -42,10 +43,15 @@ export class UpdateUser{
     }
 
     getPendingList(){
-
         const pendingFullPath = `${this.pendingPath}/${this.auth.user.uid}`;
         this.pendingList = this.db.list(pendingFullPath);
         return this.pendingList;
+    }
+
+    getFriendList(){
+        const friendFullPath = `${this.friendPath}/${this.auth.user.uid}`;
+        this.friendList = this.db.list(friendFullPath);
+        return this.friendList;
     }
 
     sendRequest(to :User, tokey : string) : void{

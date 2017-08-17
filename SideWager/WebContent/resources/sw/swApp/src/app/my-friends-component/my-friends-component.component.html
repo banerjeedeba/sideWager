@@ -2,7 +2,6 @@
 <md-list dense>
   <h3 md-subheader>Friends Request</h3>
   <div *ngFor="let pending of pendingList">
-    
   <md-list-item>
         <img md-list-avatar src="{{pending.photoUrl}}" alt="...">
         <h3 md-line>{{pending.displayName}}</h3>
@@ -10,29 +9,24 @@
         <span class="pull-right"><button md-raised-button class="btn-add" (click)="acceptRequest(pending,pending.$key)">+ Accept</button></span>
         <span class="pull-right"><button md-raised-button class="btn-reject" (click)="rejectRequest(pending,pending.$key)">+ Reject</button></span>
   </md-list-item>
-    
+  </div>
+</md-list>
+<hr>
+</div>
+<div *ngIf="friendList?.length > 0">
+<md-list dense>
+  <h3 md-subheader>Friends List</h3>
+  <div *ngFor="let friend of friendList">
+  <md-list-item>
+    <img md-list-avatar src="{{friend.photoUrl}}" alt="...">
+    <h3 md-line>{{friend.displayName}}</h3>
+    <p md-line>{{friend.email}}</p>
+  </md-list-item>
   </div>
 </md-list>
 </div>
-<hr>
-<md-list dense>
-  <h3 md-subheader>Friends List</h3>
-  <md-list-item>
-    <img md-list-avatar src="../../assets/img/user.png" alt="...">
-    <h3 md-line>Justin Neil</h3>
-    <p md-line></p>
-    <span class="pull-right"><button md-raised-button class="btn-add">+ ADD</button></span>
-  </md-list-item>
-  <md-list-item>
-    <img md-list-avatar src="../../assets/img/user.png" alt="...">
-    <h3 md-line>Sean Schultz</h3>
-    <p md-line>Schultz34@gmail.com</p>
-    <span class="pull-right"><button md-raised-button class="btn-add">+ ADD</button></span>
-  </md-list-item>
-  <md-list-item>
-    <img md-list-avatar src="../../assets/img/user.png" alt="...">
-    <h3 md-line>Julia Parker</h3>
-    <p md-line></p>
-    <span class="pull-right"><button md-raised-button class="btn-add">+ ADD</button></span>
-  </md-list-item>
-</md-list>
+<div *ngIf="friendList?.length == 0">
+  <md-list>
+    <h3 md-subheader>Add some friends!!</h3>
+  </md-list>
+</div>

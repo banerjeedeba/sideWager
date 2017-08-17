@@ -10,13 +10,15 @@ import { User } from '../entities/User';
 export class MyFriendsComponentComponent implements OnInit, OnDestroy {
 
   public pendingList : User[] = [];
+  public friendList : User[] = [];
   public frndList: User[] = null;
   public pendingKeys : string[] =[];
 
   constructor(private user:UpdateUser) { }
 
   pendingListSubscribe;
-  
+  friendListSubscribe;
+
   ngOnInit() {
     this.pendingListSubscribe = this.user.getPendingList().subscribe(
       list => {
@@ -26,6 +28,12 @@ export class MyFriendsComponentComponent implements OnInit, OnDestroy {
             //this.pendingKeys.push(key);
           //}
         //}
+      }
+    );
+
+    this.friendListSubscribe = this.user.getFriendList().subscribe(
+      list =>{
+        this.friendList = list;
       }
     )
   }
@@ -40,6 +48,7 @@ export class MyFriendsComponentComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(){
     this.pendingListSubscribe.unsubscribe();
+    this.friendListSubscribe.unsubscribe();
   }
 
 }
