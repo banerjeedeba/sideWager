@@ -18,7 +18,7 @@ export class UpdateUser{
     friendList: FirebaseListObservable<User[]> = null;
     public user : User;
 
-    constructor(private auth: AuthService,
+    constructor(public auth: AuthService,
               private db: AngularFireDatabase) { }
 
     // Return a single observable item

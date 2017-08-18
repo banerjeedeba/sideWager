@@ -14,6 +14,7 @@ export class AddFriendsComponentComponent implements OnInit, OnDestroy {
 
   private searchTerms :string ;
   public results : User[] = null;
+  public currentUserEmail:string;
   constructor(private user : UpdateUser,
               private db: AngularFireDatabase) { }
 
@@ -23,6 +24,8 @@ export class AddFriendsComponentComponent implements OnInit, OnDestroy {
   }
 
   frndSearch(searchString : string){
+    this.currentUserEmail = this.user.auth.user.email;
+    searchString = searchString.toLowerCase();
     const query= {
         orderByChild: 'email',
         equalTo: searchString

@@ -22,8 +22,12 @@ export class GamesWagerComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     
-    this.gameListSubscribe = this.gls.getListData(this.user.user.ckey).subscribe(data => {
+    this.gameListSubscribe = this.gls.getListData(this.user.user.ckey)
+    .subscribe(data => {
       this.sportsList = data;
+    },
+    error => {
+      this.sportsList = this.sportsLists;
     })
     /*this.authService.af.authState.subscribe(
      (user)=>{
