@@ -1,7 +1,8 @@
 .make-wager-container{
     padding: 0.5em;
     overflow-y: auto;
-    height: 80vh;
+    height: 78vh;
+    margin-bottom:4em;
 }
 
 .make-wager-container h2{
@@ -97,6 +98,7 @@ min-height: inherit;
     left:0;
     bottom:0;
     height:4em;
+    background: white;
 }
 .footer-links{
     height:4em; 
@@ -111,10 +113,10 @@ min-height: inherit;
 }
 .footer-links .back-link{
     display: inline-block;
-    /*float: left;*/
+    float: left;
 }
 .footer-links .next-link{
-    /*float: right;*/
+    float: right;
     display: inline-block;
 }
 .footer-links a i{

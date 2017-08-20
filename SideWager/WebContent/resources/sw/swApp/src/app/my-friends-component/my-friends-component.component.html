@@ -6,8 +6,8 @@
         <img md-list-avatar src="{{pending.photoUrl}}" alt="...">
         <h3 md-line>{{pending.displayName}}</h3>
         <p md-line>{{pending.email}}</p>
-        <span class="pull-right"><button md-raised-button class="btn-add" (click)="acceptRequest(pending,pending.$key)">+ Accept</button></span>
-        <span class="pull-right"><button md-raised-button class="btn-reject" (click)="rejectRequest(pending,pending.$key)">+ Reject</button></span>
+        <span class="pull-right"><button md-raised-button class="btn-add" (click)="acceptRequest(pending,pending.$key)">+ Add</button></span>
+        <span class="pull-right"><button md-raised-button class="btn-ignore" (click)="rejectRequest(pending,pending.$key)"> Ignore</button></span>
   </md-list-item>
   </div>
 </md-list>
@@ -21,6 +21,7 @@
     <img md-list-avatar src="{{friend.photoUrl}}" alt="...">
     <h3 md-line>{{friend.displayName}}</h3>
     <p md-line>{{friend.email}}</p>
+     <span class="pull-right"><button md-raised-button class="btn-ignore" (click)="rejectRequest(pending,pending.$key)"> Edit</button></span>
   </md-list-item>
   </div>
 </md-list>

@@ -16,7 +16,7 @@
           <span class="pull-right"><button md-raised-button class="btn-add" (click)="sendRequest(user,user.$key)">+ Add</button></span>
         </div>
         <div *ngIf="resultStatus[user.$key]!==false">
-          <span class="pull-right">{{resultStatus[user.$key]}}</span>
+          <span class="pull-right frnd-message">{{resultStatus[user.$key]}}</span>
         </div>
       </md-list-item>
       </div>
