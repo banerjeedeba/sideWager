@@ -1,3 +1,4 @@
+<div class="make-wager-parent-container">
 <div class="make-wager-container">
 <h2><span> Who's it gona be?</span><span class="close" (click)="gotoTabs()"><i class="material-icons">clear</i></span></h2>
 <md-grid-list cols="13" rowHeight="12em">
@@ -55,18 +56,17 @@
         <li>
           <ul class="hline">
             <li>
-              <!--<md-divider md-inset></md-divider>-->
             </li>
             <li>
                 <span class="game-info"> OR</span>
             </li>
             <li>
-                <!--<md-divider md-inset></md-divider>-->
             </li>
           </ul>
         </li>
       </ul>
   </div>
+  <div>
   <md-grid-list cols="10" rowHeight="8em">
     <md-grid-tile [colspan]="1" [rowspan]="1">
     </md-grid-tile>
@@ -86,11 +86,15 @@
   <md-grid-tile [colspan]="1" [rowspan]="1">
   </md-grid-tile>
   </md-grid-list>
+  </div>
 </div>
 <div class="footer-parent">
-<div class="footer-links">
-      <a href="#" class="back-link"><i class="material-icons">keyboard_arrow_left</i><span>Back</span></a>
-      <a href="#" class="next-link"><span>Next</span><i class="material-icons">keyboard_arrow_right</i></a>
- </div>
+  <div class="footer-links">
+    <a href="#" class="back-link"><i class="material-icons">keyboard_arrow_left</i><span>Back</span></a>
+    <a href="#" class="next-link"><span>Next</span><i class="material-icons">keyboard_arrow_right</i></a>
+  </div>
 </div>
+</div>
+
  
+ <!--<app-back-next-component></app-back-next-component>-->
