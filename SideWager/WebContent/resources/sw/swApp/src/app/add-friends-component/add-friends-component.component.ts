@@ -15,10 +15,14 @@ export class AddFriendsComponentComponent implements OnInit, OnDestroy {
   private searchTerms :string ;
   public results : User[] = null;
   public currentUserEmail:string;
+  public resultStatus :any ={};
   constructor(private user : UpdateUser,
               private db: AngularFireDatabase) { }
 
   searchUserListSubscribe;
+  isFriendSubscribe;
+  isPendingSubscribe;
+  isRequestedSubscribe;
 
   ngOnInit() {
   }
@@ -32,6 +36,37 @@ export class AddFriendsComponentComponent implements OnInit, OnDestroy {
     };
     this.searchUserListSubscribe = this.user.getSearchUserList(query).subscribe(data => {
       this.results = data;
+      this.resultStatus = {};
+      for( let result of this.results){
+        let originalKey = result['$key'];
+        this.isFriendSubscribe = this.user.isFriend(result['$key']).subscribe(friends =>{
+          let key = friends['$key'];
+          if(friends.ckey==undefined){
+
+            //Not a frnd check if pending
+              this.isPendingSubscribe = this.user.isPending(result['$key']).subscribe(pendingfriends =>{
+                let key = pendingfriends['$key'];
+                if(pendingfriends.ckey==undefined){
+
+                  //not pending check if requested
+                    this.isRequestedSubscribe = this.user.isRequested(result['$key']).subscribe(requestedfriends =>{
+                      let key = requestedfriends['$key'];
+                      if(requestedfriends.ckey==undefined){
+                        this.resultStatus[key] = false;
+                      }else{
+                        this.resultStatus[key] = "Requested!!";
+                      }
+                    });
+                }else{
+                  this.resultStatus[key] = "Pending Request!!";
+                }
+              });
+          }else{
+            this.resultStatus[key] = "Friends!!";
+          }
+        });
+        
+      }
     })
   }
 
@@ -43,6 +78,14 @@ export class AddFriendsComponentComponent implements OnInit, OnDestroy {
     if(this.searchUserListSubscribe!=undefined){
       this.searchUserListSubscribe.unsubscribe();
     }
-    
+    if(this.isFriendSubscribe!=undefined){
+      this.isFriendSubscribe.unsubscribe();
+    }
+    if(this.isPendingSubscribe!=undefined){
+      this.isPendingSubscribe.unsubscribe();
+    }
+    if(this.isRequestedSubscribe!=undefined){
+      this.isRequestedSubscribe.unsubscribe();
+    }
   }
 }

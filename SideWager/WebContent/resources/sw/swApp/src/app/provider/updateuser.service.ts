@@ -55,7 +55,6 @@ export class UpdateUser{
     }
 
     sendRequest(to :User, tokey : string) : void{
-        console.log(this.auth.user);
         let fromkey =  this.auth.user.uid;
         const requestedFullPath =  `${this.requestedPath}/${fromkey}/${tokey}`;
         this.db.object(requestedFullPath).set(to).catch(error => this.handleError(error));
@@ -83,10 +82,28 @@ export class UpdateUser{
     rejectRequest(to :User, tokey : string) : void{
         let fromkey =  this.auth.user.uid;
         const requestedFullPath =  `${this.requestedPath}/${tokey}/${fromkey}`;
-        this.db.object(requestedFullPath).remove().then(_=> console.log("removed 1")).catch(error => this.handleError(error));
+        this.db.object(requestedFullPath).remove().catch(error => this.handleError(error));
 
         const pendingFullPath =  `${this.pendingPath}/${fromkey}/${tokey}`;
-        this.db.object(pendingFullPath).remove().then(_=> console.log("removed 2")).catch(error => this.handleError(error));
+        this.db.object(pendingFullPath).remove().catch(error => this.handleError(error));
+    }
+
+    isFriend(tokey : string) : FirebaseObjectObservable<User>{
+        let fromkey =  this.auth.user.uid;
+        const itemPath =  `${this.friendPath}/${fromkey}/${tokey}`;
+        return this.db.object(itemPath);
+    }
+
+    isPending(tokey : string) : FirebaseObjectObservable<User>{
+        let fromkey =  this.auth.user.uid;
+        const itemPath =  `${this.pendingPath}/${fromkey}/${tokey}`;
+        return this.db.object(itemPath);
+    }
+
+    isRequested(tokey : string) : FirebaseObjectObservable<User>{
+        let fromkey =  this.auth.user.uid;
+        const itemPath =  `${this.requestedPath}/${fromkey}/${tokey}`;
+        return this.db.object(itemPath);
     }
 
     createItem(item: User): void  {
