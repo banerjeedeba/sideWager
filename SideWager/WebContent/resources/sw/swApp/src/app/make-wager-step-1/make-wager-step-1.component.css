@@ -1,8 +1,7 @@
 .make-wager-container{
     padding: 0.5em;
     overflow-y: auto;
-    height: 78vh;
-    margin-bottom:4em;
+    height: calc(90vh - 4em);
 }
 
 .make-wager-container h2{
