@@ -1,22 +1,23 @@
 package com.sw.entities;
 
-import java.util.ArrayList;
+import com.google.gson.annotations.SerializedName;
 
 public class Leagues {
 
-	private ArrayList<String> leagues;
+	@SerializedName("Name")
+	private String name;
 
-	public ArrayList<String> getLeagues() {
-		return leagues;
+	public String getName() {
+		return name;
 	}
 
-	public void setLeagues(ArrayList<String> leagues) {
-		this.leagues = leagues;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public Leagues(ArrayList<String> leagues) {
+	public Leagues(String name) {
 		super();
-		this.leagues = leagues;
+		this.name = name;
 	}
 
 	public Leagues() {

@@ -18,7 +18,7 @@ public class Match {
 	@SerializedName("Odds")
 	private ArrayList<Odds> odds;
 	@SerializedName("League")
-	private String league;
+	private Leagues league;
 	@SerializedName("DisplayRegion")
 	private String displayRegion;
 	@SerializedName("HomeROT")
@@ -78,11 +78,11 @@ public class Match {
 		this.odds = odds;
 	}
 
-	public String getLeague() {
+	public Leagues getLeague() {
 		return league;
 	}
 
-	public void setLeague(String league) {
+	public void setLeague(Leagues league) {
 		this.league = league;
 	}
 
@@ -127,7 +127,7 @@ public class Match {
 	}
 
 	public Match(String id, String homeTeam, String awayTeam, int sport, String matchTime, ArrayList<Odds> oddslist,
-			String league, String displayRegion, String homeRot, String awayRot, String homePitcher,
+			Leagues league, String displayRegion, String homeRot, String awayRot, String homePitcher,
 			String awayPitcher) {
 		super();
 		this.id = id;

@@ -215,7 +215,7 @@ public class NotificationService {
 			matchRef.setAwayTeam("awayTeam");
 			matchRef.setSport(1);
 			matchRef.setMatchTime("10:50");
-			matchRef.setLeague("league");
+			//matchRef.setLeague("league");
 			matchRef.setDisplayRegion("displayRegion");
 			matchRef.setHomeRot("homerot");
 			matchRef.setAwayRot("awayrot");
