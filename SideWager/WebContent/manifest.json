@@ -1,16 +1,21 @@
 {
   "short_name": "Side Wager",
-  "name": "Side Wager App",
+  "name": "Side WAGER",
   "icons": [
-    {
-      "src": "resources/sw/images/ic_launcher_42.png",
+  	{
+      "src": "resources/sw/images/ic_launcher_512.png",
       "type": "image/png",
-      "sizes": "42x42"
+      "sizes": "512x512"
     },
     {
-      "src": "resources/sw/images/ic_launcher_96.png",
+      "src": "resources/sw/images/ic_launcher_384.png",
       "type": "image/png",
-      "sizes": "96x96"
+      "sizes": "384x384"
+    },
+    {
+      "src": "resources/sw/images/ic_launcher_256.png",
+      "type": "image/png",
+      "sizes": "256x256"
     },
     {
       "src": "resources/sw/images/ic_launcher_192.png",
@@ -18,9 +23,9 @@
       "sizes": "192x192"
     }
   ],
-  "start_url": "resources/sw/html/welcomefcm.html",
-  "background_color": "#EEEEEE",
-  "theme_color": "#262626",
+  "start_url": "https://www.sidewagerapp.com/",
+  "background_color": "#F44336",
+  "theme_color": "#F44336",
   "orientation": "portrait",
   "display": "standalone",
   
