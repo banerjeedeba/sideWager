@@ -2,14 +2,15 @@
    <span class="friends-head">Friend Search</span> 
     <md-input-container class="full-width" color="warn">
       <span mdPrefix>To &nbsp;</span>
-     <input #frndsearchBox mdInput placeholder="Search Friends Email" (blur)="frndSearch(frndsearchBox.value)">
+     <input #frndsearchBox mdInput type="text" placeholder="Search Friends Email" (keyup)="frndSearch($event)">
     </md-input-container>
     <div *ngIf="results?.length > 0">
     <md-list>
       <h3 md-subheader>Search Result</h3>
       <div *ngFor="let user of results">
       <md-list-item >
-        <img md-list-avatar src="{{user.photoUrl}}" alt="...">
+        <img *ngIf="user.photoUrl == null" md-list-avatar src="/resources/sw/swApp/distt/assets/img/user.png" alt="...">
+        <img *ngIf="user.photoUrl != null" md-list-avatar src="{{user.photoUrl}}" alt="...">
         <h3 md-line>{{user.displayName}}</h3>
         <p md-line >{{user.email}}<p>
         <div *ngIf="user.email != currentUserEmail && !resultStatus[user.$key]">

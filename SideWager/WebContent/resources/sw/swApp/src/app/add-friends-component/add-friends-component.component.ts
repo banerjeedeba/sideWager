@@ -13,6 +13,10 @@ import {User} from '../entities/user';
 export class AddFriendsComponentComponent implements OnInit, OnDestroy {
 
   private searchTerms :string ;
+  startAt = new Subject();
+  endAt = new Subject();
+  lastKeyPress: number = 0;
+
   public results : User[] = null;
   public currentUserEmail:string;
   public resultStatus :any ={};
@@ -25,16 +29,7 @@ export class AddFriendsComponentComponent implements OnInit, OnDestroy {
   isRequestedSubscribe;
 
   ngOnInit() {
-  }
-
-  frndSearch(searchString : string){
-    this.currentUserEmail = this.user.auth.user.email;
-    searchString = searchString.toLowerCase();
-    const query= {
-        orderByChild: 'email',
-        equalTo: searchString
-    };
-    this.searchUserListSubscribe = this.user.getSearchUserList(query).subscribe(data => {
+    this.searchUserListSubscribe = this.user.getSearchUserList(this.startAt,this.endAt).subscribe(data => {
       this.results = data;
       this.resultStatus = {};
       for( let result of this.results){
@@ -68,6 +63,16 @@ export class AddFriendsComponentComponent implements OnInit, OnDestroy {
         
       }
     })
+  }
+
+  frndSearch($event){
+    let searchString = $event.target.value.toLowerCase();
+    if($event.timeStamp - this.lastKeyPress > 200 && searchString!=""){
+        this.currentUserEmail = this.user.auth.user.email;
+        this.startAt.next(searchString);
+        this.endAt.next(searchString+"\uf8ff");
+    }
+    this.lastKeyPress = $event.timeStamp;
   }
 
   sendRequest(to : User, toKey : string){

@@ -35,9 +35,13 @@ export class UpdateUser{
     return this.items
     }
 
-    getSearchUserList(query): FirebaseListObservable<User[]> {
+    getSearchUserList(start,end): FirebaseListObservable<User[]> {
     this.items = this.db.list(this.basePath, {
-        query: query
+        query: {
+            orderByChild: 'email',
+            startAt: start,
+            endAt: end
+        }
     });
     return this.items
     }
