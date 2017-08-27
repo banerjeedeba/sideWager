@@ -31,6 +31,7 @@ import { MakeWagerStep1Component } from './make-wager-step-1/make-wager-step-1.c
 import { SwFriendsTabComponent } from './sw-friends-tab/sw-friends-tab.component';
 import { MyFriendsComponentComponent } from './my-friends-component/my-friends-component.component';
 import { AddFriendsComponentComponent } from './add-friends-component/add-friends-component.component';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 
 export const routes:Routes=[
   {path:'home',component:SwSideNavComponent,
@@ -62,7 +63,8 @@ export const routes:Routes=[
     MakeWagerStep1Component,
     SwFriendsTabComponent,
     MyFriendsComponentComponent,
-    AddFriendsComponentComponent
+    AddFriendsComponentComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,

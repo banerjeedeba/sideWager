@@ -1,8 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { MdDialog } from '@angular/Material';
 import {GamelistService} from '../provider/gamelist.service';
 import {AuthService} from '../provider/auth.service';
 import {Router} from '@angular/router';
 import {UpdateUser} from '../provider/updateuser.service';
+import {LoadingSpinnerComponent} from '../loading-spinner/loading-spinner.component';
 @Component({
   selector: 'app-games-wager',
   templateUrl: './games-wager.component.html',
@@ -12,10 +14,10 @@ import {UpdateUser} from '../provider/updateuser.service';
 export class GamesWagerComponent implements OnInit, OnDestroy {
 
   public sportsList = [];
- 
+ public isLoading=true;
   constructor(public gls:GamelistService,public authService: AuthService,private router:Router
-    , private user : UpdateUser) {
-    
+    , private user : UpdateUser, public dialog: MdDialog) {
+    //this.dialog.open(LoadingSpinnerComponent);
   }
 
   gameListSubscribe;
@@ -25,10 +27,14 @@ export class GamesWagerComponent implements OnInit, OnDestroy {
     this.gameListSubscribe = this.gls.getListData(this.user.user.ckey)
     .subscribe(data => {
       this.sportsList = data;
+      this.isLoading=false;
+      
     },
     error => {
       this.sportsList = this.sportsLists;
+      this.isLoading=false;
     })
+    //this.dialog.closeAll();
     /*this.authService.af.authState.subscribe(
      (user)=>{
        if(user==null){

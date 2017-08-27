@@ -7,9 +7,12 @@ import {Router} from '@angular/router';
 })
 export class MakeWagerStep1Component implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router:Router) { 
+    window.scrollTo(1058, 1707);
+  }
 
   ngOnInit() {
+    
   }
 gotoTabs()
 {

@@ -3,6 +3,9 @@
 <button md-button><i class="material-icons">today</i>{{currentDate| date: 'yMMMMEEEEd'}}</button>
 <button md-button (click)="nextDate()"><i class="material-icons">keyboard_arrow_right</i></button>
 </div>
+<div *ngIf="isLoading">
+<app-loading-spinner ></app-loading-spinner>
+</div>
 <div *ngFor="let sports of sportsList">
 <header>
   <h1 class="wager-header">{{sports.shortName | uppercase}}</h1>

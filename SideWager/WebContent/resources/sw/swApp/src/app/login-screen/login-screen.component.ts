@@ -10,7 +10,9 @@ export class LoginScreenComponent implements OnInit {
 
   public email: string;
   public password: string;
-  constructor(public authService: AuthService,private router:Router) { }
+  constructor(public authService: AuthService,private router:Router) { 
+    window.scrollTo(0,1);
+  }
 
   ngOnInit() {
   }

@@ -1,9 +1,8 @@
 .make-wager-container{
     padding: 0.5em;
     overflow-y: auto;
-    height: calc(90vh - 4em);
+    height: calc(97vh - 4em);
 }
-
 .make-wager-container h2{
     color: #969696;
     font-weight: 200;
@@ -83,26 +82,27 @@
     width:10%;
 }
 .make-wager-parent-container{
-min-height: inherit;
-}
-.fixed-footer{
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 9999;
+max-height: 100vh;
+height: 100%;
 }
 .footer-parent{
-    position:fixed;
-    right:0;
-    left:0;
-    bottom:0;
+     width: 100%;
+    /*position: fixed;*/
+    top: inherit; 
     height:4em;
-    background: white;
+    /*bottom: 0; */
 }
+  /*@media (min-width: 400px) {
+      .footer-parent{
+        width: 100%;
+    position: fixed;
+    top: inherit;
+    bottom: 0; 
+      }
+     }*/
 .footer-links{
     height:4em; 
     border-top: 1px solid #ccc; 
-    border-bottom: 1px solid #ccc; 
 }
 .footer-links a{
     text-decoration:none;
@@ -120,6 +120,9 @@ min-height: inherit;
 }
 .footer-links a i{
     font-size: 1.5em;
-    color: #D02c27;
     vertical-align: top;
+    color: #D02c27;
+}
+.footer-links a span{
+    vertical-align: middle;
 }
