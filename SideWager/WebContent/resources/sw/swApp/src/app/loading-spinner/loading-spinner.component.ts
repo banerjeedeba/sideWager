@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MaterialModule } from '@angular/Material';
 
 @Component({
   selector: 'app-loading-spinner',

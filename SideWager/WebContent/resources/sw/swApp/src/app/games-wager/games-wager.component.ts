@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { MdDialog } from '@angular/Material';
 import {GamelistService} from '../provider/gamelist.service';
 import {AuthService} from '../provider/auth.service';
 import {Router} from '@angular/router';
@@ -16,7 +15,7 @@ export class GamesWagerComponent implements OnInit, OnDestroy {
   public sportsList = [];
  public isLoading=true;
   constructor(public gls:GamelistService,public authService: AuthService,private router:Router
-    , private user : UpdateUser, public dialog: MdDialog) {
+    , private user : UpdateUser) {
     //this.dialog.open(LoadingSpinnerComponent);
   }
 
