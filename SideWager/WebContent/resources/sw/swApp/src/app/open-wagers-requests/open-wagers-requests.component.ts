@@ -11,7 +11,9 @@ export class OpenWagersRequestsComponent implements OnInit {
 
   ngOnInit() {
   }
+accept(){
 
+}
 
   
 public listFrinds=[

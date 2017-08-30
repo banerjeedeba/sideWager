@@ -9,7 +9,7 @@ background-color:white;
  font-size:2.5em;
  font-weight: 300;
 }
-.frindes-tab{
+.friends-tab{
   width: 100%;
 }
 .no-padding div{
@@ -25,4 +25,8 @@ background-color:white;
 .mat-primary{
   background-color:#d00;
   color: #fff;
+}
+.friends-container{
+  min-height: 100vh;
+  height: 100%;
 }
