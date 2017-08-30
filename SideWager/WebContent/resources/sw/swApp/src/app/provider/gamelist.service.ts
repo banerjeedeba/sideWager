@@ -14,17 +14,16 @@ export class GamelistService {
 
   getListData(token){
     //console.log("getdata");
-    //http://localhost:8080/SideWager/rest/data/gamelist
-    //https://www.sidewagerapp.com/rest/data/gamelist
+    //'/SideWager/rest/data/gamelist?ckey='+token
+    //'https://www.sidewagerapp.com/rest/data/gamelist?ckey='+token
     
     return this.http.get('https://www.sidewagerapp.com/rest/data/gamelist?ckey='+token)
     .map((res : Response) => res.json())
     .catch(this.handleError);
   }
 
-  // Default error handling for all actions
     handleError(error: Response) {
-    console.log(" GameList service error");    
+    console.log(" GameList service error"+error);    
     return Observable.throw(error || "GameList service error");
     }
 }
