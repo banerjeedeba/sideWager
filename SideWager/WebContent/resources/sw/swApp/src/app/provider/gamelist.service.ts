@@ -17,7 +17,7 @@ export class GamelistService {
     //'/SideWager/rest/data/gamelist?ckey='+token
     //'https://www.sidewagerapp.com/rest/data/gamelist?ckey='+token
     
-    return this.http.get('https://www.sidewagerapp.com/rest/data/gamelist?ckey='+token)
+    return this.http.get('/rest/data/gamelist?ckey='+token)
     .map((res : Response) => res.json())
     .catch(this.handleError);
   }

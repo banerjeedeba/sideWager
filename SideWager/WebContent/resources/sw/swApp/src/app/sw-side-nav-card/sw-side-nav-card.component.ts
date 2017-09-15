@@ -11,11 +11,12 @@ export class SwSideNavCardComponent implements OnInit {
   public displayName : string;
   public photoUrl: string;
   constructor(private user : UpdateUser) {
-    this.displayName = this.user.user.displayName;
-    this.photoUrl = this.user.user.photoUrl;
+    if(this.user!=undefined && this.user.user!=undefined){
+      this.displayName = this.user.user.displayName;
+      this.photoUrl = this.user.user.photoUrl;
+    }
    }
-
-
+   
   ngOnInit() {
   }
 

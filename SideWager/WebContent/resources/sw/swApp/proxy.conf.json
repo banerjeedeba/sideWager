@@ -1,6 +1,6 @@
 {
-    "/SideWager" :{
-    "target" : "http://localhost:8080",
+    "/rest" :{
+    "target" : "http://localhost:8080/SideWager",
     "secure" : false
     }
-    }
+}
