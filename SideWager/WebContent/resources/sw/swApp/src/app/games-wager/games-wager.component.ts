@@ -4,22 +4,26 @@ import {AuthService} from '../provider/auth.service';
 import {Router} from '@angular/router';
 import {UpdateUser} from '../provider/updateuser.service';
 import {LoadingSpinnerComponent} from '../loading-spinner/loading-spinner.component';
+import {WagerService} from '../provider/wager.service';
+import {Sports} from '../entities/Sports'
+import { Game } from "../entities/Game";
 @Component({
   selector: 'app-games-wager',
   templateUrl: './games-wager.component.html',
   styleUrls: ['./games-wager.component.css'],
-  providers: [GamelistService]
+  providers: [GamelistService, WagerService]
 })
 export class GamesWagerComponent implements OnInit, OnDestroy {
 
-  public sportsList = [];
- public isLoading=true;
+  public sportsList:Array<Sports> = new Array();
+  public isLoading=true;
   constructor(public gls:GamelistService,public authService: AuthService,private router:Router
-    , private user : UpdateUser) {
+    , private user : UpdateUser, private wagerService:WagerService) {
     //this.dialog.open(LoadingSpinnerComponent);
   }
 
   gameListSubscribe;
+  wagerSservieSubscribe;
 
   ngOnInit() {
     
@@ -30,9 +34,10 @@ export class GamesWagerComponent implements OnInit, OnDestroy {
       
     },
     error => {
-      this.sportsList = this.sportsLists;
+      //this.sportsList = this.sportsLists;
       this.isLoading=false;
     })
+
     //this.dialog.closeAll();
     /*this.authService.af.authState.subscribe(
      (user)=>{
@@ -50,9 +55,11 @@ export class GamesWagerComponent implements OnInit, OnDestroy {
      }
    )*/
   }
-  makeWager(){
- this.router.navigate(['home','mkwagerstep1']);
-}
+  makeWager(game: Game){
+    this.router.navigate(['home','mkwagerstep1']);
+    this.wagerService.createLiveWager(game, game.homeTeamShortName, 500);
+  }
+
 private todaysDate=new Date(Date.now());
 currentDate = new Date( this.todaysDate.getFullYear(),
                  this.todaysDate.getMonth(),

@@ -1,19 +1,48 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {Router} from '@angular/router';
+import {WagerService} from '../provider/wager.service';
+import {UpdateUser} from '../provider/updateuser.service';
+import { LiveWager } from "../entities/LiveWager";
 @Component({
   selector: 'app-live-wagers',
   templateUrl: './live-wagers.component.html',
-  styleUrls: ['./live-wagers.component.css']
+  styleUrls: ['./live-wagers.component.css'],
+  providers: [WagerService]
 })
-export class LiveWagersComponent implements OnInit {
+export class LiveWagersComponent implements OnInit, OnDestroy {
 
-  constructor(private router:Router) { }
-accept(){
-  this.router.navigate(['home']);
-}
+  public liveWagers :Array<LiveWager> = new Array();
+
+  friendListSubscribe;
+  liveWagersSubscribe;
+  constructor(private router:Router, private wagerService:WagerService,private user : UpdateUser) { }
+  accept(){
+    this.router.navigate(['home']);
+  }
   ngOnInit() {
+    this.friendListSubscribe = this.user.getFriendList().subscribe(friends => {
+      for(let friend of friends){
+        let friendKey = friend['$key'];
+        this.liveWagersSubscribe = this.wagerService.getLiveWagers(friendKey).subscribe(friendsLiveWagers=>{
+          for(let friendsLiveWager of friendsLiveWagers){
+            this.liveWagers.push(friendsLiveWager); 
+          }
+          this.liveWagersSubscribe.unsubscribe();
+        })
+      }
+      this.friendListSubscribe.unsubscribe();
+    })
+
   }
 
+  ngOnDestroy(){
+    if(this.friendListSubscribe!=undefined){
+      this.friendListSubscribe.unsubscribe();
+    }
+    if(this.liveWagersSubscribe!=undefined){
+      this.liveWagersSubscribe.unsubscribe();
+    }
+  }
 public gamesList=[{
   "Team1FullName":"Toranto",
   "Team2FullName":"Chicago",

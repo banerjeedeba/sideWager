@@ -1,12 +1,13 @@
 
-<div class="card-container" *ngFor="let game of gamesList">
+<div *ngIf="liveWagers?.length > 0">
+<div class="card-container" *ngFor="let liveWager of liveWagers">
 <md-card class="md-card-padd">
   <div class="bordered-bottom">
     <md-card-subtitle>
-      <span class="selection">Matt Frisch Selected:TOR</span>
+      <span class="selection">{{liveWager.userName}} Selected: {{liveWager.selectedTeam}} </span>
       <div class="pull-right">
         <span class="upto-text">up to</span> 
-        <span class="amount">sc550</span>
+        <span class="amount">sc{{liveWager.amount}}</span>
       </div>
     </md-card-subtitle>
   </div>
@@ -14,35 +15,35 @@
   <md-grid-tile [colspan]="4" [rowspan]="1">
     <ul class="md-list-item-inner">
       <li>
-        <span class="game-team-fullname">{{game.Team1FullName}}</span>
+        <span class="game-team-fullname">{{liveWager.game.homeTeam}}</span>
       </li>
       <li>
-        <span class="game-team-fullname">{{game.Team2FullName}}</span>
+        <span class="game-team-fullname">{{liveWager.game.awayTeam}}</span>
       </li>
     </ul>
   </md-grid-tile>
   <md-grid-tile [colspan]="2" [rowspan]="1">
     <ul class="md-list-item-inner">
       <li>
-        <span class="game-team-name">{{game.Team1Name}}</span>
+        <span class="game-team-name">{{liveWager.game.homeTeamShortName}}</span>
       </li>
       <li>
-        <span class="game-team-name">{{game.Team2Name}}</span>
+        <span class="game-team-name">{{liveWager.game.awayTeamShortName}}</span>
       </li>
     </ul>
   </md-grid-tile>
   <md-grid-tile [colspan]="3" [rowspan]="1">
     <ul class="md-list-item-inner md-list-item-inner-child">
       <li>
-        <span class="game-team-name">{{game.Team1Ind}}</span>
+        <span class="game-team-name">{{liveWager.game.pointSpread}}</span>
       </li>
       <li>
-        <span class="game-team-name">{{game.Team2Ind}}</span>
+        <span class="game-team-name">{{liveWager.game.underLine}}</span>
       </li>
     </ul>
   </md-grid-tile>
   <md-grid-tile [colspan]="3" [rowspan]="1">
-    <span class="game-time">{{game.Time}}</span>
+    <span class="game-time">{{liveWager.game.matchTime}}</span>
    </md-grid-tile>
    <md-grid-tile [colspan]="1" [rowspan]="1">
     <md-divider class="vertical-divider"></md-divider>
@@ -52,4 +53,10 @@
   </md-grid-tile>
 </md-grid-list>
 </md-card>
+</div>
+</div>
+<div *ngIf="liveWagers?.length == 0">
+    <md-list>
+        <h3 md-subheader>No Live Wager!!</h3>
+    </md-list>
 </div>
