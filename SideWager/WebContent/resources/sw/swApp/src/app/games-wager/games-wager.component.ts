@@ -57,7 +57,8 @@ export class GamesWagerComponent implements OnInit, OnDestroy {
   }
   makeWager(game: Game){
     this.router.navigate(['home','mkwagerstep1']);
-    this.wagerService.createLiveWager(game, game.homeTeamShortName, 500);
+    //this.wagerService.createLiveWager(game, game.homeTeamShortName, 500);
+    this.wagerService.createOpenWager(game, game.homeTeamShortName, 500, 'Debanjan Banerjee', '3yCzgU8VjFVX87s0EchIGZhFNpi1')
   }
 
 private todaysDate=new Date(Date.now());

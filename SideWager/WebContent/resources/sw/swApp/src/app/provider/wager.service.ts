@@ -6,10 +6,12 @@ import {User} from '../entities/user';
 import {AuthService} from '../provider/auth.service';
 import { Game } from "../entities/Game";
 import { LiveWager } from "../entities/LiveWager";
+import { OpenWager } from "../entities/OpenWager";
 @Injectable()
 export class WagerService{
 
     private liveWagerPath : string = '/livewager';
+    private openWagerPath : string = '/openwager';
 
     constructor(public auth: AuthService,
         private db: AngularFireDatabase) { }
@@ -28,10 +30,52 @@ export class WagerService{
         return;
     }
 
+    createOpenWager(game: Game, selectedTeam: string, amount: number, opUserName: string, opUserKey: string ): void{
+        let userKey =  this.auth.user.uid;
+        let challengerOpenWager:OpenWager = new OpenWager();
+        challengerOpenWager.userKey = userKey;
+        challengerOpenWager.userName = this.auth.user.displayName;
+        challengerOpenWager.selectedTeam = selectedTeam;
+        challengerOpenWager.game = game;
+        challengerOpenWager.amount = amount;
+        challengerOpenWager.status = "Challenged "+opUserName;
+        challengerOpenWager.opUserKey = opUserKey;
+
+        let opponentOpenWager:OpenWager = new OpenWager();
+        opponentOpenWager.userKey = userKey;
+        opponentOpenWager.userName = this.auth.user.displayName;
+        opponentOpenWager.selectedTeam = selectedTeam;
+        opponentOpenWager.game = game;
+        opponentOpenWager.amount = amount;
+        opponentOpenWager.status = "Pending";
+        opponentOpenWager.opUserKey = opUserKey;
+
+        const challengerOpenWagerPath = `${this.openWagerPath}/${userKey}`;
+        const challengerOpenWagerList = this.db.list(challengerOpenWagerPath);
+        challengerOpenWagerList.push(challengerOpenWager);
+
+        const opponentOpenWagerPath = `${this.openWagerPath}/${opUserKey}`;
+        const opponentOpenWagerList = this.db.list(opponentOpenWagerPath);
+        opponentOpenWagerList.push(opponentOpenWager);
+        return;
+    }
+
     getLiveWagers(friendKey) : FirebaseListObservable<LiveWager[]>{
         const liveWagerUserPath =  `${this.liveWagerPath}/${friendKey}`;
         let liveWagerUserList = this.db.list(liveWagerUserPath);
         return liveWagerUserList;
+    }
+
+    getPendingOpenWagers() : FirebaseListObservable<OpenWager[]>{
+        let userKey =  this.auth.user.uid;
+        const openWagerUserPath =  `${this.openWagerPath}/${userKey}`;
+        let openWagerUserList = this.db.list(openWagerUserPath, {
+            query: {
+                orderByChild: 'status',
+                equalTo: 'Pending'
+            }
+        });
+        return openWagerUserList;
     }
 
     // Default error handling for all actions

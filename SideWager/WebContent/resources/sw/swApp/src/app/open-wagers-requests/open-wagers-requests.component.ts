@@ -1,15 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-
+import { OpenWager } from "../entities/OpenWager";
+import {WagerService} from '../provider/wager.service';
 @Component({
   selector: 'app-open-wagers-requests',
   templateUrl: './open-wagers-requests.component.html',
-  styleUrls: ['./open-wagers-requests.component.css']
+  styleUrls: ['./open-wagers-requests.component.css'],
+  providers: [WagerService]
 })
 export class OpenWagersRequestsComponent implements OnInit {
 
-  constructor() { }
+  public openWagers :Array<OpenWager> = new Array();
+  openWagerSubscribe;
+  public openWagerCount: number = 0;
+
+  constructor(private wagerService:WagerService) { }
 
   ngOnInit() {
+    this.openWagerSubscribe = this.wagerService.getPendingOpenWagers().subscribe(openWagersList=>{
+      for(let openWager of openWagersList){
+        this.openWagers.push(openWager);
+        this.openWagerCount++;
+      }
+      
+    })
   }
 accept(){
 
