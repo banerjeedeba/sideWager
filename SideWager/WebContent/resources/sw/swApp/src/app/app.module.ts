@@ -32,12 +32,14 @@ import { SwFriendsTabComponent } from './sw-friends-tab/sw-friends-tab.component
 import { MyFriendsComponentComponent } from './my-friends-component/my-friends-component.component';
 import { AddFriendsComponentComponent } from './add-friends-component/add-friends-component.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { MakeWagerStep2Component } from './make-wager-step-2/make-wager-step-2.component';
 
 export const routes:Routes=[
   {path:'home',component:SwSideNavComponent,
   children:[
     { path: '', redirectTo: 'swtab', pathMatch: 'full' },
     {path:'mkwagerstep1',component:MakeWagerStep1Component},
+    {path:'mkwagerstep2',component:MakeWagerStep2Component},
     {path:'swtab',component:SwTabListComponent},
     {path:'friends',component:SwFriendsTabComponent}
   ]
@@ -64,7 +66,8 @@ export const routes:Routes=[
     SwFriendsTabComponent,
     MyFriendsComponentComponent,
     AddFriendsComponentComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    MakeWagerStep2Component
   ],
   imports: [
     BrowserModule,

@@ -83,3 +83,8 @@ padding: 0.5em;
     width:10%;
     min-width: 2%;
 }
+.scrolable-list{
+    max-height: 78vh;
+    min-height: 78vh;
+    overflow: scroll;
+}

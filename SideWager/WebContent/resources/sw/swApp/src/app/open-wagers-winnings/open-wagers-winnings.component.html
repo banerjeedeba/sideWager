@@ -4,21 +4,22 @@
   </div>
 <div class="header-section">
  <md-grid-list cols="13" rowHeight="3em">
-  <md-grid-tile [colspan]="4" [rowspan]="1" class="text-content">Friend</md-grid-tile>
-  <md-grid-tile [colspan]="2" [rowspan]="1" class="text-content"></md-grid-tile>
+  <md-grid-tile [colspan]="2" [rowspan]="1" class="text-content">Friend</md-grid-tile>
+  <md-grid-tile [colspan]="4" [rowspan]="1" class="text-content"></md-grid-tile>
   <md-grid-tile [colspan]="3" [rowspan]="1" class="text-content">Side Credits</md-grid-tile>
   <md-grid-tile [colspan]="3" [rowspan]="1" class="text-content">Games</md-grid-tile>
 </md-grid-list>
 <div class="card-container" *ngFor="let win of listWinnings">
 <md-card class="no-padding">
 <md-grid-list cols="13" rowHeight="4em">
-  <md-grid-tile [colspan]="6" [rowspan]="1">
+  <md-grid-tile [colspan]="2" [rowspan]="1">
     <div class="friends">
       <img class="img-circle" src="{{win.imgSource}}" alt="..."/>
       </div>
-      <span class="text-content">{{win.Name}}</span>
       <!--<div md-card-avatar><i class="material-icons">account_circle</i></div>-->
-    
+  </md-grid-tile>
+  <md-grid-tile [colspan]="4" [rowspan]="1">
+    <span class="text-content">{{win.Name}}</span>
   </md-grid-tile>
   <!--<md-grid-tile [colspan]="5" [rowspan]="1">
     

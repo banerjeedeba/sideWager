@@ -6,6 +6,7 @@
 <div *ngIf="isLoading">
 <app-loading-spinner ></app-loading-spinner>
 </div>
+<div class="scrolable-list">
 <div *ngFor="let sports of sportsList">
 <header>
   <h1 class="wager-header">{{sports.shortName | uppercase}}</h1>
@@ -54,5 +55,6 @@
   </md-grid-tile>
 </md-grid-list>
 </md-card>
+</div>
 </div>
 </div>

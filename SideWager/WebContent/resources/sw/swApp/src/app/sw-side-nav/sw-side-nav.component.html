@@ -1,7 +1,7 @@
 <md-sidenav-container class="side-nav-height">
   <md-sidenav #sidenav class="sw-sidenav">
    <app-sw-side-nav-card></app-sw-side-nav-card>
-  <md-nav-list>
+  <md-nav-list class="scroll-sidenav">
   <a md-list-item (click)="sidenav.close();getFriends();"><span>Friends &nbsp;</span>
    <md-chip-list> <md-chip color="primary" class="chip-custom"> 3</md-chip></md-chip-list>
   </a>

@@ -11,6 +11,9 @@ background-color:#F44336;
 }
 .request-container{
     padding: 0.7em;
+    min-height:80vh; 
+    max-height: 80vh;
+    overflow-y: scroll;
 }
 .color-green{
 color: #06C957;
@@ -50,6 +53,9 @@ font-size: 1em;
     font-size: 0.8em;
     font-weight: 600;
     color: black;
+}
+.align-left{
+    text-align: left !important;
 }
 .card-container{
 /*margin: 0.5em;   */

@@ -11,6 +11,9 @@ background-color:#4CAF50;
 }
 .request-container{
     padding: 0.7em;
+    min-height:80vh; 
+    max-height: 80vh;
+    overflow-y: scroll;
 }
 .color-green{
 color: #06C957;

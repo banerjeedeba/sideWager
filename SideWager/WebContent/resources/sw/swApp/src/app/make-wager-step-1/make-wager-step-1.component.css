@@ -82,7 +82,8 @@
     width:10%;
 }
 .make-wager-parent-container{
-max-height: 100vh;
+max-height: 92vh;
+overflow-y: scroll;
 height: 100%;
 }
 .footer-parent{

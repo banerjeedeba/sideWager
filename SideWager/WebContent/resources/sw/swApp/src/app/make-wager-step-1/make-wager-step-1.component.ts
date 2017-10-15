@@ -18,4 +18,7 @@ gotoTabs()
 {
 this.router.navigate(['home','swtab']);
 }
+gotoStep2(){
+  this.router.navigate(['home','mkwagerstep2']);
+}
 }
