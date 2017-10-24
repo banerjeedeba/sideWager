@@ -54,9 +54,6 @@ line-height: 1.5em;
 .card-container{
 margin: 0.5em;   
 padding: 0.5em;
-min-height:80vh; 
-max-height: 80vh;
-overflow-y: scroll;
 }
 .vertical-divider {
   border-top-width: 0;
@@ -85,4 +82,9 @@ overflow-y: scroll;
 font-size: 0.9em;
 margin-right: 0.2em;
 font-weight: 800;
+}
+.scrolable-list{
+    max-height: 78vh;
+    min-height: 78vh;
+    overflow: scroll;
 }

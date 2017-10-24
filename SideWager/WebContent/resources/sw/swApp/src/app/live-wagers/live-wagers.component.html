@@ -1,5 +1,6 @@
 
 <div *ngIf="liveWagers?.length > 0">
+  <div class="scrolable-list">
 <div class="card-container" *ngFor="let liveWager of liveWagers">
 <md-card class="md-card-padd">
   <div class="bordered-bottom">
@@ -54,6 +55,7 @@
 </md-grid-list>
 </md-card>
 </div>
+  </div>
 </div>
 <div *ngIf="liveWagers?.length == 0">
     <md-list>

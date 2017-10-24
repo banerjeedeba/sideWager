@@ -54,9 +54,6 @@ text-align: center;
 .card-container{
     margin: 0.5em;   
     padding: 0.5em;
-     min-height:80vh; 
-    max-height: 80vh;
-    overflow-y: scroll;
 }
 .vertical-divider {
     border-top-width: 0;
@@ -120,6 +117,11 @@ align-content: center;
 ul{
     text-align: center;
     align-content: center;
+}
+.scrolable-list{
+    max-height: 72vh;
+    min-height: 72vh;
+    overflow: scroll;
 }
 /*.pull-right{
     float:right;

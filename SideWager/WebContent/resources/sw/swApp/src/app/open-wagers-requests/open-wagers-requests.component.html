@@ -6,6 +6,7 @@
     <span class="amount color-green">550SC</span>
   </div>
 </div>
+  <div class="scrolable-list">
 <div class="card-container" *ngFor="let openWager of openWagers">
 <md-card class="md-card-padd">
   <div class="bordered-bottom">
@@ -66,6 +67,7 @@
 </md-grid-list>
 </md-card>
 </div>
+  </div>
 </div>
 <div *ngIf="openWagers?.length == 0">
   <md-list>
