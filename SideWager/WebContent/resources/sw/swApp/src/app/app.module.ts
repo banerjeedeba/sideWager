@@ -33,6 +33,7 @@ import { MyFriendsComponentComponent } from './my-friends-component/my-friends-c
 import { AddFriendsComponentComponent } from './add-friends-component/add-friends-component.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { MakeWagerStep2Component } from './make-wager-step-2/make-wager-step-2.component';
+import { MakeWagerStep4Component } from './make-wager-step-4/make-wager-step-4.component';
 
 export const routes:Routes=[
   {path:'home',component:SwSideNavComponent,
@@ -40,6 +41,7 @@ export const routes:Routes=[
     { path: '', redirectTo: 'swtab', pathMatch: 'full' },
     {path:'mkwagerstep1',component:MakeWagerStep1Component},
     {path:'mkwagerstep2',component:MakeWagerStep2Component},
+    {path:'mkwagerstep4',component:MakeWagerStep4Component},
     {path:'swtab',component:SwTabListComponent},
     {path:'friends',component:SwFriendsTabComponent}
   ]
@@ -67,7 +69,8 @@ export const routes:Routes=[
     MyFriendsComponentComponent,
     AddFriendsComponentComponent,
     LoadingSpinnerComponent,
-    MakeWagerStep2Component
+    MakeWagerStep2Component,
+    MakeWagerStep4Component
   ],
   imports: [
     BrowserModule,

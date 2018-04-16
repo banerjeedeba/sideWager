@@ -1,7 +1,7 @@
 <div class="make-wager-parent-container">
 <div class="make-wager-container">
 <h2><span> Who's it gona be?</span><span class="close" (click)="gotoTabs()"><i class="material-icons">clear</i></span></h2>
-<md-grid-list cols="13" rowHeight="12em">
+<md-grid-list cols="13" rowHeight="14em">
   <md-grid-tile [colspan]="6" [rowspan]="1">
     <md-card class="md-card-padd">
       <ul>
@@ -21,7 +21,17 @@
     </md-card>
   </md-grid-tile>
   <md-grid-tile [colspan]="1" [rowspan]="1">
-    vs
+      <ul class="or-ul">
+          <li>
+              <md-divider class="vertical-divider"></md-divider>
+          </li>
+          <li>
+            vs
+          </li>
+          <li>
+              <md-divider class="vertical-divider"></md-divider>
+          </li>
+      </ul>
   </md-grid-tile>
   <md-grid-tile [colspan]="6" [rowspan]="1">
     <md-card class="md-card-padd">
@@ -67,11 +77,11 @@
       </ul>
   </div>
   <div>
-  <md-grid-list cols="10" rowHeight="8em">
+  <md-grid-list cols="10" rowHeight="14em">
     <md-grid-tile [colspan]="1" [rowspan]="1">
     </md-grid-tile>
   <md-grid-tile [colspan]="8" [rowspan]="1">
-    <md-card class="md-card-padd">
+    <md-card class="md-card-padd-overunder">
       <ul>
         <li>
             <span class="over-under">Over/Under</span>

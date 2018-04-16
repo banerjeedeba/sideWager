@@ -1,0 +1,113 @@
+.make-wager-container{
+    padding: 0.5em;
+    overflow-y: auto;
+    height: calc(92vh - 4em);
+}
+.make-wager-container h2{
+    color: #969696;
+    font-weight: 200;
+    text-align: center;
+}
+.make-wager-container .close{
+    color: #969696;
+    font-weight: 200;
+    text-align: center;
+    float: right;
+}
+.make-wager-container .close i{
+    font-size: 1.4em;
+}
+.card-container{
+    margin: 0.5em;   
+    padding: 0.5em;
+}
+.md-list-item-inner {
+    padding: 0 !important;
+    margin: 0 !important;
+    list-style: none;
+    line-height: 1.1em;
+    width: 100%;
+}
+.md-list-item-outer {
+    padding: 0 !important;
+    margin: 0 !important;
+    list-style: none;
+    line-height: 1.8em;
+    width: 100%;
+    text-align: center;
+    font-weight: 800;
+}
+.md-list-item-inner.center-text {
+    text-align: center;
+}
+.md-list-item-inner.left-text {
+    text-align: left;
+}
+.small-gray-text{
+    font-size: 0.9em;
+    color: #969696;
+    margin-bottom:0.5em; 
+}
+.x-small-gray-text{
+    font-size: 0.7em;
+    color: #969696;
+}
+.small-black-text{
+    font-size: 0.9em;
+    color: #000000;
+}
+.large-gray-text{
+    font-size: 1.1em;
+    color: #969696;
+}
+.large-black-text{
+    font-size: 1.1em;
+    color: #000000;
+}
+.md-card-padd{
+    padding: 0.5em !important;
+    margin: 1em;
+}
+.vertical-divider {
+    border-top-width: 0;
+    border-right-width: 1px;
+    border-right-style: solid;
+    color:#969696;
+    height: 100%;
+  }
+  .sc-input{
+    font-size: 3em;
+    color: black;
+    margin: 1em !important;
+  }
+  .sc-label{
+    font-size: 3em;
+    color: black;
+  }
+  
+.footer-links{
+    height:4em; 
+    border-top: 1px solid #ccc; 
+}
+.footer-links a{
+    text-decoration:none;
+    color: #384951;
+    padding: 0.5em;
+    font-size: 1.5em;
+}
+.footer-links .back-link{
+    display: inline-block;
+    float: left;
+}
+.footer-links .next-link{
+    float: right;
+    display: inline-block;
+}
+.footer-links a i{
+    font-size: 1.5em;
+    vertical-align: top;
+    color: #D02c27;
+}
+.footer-links a span{
+    vertical-align: middle;
+}

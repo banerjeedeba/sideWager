@@ -1,7 +1,7 @@
 .make-wager-container{
     padding: 0.5em;
     overflow-y: auto;
-    height: calc(97vh - 4em);
+    height: calc(92vh - 4em);
 }
 .make-wager-container h2{
     color: #969696;
@@ -42,6 +42,13 @@
 }
 .md-card-padd{
     padding: 0.5em !important;
+    height: 12em;
+    width: 10em;
+}
+.md-card-padd-overunder{
+     padding: 0.5em !important;
+     height: 8em;
+     width: 16em;
 }
 .btn-pick {
     color: #FFFFFF;
@@ -86,6 +93,24 @@ max-height: 92vh;
 overflow-y: scroll;
 height: 100%;
 }
+.or-ul{
+    height: 100%;
+    padding: 1.5em 0 !important;
+}
+.or-ul li:nth-child(odd){
+    height: 45%;
+}
+.or-ul li:nth-child(even){
+    padding: 0.1em !important;
+}
+.vertical-divider {
+    border-top-width: 0;
+    border-right-width: 1px;
+    border-right-style: solid;
+    color:#969696;
+    height: 100%;
+    }
+    
 .footer-parent{
      width: 100%;
     /*position: fixed;*/
