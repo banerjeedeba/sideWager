@@ -14,9 +14,9 @@ export class MakeWagerStep4Component implements OnInit {
   }
   gotoTabs()
   {
-  this.router.navigate(['home','swtab']);
+  this.router.navigate(['home','mkwagerstep2']);
   }
-  gotoStep4(){
-    this.router.navigate(['home','mkwagerstep4']);
+  gotoStep5(){
+    this.router.navigate(['home','wagerrequestouconfirm2']);
   }
 }

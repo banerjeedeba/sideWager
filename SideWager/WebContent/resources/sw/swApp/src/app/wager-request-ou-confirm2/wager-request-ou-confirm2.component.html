@@ -1,0 +1,91 @@
+<div class="make-wager-parent-container">
+    <div class="make-wager-container">
+    <h2><span> You've got</span><span class="close" (click)="gotoTabs()"><i class="material-icons">clear</i></span></h2>
+    <md-grid-list cols="13" rowHeight="8em">
+      <md-grid-tile [colspan]="6" [rowspan]="1">
+        <md-card class="md-card-padd">
+          <ul>
+            <li>
+                <span class="caption-text">Sacramento</span>
+            </li>
+            <li>
+                <span class="short-name">SAC</span>
+            </li>
+          </ul>
+        </md-card>
+      </md-grid-tile>
+      <md-grid-tile [colspan]="1" [rowspan]="1">
+          <ul class="or-ul">
+              <li>
+                  <md-divider class="vertical-divider"></md-divider>
+              </li>
+              <li>
+                vs
+              </li>
+              <li>
+                  <md-divider class="vertical-divider"></md-divider>
+              </li>
+          </ul>
+      </md-grid-tile>
+      <md-grid-tile [colspan]="6" [rowspan]="1">
+        <md-card class="md-card-padd">
+          <ul>
+            <li>
+          <span class="caption-text">Los Angeles</span>
+           </li>
+            <li>
+          <span class="short-name">LAL</span>
+           </li>
+          </ul>
+        </md-card>
+      </md-grid-tile>
+    </md-grid-list>
+      <div>
+          <ul>
+            <li>
+              <span class="head-info">LAL -2</span>
+            </li>
+            <li>
+              <ul class="inner-list">
+                  <li>
+                      <span class="game-info">NBA</span>
+                  </li>
+                  <li>
+                    <span class="game-info">Game Info:</span>
+                  </li>
+                  <li>
+                    <span class="game-info">Oct 13th, 2017 @10:30PM</span>
+                  </li>
+                  <li>
+                    <span class="game-info">Pro Basketball</span>
+                  </li>
+              </ul>
+            </li>
+           
+            <li>
+              <ul class="hline">
+                <li>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="sc-amt">200SC</span>
+            </li>
+            <li>
+                <b class="game-info">Wager info:</b>
+            </li>
+            <li>
+                <b class="game-info">Friendly Wager - Sean Carney</b>
+            </li>
+          </ul>
+      </div>
+    </div>
+    <div class="footer-parent">
+      <div class="footer-links">
+        <a class="back-link" (click)="gotoTabs()"><i class="material-icons">keyboard_arrow_left</i><span>Decline</span></a>
+        <a class="next-link" (click)="gotoStep2()"><span>Accept</span><i class="material-icons">keyboard_arrow_right</i></a>
+      </div>
+    </div>
+    </div>
+    
+     

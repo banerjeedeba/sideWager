@@ -111,3 +111,8 @@
 .footer-links a span{
     vertical-align: middle;
 }
+.disclaimer-section{
+    padding: 2.5em;
+    font-size: 0.9em;
+    color: black;
+}

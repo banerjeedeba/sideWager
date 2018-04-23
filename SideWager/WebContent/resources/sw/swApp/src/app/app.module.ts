@@ -34,6 +34,8 @@ import { AddFriendsComponentComponent } from './add-friends-component/add-friend
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { MakeWagerStep2Component } from './make-wager-step-2/make-wager-step-2.component';
 import { MakeWagerStep4Component } from './make-wager-step-4/make-wager-step-4.component';
+import { MakeWagerStep5LiveComponent } from './make-wager-step-5-live/make-wager-step-5-live.component';
+import { WagerRequestOuConfirm2Component } from './wager-request-ou-confirm2/wager-request-ou-confirm2.component';
 
 export const routes:Routes=[
   {path:'home',component:SwSideNavComponent,
@@ -42,6 +44,8 @@ export const routes:Routes=[
     {path:'mkwagerstep1',component:MakeWagerStep1Component},
     {path:'mkwagerstep2',component:MakeWagerStep2Component},
     {path:'mkwagerstep4',component:MakeWagerStep4Component},
+    {path:'wagerrequestouconfirm2',component:WagerRequestOuConfirm2Component},
+    {path:'mkwagerstep5live',component:MakeWagerStep5LiveComponent},
     {path:'swtab',component:SwTabListComponent},
     {path:'friends',component:SwFriendsTabComponent}
   ]
@@ -70,7 +74,9 @@ export const routes:Routes=[
     AddFriendsComponentComponent,
     LoadingSpinnerComponent,
     MakeWagerStep2Component,
-    MakeWagerStep4Component
+    MakeWagerStep4Component,
+    MakeWagerStep5LiveComponent,
+    WagerRequestOuConfirm2Component
   ],
   imports: [
     BrowserModule,

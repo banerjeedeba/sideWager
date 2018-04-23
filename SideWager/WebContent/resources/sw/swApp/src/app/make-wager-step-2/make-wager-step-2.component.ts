@@ -13,7 +13,7 @@ export class MakeWagerStep2Component implements OnInit {
   }
 gotoTabs()
 {
-this.router.navigate(['home','swtab']);
+this.router.navigate(['home','mkwagerstep1']);
 }
 gotoStep4(){
   this.router.navigate(['home','mkwagerstep4']);

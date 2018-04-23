@@ -1,0 +1,127 @@
+.make-wager-container{
+    padding: 0.5em;
+    overflow-y: auto;
+    height: calc(92vh - 4em);
+}
+.make-wager-container h2{
+    color: #969696;
+    font-weight: 200;
+    text-align: center;
+}
+.make-wager-container .close{
+    color: #969696;
+    font-weight: 200;
+    text-align: center;
+    float: right;
+}
+.make-wager-container .close i{
+    font-size: 1.2em;
+}
+.make-wager-container ul{
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+.make-wager-container ul li{
+    list-style: none;
+    padding: 0.5em;
+    text-align: center;
+    font-size: 0.9em;
+}
+.inner-list{
+    line-height: 0.6em;   
+}
+.make-wager-container .caption-text{
+    font-size: 1.4em;
+    font-weight: 600;
+    color: #384951;
+}
+.make-wager-container .short-name{
+    font-size: 1em;
+    color: #384951;
+}
+
+.md-card-padd{
+    padding: 1em !important;
+    width: 10em;
+    height:7em;
+}
+
+.game-info{
+    color: #9B9B9B;
+    font-size: 1.4em;
+}
+.head-info{
+    color:#384951;
+    font-size: 1.3em;
+    font-weight: 600;
+}
+.sc-amt{
+    color:#384951;
+    font-size: 3em;
+}
+
+.hline{
+    overflow: hidden;
+}
+.hline li{
+    display: inline-block;
+    border-bottom: 1px solid #ccc;
+    width: 75%;
+}
+.make-wager-parent-container{
+    max-height: 92vh;
+    overflow-y: scroll;
+    height: 100%;
+}
+.or-ul{
+    height: 100%;
+    padding: 1.5em 0 !important;
+}
+.or-ul li:nth-child(odd){
+    height: 45%;
+}
+.or-ul li:nth-child(even){
+    padding: 0.1em !important;
+}
+.vertical-divider {
+    border-top-width: 0;
+    border-right-width: 1px;
+    border-right-style: solid;
+    color:#969696;
+    height: 100%;
+    }
+    
+.footer-parent{
+     width: 100%;
+    /*position: fixed;*/
+    top: inherit; 
+    height:4em;
+    /*bottom: 0; */
+}   
+.footer-links{
+    height:4em; 
+    border-top: 1px solid #ccc; 
+}
+.footer-links a{
+    text-decoration:none;
+    color: #384951;
+    padding: 0.5em;
+    font-size: 1.5em;
+}
+.footer-links .back-link{
+    display: inline-block;
+    float: left;
+}
+.footer-links .next-link{
+    float: right;
+    display: inline-block;
+}
+.footer-links a i{
+    font-size: 1.5em;
+    vertical-align: top;
+    color: #D02c27;
+}
+.footer-links a span{
+    vertical-align: middle;
+}
