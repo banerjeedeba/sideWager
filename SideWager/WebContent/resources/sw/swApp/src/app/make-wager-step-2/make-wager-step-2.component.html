@@ -32,7 +32,8 @@
       </ul>
   </md-grid-tile>
   <md-grid-tile [colspan]="6" [rowspan]="1">
-    <md-card class="md-card-padd">
+    <span (click)="gotoStep4()">
+    <md-card class="md-card-padd" >
       <ul>
         <li>
             <i class="material-icons">settings_input_antenna</i>
@@ -45,6 +46,7 @@
        </li>
       </ul>
     </md-card>
+    </span>
   </md-grid-tile>
 </md-grid-list>
 <div>
@@ -57,22 +59,22 @@
             <span class="youhave-selected-h1">You've selected</span>
        </li>
         <li>
-          <span class="youhave-selected-h2">Los Angeles</span>
+          <span class="youhave-selected-h2">{{selectedTeam}}</span>
        </li>
        <li>
-          <span class="youhave-selected-h3">LAL</span>
+          <span class="youhave-selected-h3">{{twager.selectedTeam}}</span>
        </li>
        <li>
-          <span class="youhave-selected-h4">LALA -2</span>
+          <span class="youhave-selected-h4">{{twager.game.pointSpread}}</span>
        </li>
        <li>
           <span class="youhave-selected-h5">Game Info:</span>
        </li>
        <li>
-          <span class="youhave-selected-h5">vs Kings</span>
+          <span class="youhave-selected-h5">vs {{opTeam}}</span>
        </li>
         <li>
-          <span class="youhave-selected-h5">Oct. 13th, 2017 @ 10:30PM</span>
+          <span class="youhave-selected-h5">{{twager.game.matchDate}} @ {{twager.game.matchTime}}</span>
        </li>
       </ul>
     </md-card>
@@ -84,7 +86,7 @@
 <div class="footer-parent">
   <div class="footer-links">
     <a class="back-link" (click)="gotoTabs()"><i class="material-icons">keyboard_arrow_left</i><span>Back</span></a>
-    <a class="next-link" (click)="gotoStep4()"><span>Next</span><i class="material-icons">keyboard_arrow_right</i></a>
+    <a class="next-link" ><span>Next</span><i class="material-icons">keyboard_arrow_right</i></a>
   </div>
 </div>
 </div>

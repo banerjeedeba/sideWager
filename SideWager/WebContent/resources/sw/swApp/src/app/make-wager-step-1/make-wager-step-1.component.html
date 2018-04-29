@@ -1,21 +1,21 @@
 <div class="make-wager-parent-container">
 <div class="make-wager-container">
 <h2><span> Who's it gona be?</span><span class="close" (click)="gotoTabs()"><i class="material-icons">clear</i></span></h2>
-<md-grid-list cols="13" rowHeight="14em">
+<md-grid-list cols="13" rowHeight="14em" >
   <md-grid-tile [colspan]="6" [rowspan]="1">
-    <md-card class="md-card-padd">
+    <md-card class="md-card-padd" >
       <ul>
         <li>
-            <span class="caption-text">Sacramento</span>
+            <span class="caption-text">{{twager.game.homeTeam}}</span>
         </li>
         <li>
-            <span class="short-name">SAC</span>
+            <span class="short-name">{{twager.game.homeTeamShortName}}</span>
         </li>
         <li>
             <span class="record-text">Record: 32-33</span>
         </li>
         <li>
-            <button md-raised-button class="btn-pick">Pick</button>
+            <button md-raised-button class="btn-pick" (click)="gotoStep2(twager.game.homeTeamShortName)">Pick</button>
         </li>
       </ul>
     </md-card>
@@ -37,16 +37,16 @@
     <md-card class="md-card-padd">
       <ul>
         <li>
-      <span class="caption-text">Los Angeles</span>
+      <span class="caption-text">{{twager.game.awayTeam}}</span>
        </li>
         <li>
-      <span class="short-name">LAL</span>
+      <span class="short-name">{{twager.game.awayTeamShortName}}</span>
        </li>
         <li>
       <span class="record-text">Record: 26-29</span>
        </li>
         <li>
-      <button md-raised-button class="btn-pick">Pick</button>
+      <button md-raised-button class="btn-pick" (click)="gotoStep2(twager.game.awayTeamShortName)">Pick</button>
        </li>
       </ul>
     </md-card>
@@ -58,10 +58,10 @@
           <span class="game-info">Game Info:</span>
         </li>
         <li>
-          <span class="game-info">Oct 13th, 2017 @10:30PM</span>
+          <span class="game-info">{{twager.game.matchDate}} @ {{twager.game.matchTime}}</span>
         </li>
         <li>
-          <span class="head-info">LAL -2</span>
+          <span class="head-info">{{twager.game.pointSpread}}</span>
         </li>
         <li>
           <ul class="hline">
@@ -87,8 +87,8 @@
             <span class="over-under">Over/Under</span>
         </li>
         <li>
-            <button md-raised-button class="btn-pick">u 101.5</button>
-            <button md-raised-button class="btn-pick">a 101.5</button>
+            <button md-raised-button class="btn-pick" (click)="gotoStep2(twager.game.homeTeamShortName)">u {{twager.game.underLine}}</button>
+            <button md-raised-button class="btn-pick" (click)="gotoStep2(twager.game.awayTeamShortName)">a {{twager.game.underLine}}</button>
         </li>
       </ul>
     </md-card>
@@ -101,7 +101,7 @@
 <div class="footer-parent">
   <div class="footer-links">
     <a class="back-link" (click)="gotoTabs()"><i class="material-icons">keyboard_arrow_left</i><span>Back</span></a>
-    <a class="next-link" (click)="gotoStep2()"><span>Next</span><i class="material-icons">keyboard_arrow_right</i></a>
+    <a class="next-link" ><span>Next</span><i class="material-icons">keyboard_arrow_right</i></a>
   </div>
 </div>
 </div>

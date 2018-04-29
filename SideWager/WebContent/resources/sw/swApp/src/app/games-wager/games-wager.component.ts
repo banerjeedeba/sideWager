@@ -15,6 +15,7 @@ import { Game } from "../entities/Game";
 })
 export class GamesWagerComponent implements OnInit, OnDestroy {
 
+  //Local : public sportsList:Array<any> = new Array();
   public sportsList:Array<Sports> = new Array();
   public isLoading=true;
   constructor(public gls:GamelistService,public authService: AuthService,private router:Router
@@ -26,9 +27,10 @@ export class GamesWagerComponent implements OnInit, OnDestroy {
   wagerSservieSubscribe;
 
   ngOnInit() {
-    
+    //Local : this.sportsList = this.sportsLists;
     this.gameListSubscribe = this.gls.getListData(this.user.user.ckey)
     .subscribe(data => {
+      //Local : this.sportsList = this.sportsLists;
       this.sportsList = data;
       this.isLoading=false;
       
@@ -57,8 +59,10 @@ export class GamesWagerComponent implements OnInit, OnDestroy {
   }
   makeWager(game: Game){
     this.router.navigate(['home','mkwagerstep1']);
+    //this.makeWagerService.setGame(game);
+    this.wagerService.createTempWager(game,null,null);
     //this.wagerService.createLiveWager(game, game.homeTeamShortName, 500);
-    this.wagerService.createOpenWager(game, game.homeTeamShortName, 500, 'Debanjan Banerjee', '3yCzgU8VjFVX87s0EchIGZhFNpi1')
+    //this.wagerService.createOpenWager(game, game.homeTeamShortName, 500, 'Debanjan Banerjee', '3yCzgU8VjFVX87s0EchIGZhFNpi1')
   }
 
 private todaysDate=new Date(Date.now());
@@ -89,7 +93,8 @@ public sportsLists=[{
   "awayTeamShortName":"CHI",
   "pointSpread":"TOR-6.5",
   "underLine":"u 102.5",
-  "matchTime":"11/25 8:00PM",
+  "matchDate":"11/25",
+  "matchTime":"8:00PM",
 }]},
 {"shortName":"PQR",
 "gameList":[{
@@ -99,7 +104,8 @@ public sportsLists=[{
   "awayTeamShortName":"MIN",
   "pointSpread":"CLE-4.5",
   "underLine":"u 105.5",
-  "matchTime":"8/25 8:00PM",
+  "matchDate":"11/25",
+  "matchTime":" 8:00PM",
 }]},
 {"shortName":"XYZ",
 "gameList":[{
@@ -109,7 +115,8 @@ public sportsLists=[{
   "awayTeamShortName":"LAL",
   "pointSpread":"TOR-6.5",
   "underLine":"u 101",
-  "matchTime":"9/15 10:30PM",
+  "matchDate":"9/15",
+  "matchTime":"10:30PM",
 }]
 }
 ];

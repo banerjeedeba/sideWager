@@ -11,6 +11,7 @@ import { OpenWager } from "../entities/OpenWager";
 export class WagerService{
 
     private liveWagerPath : string = '/livewager';
+    private tempWagerPath : string = '/tempwager';
     private openWagerPath : string = '/openwager';
 
     constructor(public auth: AuthService,
@@ -27,6 +28,24 @@ export class WagerService{
         const liveWagerUserPath =  `${this.liveWagerPath}/${userKey}`;
         const liveWagerUserList = this.db.list(liveWagerUserPath);
         liveWagerUserList.push(liveWagerObject);
+        return;
+    }
+
+    createTempWager(game: Game, selectedTeam: string, amount: number): void{
+        let userKey =  this.auth.user.uid;
+        let tempWagerObject:LiveWager = new LiveWager();
+        tempWagerObject.userKey = userKey;
+        tempWagerObject.userName = this.auth.user.displayName;
+        if(selectedTeam != null)
+            tempWagerObject.selectedTeam = selectedTeam;
+        tempWagerObject.game = game;
+        if(amount != null)
+            tempWagerObject.amount = amount;
+        console.log(userKey);
+        const tempWagerUserPath =  `${this.tempWagerPath}/${userKey}`;
+        //const tempWagerUserList = this.db.list(tempWagerUserPath);
+        //tempWagerUserList.push(tempWagerObject);
+        this.db.object(tempWagerUserPath).set(tempWagerObject);
         return;
     }
 
@@ -64,6 +83,19 @@ export class WagerService{
         const liveWagerUserPath =  `${this.liveWagerPath}/${friendKey}`;
         let liveWagerUserList = this.db.list(liveWagerUserPath);
         return liveWagerUserList;
+    }
+
+    getTempWagers() : FirebaseObjectObservable<LiveWager>{
+        let userKey =  this.auth.user.uid;
+        const tempWagerUserPath =  `${this.tempWagerPath}/${userKey}`;
+        let tempWagerUserObject = this.db.object(tempWagerUserPath);
+        return tempWagerUserObject;
+    }
+
+    removeTempWager() : any{
+        let userKey =  this.auth.user.uid;
+        const tempWagerUserPath =  `${this.tempWagerPath}/${userKey}`;
+        let tempWagerUserObject = this.db.object(tempWagerUserPath).remove();
     }
 
     getPendingOpenWagers() : FirebaseListObservable<OpenWager[]>{

@@ -9,10 +9,10 @@
                               <span class="small-gray-text">You've Selected</span>
                             </li>
                             <li>
-                              <span class="large-black-text">Los Angeles</span>
+                              <span class="large-black-text">{{selectedTeam}}</span>
                             </li>
                             <li>
-                              <span  class="large-black-text">LAL</span>
+                              <span  class="large-black-text">{{twager.selectedTeam}}</span>
                             </li>
                           </ul>
                   </md-grid-tile>
@@ -23,17 +23,17 @@
                           <ul class="md-list-item-inner left-text">
                             <li>
                               <span class="x-small-gray-text">Spread</span>
-                              <span class="small-black-text">LAL-2</span>
+                              <span class="small-black-text">{{twager.game.pointSpread}}</span>
                             </li>
                             <li>
                               <span class="x-small-gray-text">vs</span>
-                              <span class="small-black-text"> Sacramento</span>
+                              <span class="small-black-text"> {{opTeam}}</span>
                             </li>
                             <li>
-                              <span class="x-small-gray-text">Oct. 13th, 2017 @10:30 PM</span>
+                              <span class="x-small-gray-text">{{twager.game.matchDate}} @{{twager.game.matchTime}}</span>
                             </li>
                             <li>
-                                <span class="x-small-gray-text">Pro Basketball</span>
+                                <span class="x-small-gray-text">{{twager.game.sportName}}</span>
                               </li>
                           </ul>
                   </md-grid-tile>
@@ -60,7 +60,7 @@
               <md-grid-list cols="18" rowHeight="6em">
                   <md-grid-tile  [colspan]="18" [rowspan]="1">
                       <md-input-container color="white" class="sc-input">
-                          <input mdInput placeholder=""/>
+                          <input mdInput [(ngModel)]="amount" placeholder=""/>
                        </md-input-container>
                        <span class="sc-label">SC</span>
                   </md-grid-tile>
