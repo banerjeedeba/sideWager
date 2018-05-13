@@ -1,0 +1,107 @@
+<div class="make-wager-parent-container">
+    <div class="make-wager-container">
+      <h2><span> Pick a victim</span><span class="close" (click)="gotoTabs()"><i class="material-icons">clear</i></span></h2>
+            <md-card class="md-card-padd">
+                <md-grid-list cols="18" rowHeight="6em">
+                    <md-grid-tile  [colspan]="7" [rowspan]="1">
+                            <ul class="md-list-item-inner center-text">
+                              <li>
+                                <span class="small-gray-text">You've Selected</span>
+                              </li>
+                              <li>
+                                <span class="large-black-text">Los Angeles</span>
+                              </li>
+                              <li>
+                                <span  class="large-black-text">LAL</span>
+                              </li>
+                            </ul>
+                    </md-grid-tile>
+                    <md-grid-tile  [colspan]="1" [rowspan]="1">
+                        <md-divider class="vertical-divider"></md-divider>
+                    </md-grid-tile>
+                    <md-grid-tile  [colspan]="10" [rowspan]="1">
+                            <ul class="md-list-item-inner left-text">
+                              <li>
+                                <span class="x-small-gray-text">Spread</span>
+                                <span class="small-black-text">LAL-2</span>
+                              </li>
+                              <li>
+                                <span class="x-small-gray-text">vs</span>
+                                <span class="small-black-text">Sacramento</span>
+                              </li>
+                              <li>
+                                <span class="x-small-gray-text">Oct 13th, 2019 @ 10:30pm</span>
+                              </li>
+                            </ul>
+                    </md-grid-tile>
+                </md-grid-list>
+            </md-card>
+
+            <div>
+              <md-input-container class="full-width" color="warn">
+               <span mdPrefix>To &nbsp;</span>
+               <input #frndsearchBox mdInput type="text" placeholder="Type to search">
+              </md-input-container>
+            </div>
+            <div>
+                <md-card class="md-card-padd">
+                    <h3 md-subheader><span class="sub-head">Recent</span></h3>
+                          <mat-chip-list class="horizontal-avator">
+                              <div>
+                                  <img md-card-avatar src="/src/assets/img/user.png" alt="...">
+                                  <md-card-subtitle>Adam Gilcrist</md-card-subtitle>
+                                </div>
+                                <div>
+                                  <img md-card-avatar src="/src/assets/img/user.png" alt="...">
+                                  <md-card-subtitle>Shane Warne</md-card-subtitle>
+                                </div>
+                                <div>
+                                  <img md-card-avatar src="/src/assets/img/user.png" alt="...">
+                                  <md-card-subtitle>Ricky Pointing</md-card-subtitle>
+                                </div>
+                                <div>
+                                  <img md-card-avatar src="/src/assets/img/user.png" alt="...">
+                                   <md-card-subtitle>Andrew Symonds</md-card-subtitle>
+                                </div>
+                                <div>
+                                  <img md-card-avatar src="/src/assets/img/user.png" alt="...">
+                                  <md-card-subtitle>Brate Lee</md-card-subtitle>
+                                </div>
+                          </mat-chip-list>
+                </md-card>
+            </div>
+            <div>
+                <md-card class="md-card-padd">
+                    <h3 md-subheader><span class="sub-head">Friends</span><a class="new-frnd">New Friend></a></h3>
+                          <mat-chip-list class="horizontal-avator">
+                              <div>
+                                  <img md-card-avatar src="/src/assets/img/user.png" alt="...">
+                                  <md-card-subtitle>Adam Gilcrist</md-card-subtitle>
+                                </div>
+                                <div>
+                                  <img md-card-avatar src="/src/assets/img/user.png" alt="...">
+                                  <md-card-subtitle>Shane Warne</md-card-subtitle>
+                                </div>
+                                <div>
+                                  <img md-card-avatar src="/src/assets/img/user.png" alt="...">
+                                  <md-card-subtitle>Ricky Pointing</md-card-subtitle>
+                                </div>
+                                <div>
+                                  <img md-card-avatar src="/src/assets/img/user.png" alt="...">
+                                   <md-card-subtitle>Andrew Symonds</md-card-subtitle>
+                                </div>
+                                <div>
+                                  <img md-card-avatar src="/src/assets/img/user.png" alt="...">
+                                  <md-card-subtitle>Brate Lee</md-card-subtitle>
+                                </div>
+                          </mat-chip-list>
+                </md-card>
+            </div>
+          </div>
+          <div class="footer-parent">
+            <div class="footer-links">
+              <a class="back-link" (click)="gotoTabs()"><i class="material-icons">keyboard_arrow_left</i><span>Back</span></a>
+              <a class="next-link" (click)="gotoStep5()"><span>Next</span><i class="material-icons">keyboard_arrow_right</i></a>
+            </div>
+          </div>
+        </div>

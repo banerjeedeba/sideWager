@@ -39,7 +39,7 @@ export class MakeWagerStep4Component implements OnInit {
   this.router.navigate(['home','mkwagerstep2']);
   }
   gotoStep5(){
-    this.router.navigate(['home','wagerrequestouconfirm2']);
+    this.router.navigate(['home','mkwagerstep5live']);
     this.wagerService.createTempWager(this.twager.game,this.selectedTeam,this.amount);
   }
 }

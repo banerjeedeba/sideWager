@@ -40,21 +40,24 @@
     width: 10em;
 }
 .md-card-padd-selected{
-    padding: 0;
+    padding: 1em;
     width: 100%;
     margin:0.3em;
 }
+.compact-list li{
+    line-height: 0.3em;
+}
 .instruction-text{
-font-size: 0.8em;
-color:#969696;
+    font-size: 0.8em;
+    color:#969696;
 }
 .header-text{
-font-size: 1.4em;
-color:#384951;
-display: block;
-width: 4em;
-margin: 0 auto;
-font-weight: 800;
+    font-size: 1.4em;
+    color:#384951;
+    display: block;
+    width: 4em;
+    margin: 0 auto;
+    font-weight: 800;
 }
 .youhave-selected-h1{
     font-size: 2em;

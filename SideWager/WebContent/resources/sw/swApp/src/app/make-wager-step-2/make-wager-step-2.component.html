@@ -3,6 +3,7 @@
 <h2><span> What kind of Wager?</span><span class="close" (click)="gotoTabs()"><i class="material-icons">clear</i></span></h2>
 <md-grid-list cols="13" rowHeight="14em">
   <md-grid-tile [colspan]="6" [rowspan]="1">
+    <span (click)="gotoStep3()">
     <md-card class="md-card-padd">
       <ul>
         <li>
@@ -17,6 +18,7 @@
         </li>
       </ul>
     </md-card>
+    </span>
   </md-grid-tile>
   <md-grid-tile [colspan]="1" [rowspan]="1">
       <ul class="or-ul">
@@ -51,7 +53,6 @@
 </md-grid-list>
 <div>
 <md-grid-list cols="13" rowHeight="20em">
-   
   <md-grid-tile [colspan]="13" [rowspan]="1">
     <md-card class="md-card-padd-selected">
       <ul>
@@ -67,6 +68,8 @@
        <li>
           <span class="youhave-selected-h4">{{twager.game.pointSpread}}</span>
        </li>
+      </ul>
+      <ul class="compact-list">
        <li>
           <span class="youhave-selected-h5">Game Info:</span>
        </li>
@@ -79,8 +82,40 @@
       </ul>
     </md-card>
   </md-grid-tile>
-  
 </md-grid-list>
+<!-- ngif for under /over-->
+<md-grid-list cols="13" rowHeight="20em">
+  <md-grid-tile [colspan]="13" [rowspan]="1">
+    <md-card class="md-card-padd-selected">
+      <ul>
+        <li>
+            <span class="youhave-selected-h1">You've selected</span>
+       </li>
+        <li>
+          <span class="youhave-selected-h2">u 101.9</span>
+       </li>
+      </ul>
+      <ul class="compact-list">
+       <li>
+          <span class="youhave-selected-h5">Game Info:</span>
+       </li>
+       <li>
+          <span class="youhave-selected-h5">Los Angeles</span>
+       </li>  
+       <li>
+          <span class="youhave-selected-h5">vs {{opTeam}}</span>
+       </li>
+        <li>
+          <span class="youhave-selected-h5">{{twager.game.matchDate}} @ {{twager.game.matchTime}}</span>
+       </li>
+      </ul>
+    </md-card>
+  </md-grid-tile>
+</md-grid-list>
+
+
+<!-- ngif end for under over -->
+
 </div>
 </div>
 <div class="footer-parent">

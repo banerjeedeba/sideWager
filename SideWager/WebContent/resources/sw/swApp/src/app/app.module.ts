@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MaterialModule } from '@angular/Material';
+import { MaterialModule} from '@angular/Material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import 'hammerjs';
 import { AngularFireModule } from 'angularfire2';
@@ -36,6 +36,7 @@ import { MakeWagerStep2Component } from './make-wager-step-2/make-wager-step-2.c
 import { MakeWagerStep4Component } from './make-wager-step-4/make-wager-step-4.component';
 import { MakeWagerStep5LiveComponent } from './make-wager-step-5-live/make-wager-step-5-live.component';
 import { WagerRequestOuConfirm2Component } from './wager-request-ou-confirm2/wager-request-ou-confirm2.component';
+import { MakeWagerStep3Component } from './make-wager-step-3/make-wager-step-3.component';
 
 export const routes:Routes=[
   {path:'home',component:SwSideNavComponent,
@@ -43,6 +44,7 @@ export const routes:Routes=[
     { path: '', redirectTo: 'swtab', pathMatch: 'full' },
     {path:'mkwagerstep1',component:MakeWagerStep1Component},
     {path:'mkwagerstep2',component:MakeWagerStep2Component},
+    {path:'mkwagerstep3',component:MakeWagerStep3Component},
     {path:'mkwagerstep4',component:MakeWagerStep4Component},
     {path:'wagerrequestouconfirm2',component:WagerRequestOuConfirm2Component},
     {path:'mkwagerstep5live',component:MakeWagerStep5LiveComponent},
@@ -76,7 +78,8 @@ export const routes:Routes=[
     MakeWagerStep2Component,
     MakeWagerStep4Component,
     MakeWagerStep5LiveComponent,
-    WagerRequestOuConfirm2Component
+    WagerRequestOuConfirm2Component,
+    MakeWagerStep3Component
   ],
   imports: [
     BrowserModule,

@@ -40,4 +40,8 @@ gotoStep4(){
   this.router.navigate(['home','mkwagerstep4']);
   
 }
+gotoStep3(){
+  this.router.navigate(['home','mkwagerstep3']);
+  
+}
 }
