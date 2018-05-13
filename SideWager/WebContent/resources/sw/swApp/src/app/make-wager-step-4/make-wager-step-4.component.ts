@@ -15,8 +15,11 @@ export class MakeWagerStep4Component implements OnInit {
   public tempWager:FirebaseObjectObservable<LiveWager>;
   public twager:LiveWager;
   public selectedTeam;
+  public selectedFullName;
+  public uoValue;
   public opTeam;
   public amount;
+  public selectedFrnd;
   constructor(private router:Router,private wagerService:WagerService) { }
 
   ngOnInit() {
@@ -24,14 +27,19 @@ export class MakeWagerStep4Component implements OnInit {
     this.tempWager.subscribe(snapshot=>{
       this.twager = snapshot;
     })
+    this.selectedTeam = this.twager.selectedTeam;
     if(this.twager.game.awayTeamShortName==this.twager.selectedTeam){
-      this.selectedTeam = this.twager.game.awayTeam;
+      this.selectedFullName = this.twager.game.awayTeam;
       this.opTeam = this.twager.game.homeTeam;
     }
     
     if(this.twager.game.homeTeamShortName==this.twager.selectedTeam){
-      this.selectedTeam = this.twager.game.homeTeam;
+      this.selectedFullName = this.twager.game.homeTeam;
       this.opTeam = this.twager.game.awayTeam;
+    }
+
+    if(this.twager.uoValue!=null){
+      this.uoValue = this.twager.uoValue;
     }
   }
   gotoTabs()
@@ -40,6 +48,6 @@ export class MakeWagerStep4Component implements OnInit {
   }
   gotoStep5(){
     this.router.navigate(['home','mkwagerstep5live']);
-    this.wagerService.createTempWager(this.twager.game,this.selectedTeam,this.amount);
+    this.wagerService.createTempWager(this.twager.game,this.twager.selectedTeam,this.uoValue,this.amount);
   }
 }

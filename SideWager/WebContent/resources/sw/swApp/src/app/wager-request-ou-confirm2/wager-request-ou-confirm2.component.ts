@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MakeWager } from '../provider/makewager.service';
 import { AuthService } from '../provider/auth.service';
 import { WagerService } from '../provider/wager.service';
 import { FirebaseObjectObservable } from 'angularfire2/database';
@@ -17,6 +16,7 @@ export class WagerRequestOuConfirm2Component implements OnInit {
   public tempWager:FirebaseObjectObservable<LiveWager>;
   public twager:LiveWager;
   public selectedTeam;
+  public uoValue;
   public opTeam;
   constructor(private wagerService:WagerService, private auth:AuthService,private router:Router) {
     
@@ -36,11 +36,15 @@ export class WagerRequestOuConfirm2Component implements OnInit {
       this.selectedTeam = this.twager.game.homeTeam;
       this.opTeam = this.twager.game.awayTeam;
     }
+
+    if(this.twager.uoValue!=null){
+      this.uoValue= this.twager.uoValue;
+    }
   }
 
   gotoConfirm(){
     this.router.navigate(['home','swtab']);
-    this.wagerService.createLiveWager(this.twager.game, this.twager.selectedTeam, this.twager.amount);
+    this.wagerService.createLiveWager(this.twager.game, this.twager.selectedTeam, this.uoValue, this.twager.amount);
     this.wagerService.removeTempWager();
   }
 

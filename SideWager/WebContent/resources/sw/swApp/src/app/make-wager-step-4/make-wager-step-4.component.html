@@ -1,7 +1,7 @@
 <div class="make-wager-parent-container">
   <div class="make-wager-container">
     <h2><span> How much?</span><span class="close" (click)="gotoTabs()"><i class="material-icons">clear</i></span></h2>
-          <md-card class="md-card-padd">
+          <md-card *ngIf="selectedTeam != null" class="md-card-padd">
               <md-grid-list cols="18" rowHeight="6em">
                   <md-grid-tile  [colspan]="7" [rowspan]="1">
                           <ul class="md-list-item-inner center-text">
@@ -9,7 +9,7 @@
                               <span class="small-gray-text">You've Selected</span>
                             </li>
                             <li>
-                              <span class="large-black-text">{{selectedTeam}}</span>
+                              <span class="large-black-text">{{selectedFullName}}</span>
                             </li>
                             <li>
                               <span  class="large-black-text">{{twager.selectedTeam}}</span>
@@ -39,7 +39,43 @@
                   </md-grid-tile>
               </md-grid-list>
           </md-card>
-          <md-card class="md-card-padd">
+          <md-card *ngIf="uoValue != null" class="md-card-padd">
+              <md-grid-list cols="18" rowHeight="6em">
+                  <md-grid-tile  [colspan]="7" [rowspan]="1">
+                          <ul class="md-list-item-inner center-text">
+                            <li>
+                              <span class="small-gray-text">You've Selected</span>
+                            </li>
+                            <li>
+                              <span class="large-black-text">{{uoValue}}</span>
+                            </li>
+                          </ul>
+                  </md-grid-tile>
+                  <md-grid-tile  [colspan]="1" [rowspan]="1">
+                      <md-divider class="vertical-divider"></md-divider>
+                  </md-grid-tile>
+                  <md-grid-tile  [colspan]="10" [rowspan]="1">
+                          <ul class="md-list-item-inner left-text">
+                            <li>
+                              <span class="x-small-gray-text">Spread</span>
+                              <span class="small-black-text">{{twager.game.pointSpread}}</span>
+                            </li>
+                            <li>
+                              <span class="small-black-text"> {{twager.game.homeTeam}}</span>
+                              <span class="x-small-gray-text">vs</span>
+                              <span class="small-black-text"> {{twager.game.awayTeam}}</span>
+                            </li>
+                            <li>
+                              <span class="x-small-gray-text">{{twager.game.matchDate}} @{{twager.game.matchTime}}</span>
+                            </li>
+                            <li>
+                                <span class="x-small-gray-text">{{twager.game.sportName}}</span>
+                              </li>
+                          </ul>
+                  </md-grid-tile>
+              </md-grid-list>
+          </md-card>
+          <md-card *ngIf="selectedFrnd != null" class="md-card-padd">
               <md-grid-list cols="18" rowHeight="8em">
                   <md-grid-tile  [colspan]="18" [rowspan]="1">
                       <ul class="md-list-item-outer center-text">
@@ -50,7 +86,7 @@
                             <span class="large-black-text">Vs</span>
                           </li>
                           <li>
-                            <span  class="large-black-text">Sean Carney</span>
+                            <span  class="large-black-text">{{selectedFrnd}}</span>
                           </li>
                         </ul>
                   </md-grid-tile>

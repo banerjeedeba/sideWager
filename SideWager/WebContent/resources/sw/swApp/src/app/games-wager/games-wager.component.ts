@@ -60,7 +60,7 @@ export class GamesWagerComponent implements OnInit, OnDestroy {
   makeWager(game: Game){
     this.router.navigate(['home','mkwagerstep1']);
     //this.makeWagerService.setGame(game);
-    this.wagerService.createTempWager(game,null,null);
+    this.wagerService.createTempWager(game,null,null,null);
     //this.wagerService.createLiveWager(game, game.homeTeamShortName, 500);
     //this.wagerService.createOpenWager(game, game.homeTeamShortName, 500, 'Debanjan Banerjee', '3yCzgU8VjFVX87s0EchIGZhFNpi1')
   }
@@ -92,8 +92,8 @@ public sportsLists=[{
   "homeTeamShortName":"TOR",
   "awayTeamShortName":"CHI",
   "pointSpread":"TOR-6.5",
-  "underLine":"u 102.5",
-  "matchDate":"11/25",
+  "underLine":"102.5",
+  "matchDate":"Oct 15, 2017",
   "matchTime":"8:00PM",
 }]},
 {"shortName":"PQR",
@@ -103,8 +103,8 @@ public sportsLists=[{
   "homeTeamShortName":"CLE",
   "awayTeamShortName":"MIN",
   "pointSpread":"CLE-4.5",
-  "underLine":"u 105.5",
-  "matchDate":"11/25",
+  "underLine":"105.5",
+  "matchDate":"Oct 15, 2017",
   "matchTime":" 8:00PM",
 }]},
 {"shortName":"XYZ",
@@ -114,8 +114,8 @@ public sportsLists=[{
   "homeTeamShortName":"SAC",
   "awayTeamShortName":"LAL",
   "pointSpread":"TOR-6.5",
-  "underLine":"u 101",
-  "matchDate":"9/15",
+  "underLine":"101",
+  "matchDate":"Oct 15, 2017",
   "matchTime":"10:30PM",
 }]
 }

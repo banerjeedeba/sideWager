@@ -10,34 +10,58 @@
             <li>
                 <span class="youhave-selected-h1">You've selected</span>
              </li>
+            <div *ngIf="selectedTeam != null">
+              <li>
+                <span class="youhave-selected-h2">{{selectedTeam}}</span>
+              </li>
+              <li>
+                <span class="youhave-selected-h3">{{selectedShortName}}</span>
+              </li>
+              <li>
+                <span class="youhave-selected-h5">Game Info:</span>
+              </li>
+              <li>
+                <span class="youhave-selected-h5">vs {{opTeam}}</span>
+              </li>
+            </div>
+            <div *ngIf="uoValue != null">
+              <li>
+                <span class="youhave-selected-h2">{{uoValue}}</span>
+              </li>
+              <li>
+                <span class="youhave-selected-h5">Game Info:</span>
+              </li>
+              <li>
+                <span class="youhave-selected-h5">{{twager.game.homeTeam}} vs {{twager.game.awayTeam}}</span>
+              </li>
+            </div>
             <li>
-              <span class="youhave-selected-h2">Los Angeles</span>
+              <span class="youhave-selected-h5">{{twager.game.matchDate}} @ {{twager.game.matchTime}}</span>
             </li>
             <li>
-              <span class="youhave-selected-h3">LAL</span>
-            </li>
-            <li>
-              <span class="youhave-selected-h5">Game Info:</span>
-            </li>
-            <li>
-              <span class="youhave-selected-h5">vs Sacramento</span>
-            </li>
-            <li>
-              <span class="youhave-selected-h5">Oct. 13th, 2017 @ 10:30PM</span>
-            </li>
-            <li>
-              <span class="youhave-selected-h4">LAL -2</span>
+              <span class="youhave-selected-h4">{{twager.game.pointSpread}}</span>
             </li>
             <li>
               <span class="youhave-selected-h5">Wager Info:</span>
             </li>
-            <li>
-              <span class="youhave-selected-h5">Live Wager</span>
-            </li>
-            <li>
-              <span class="youhave-selected-h4">Up to</span>
-              <span class="youhave-selected-amt">$500.00{{gameShortName}}</span>
-            </li>
+            <div *ngIf="selectedFrnd==null">
+              <li>
+                <span class="youhave-selected-h5">Live Wager</span>
+              </li>
+              <li>
+                <span class="youhave-selected-h4">Up to</span>
+                <span class="youhave-selected-amt">{{twager.amount}} sc</span>
+              </li>
+            </div>
+            <div *ngIf="selectedFrnd!=null">
+              <li>
+                <span class="youhave-selected-h5">Friendly Wager - {{selectedFrnd}}</span>
+              </li>
+              <li>
+                  <span class="youhave-selected-amt">{{twager.amount}} sc</span>
+                </li>
+            </div>
+            
             <li>
               <span class="youhave-selected-reminder">
                 REMINDER: Pay day is on Wednesdays 

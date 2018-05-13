@@ -87,8 +87,8 @@
             <span class="over-under">Over/Under</span>
         </li>
         <li>
-            <button md-raised-button class="btn-pick" (click)="gotoStep2(twager.game.homeTeamShortName)">u {{twager.game.underLine}}</button>
-            <button md-raised-button class="btn-pick" (click)="gotoStep2(twager.game.awayTeamShortName)">a {{twager.game.underLine}}</button>
+            <button md-raised-button class="btn-pick" (click)="gotouoStep2('u',twager.game)">u {{twager.game.underLine}}</button>
+            <button md-raised-button class="btn-pick" (click)="gotouoStep2('o',twager.game)">o {{twager.game.underLine}}</button>
         </li>
       </ul>
     </md-card>

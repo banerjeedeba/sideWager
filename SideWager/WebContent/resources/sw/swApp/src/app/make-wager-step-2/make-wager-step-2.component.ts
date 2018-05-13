@@ -14,6 +14,7 @@ export class MakeWagerStep2Component implements OnInit {
   public tempWager:FirebaseObjectObservable<LiveWager>;
   public twager:LiveWager;
   public selectedTeam;
+  public uoValue;
   public opTeam;
   constructor(private router:Router,private wagerService:WagerService ) { }
 
@@ -30,6 +31,10 @@ export class MakeWagerStep2Component implements OnInit {
     if(this.twager.game.homeTeamShortName==this.twager.selectedTeam){
       this.selectedTeam = this.twager.game.homeTeam;
       this.opTeam = this.twager.game.awayTeam;
+    }
+
+    if(this.twager.uoValue !=null){
+      this.uoValue = this.twager.uoValue;
     }
   }
 gotoTabs()

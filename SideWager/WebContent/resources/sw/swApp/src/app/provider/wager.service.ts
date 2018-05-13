@@ -17,12 +17,15 @@ export class WagerService{
     constructor(public auth: AuthService,
         private db: AngularFireDatabase) { }
 
-    createLiveWager(game: Game, selectedTeam: string, amount: number): void{
+    createLiveWager(game: Game, selectedTeam: string, uovalue:string, amount: number): void{
         let userKey =  this.auth.user.uid;
         let liveWagerObject:LiveWager = new LiveWager();
         liveWagerObject.userKey = userKey;
         liveWagerObject.userName = this.auth.user.displayName;
-        liveWagerObject.selectedTeam = selectedTeam;
+        if(selectedTeam != null)
+            liveWagerObject.selectedTeam = selectedTeam;
+        if(uovalue != null)
+            liveWagerObject.uoValue = uovalue;
         liveWagerObject.game = game;
         liveWagerObject.amount = amount;
         const liveWagerUserPath =  `${this.liveWagerPath}/${userKey}`;
@@ -31,13 +34,15 @@ export class WagerService{
         return;
     }
 
-    createTempWager(game: Game, selectedTeam: string, amount: number): void{
+    createTempWager(game: Game, selectedTeam: string, uovalue:string, amount: number): void{
         let userKey =  this.auth.user.uid;
         let tempWagerObject:LiveWager = new LiveWager();
         tempWagerObject.userKey = userKey;
         tempWagerObject.userName = this.auth.user.displayName;
         if(selectedTeam != null)
             tempWagerObject.selectedTeam = selectedTeam;
+        if(uovalue != null)
+            tempWagerObject.uoValue = uovalue;
         tempWagerObject.game = game;
         if(amount != null)
             tempWagerObject.amount = amount;
