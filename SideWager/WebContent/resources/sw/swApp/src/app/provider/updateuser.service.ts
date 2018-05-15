@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule, AngularFireDatabase, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireDatabaseModule, AngularFireDatabase, FirebaseObjectObservable, FirebaseListObservable, FirebaseListFactory } from 'angularfire2/database';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import {User} from '../entities/user';
 import {AuthService} from '../provider/auth.service';
@@ -46,6 +46,18 @@ export class UpdateUser{
     return this.items
     }
 
+    getSearchFrndList(start,end): FirebaseListObservable<User[]> {
+        const friendFullPath = `${this.friendPath}/${this.auth.user.uid}`;
+        this.items = this.db.list(friendFullPath, {
+            query: {
+                orderByChild: 'email',
+                startAt: start,
+                endAt: end
+            }
+        });
+        return this.items
+        }
+
     getPendingList(){
         const pendingFullPath = `${this.pendingPath}/${this.auth.user.uid}`;
         this.pendingList = this.db.list(pendingFullPath);
@@ -55,6 +67,15 @@ export class UpdateUser{
     getFriendList(){
         const friendFullPath = `${this.friendPath}/${this.auth.user.uid}`;
         this.friendList = this.db.list(friendFullPath);
+        return this.friendList;
+    }
+
+    getFirstFewFriendList(){
+        const friendFullPath = `${this.friendPath}/${this.auth.user.uid}`;
+        this.friendList = this.db.list(friendFullPath, {
+            query: {
+                limitToFirst: 6
+            }});
         return this.friendList;
     }
 

@@ -40,60 +40,48 @@
             <div>
               <md-input-container class="full-width" color="warn">
                <span mdPrefix>To &nbsp;</span>
-               <input #frndsearchBox mdInput type="text" placeholder="Type to search">
+               <input #frndsearchBox mdInput type="text" placeholder="Type to search" (keyup)="frndSearch($event)">
               </md-input-container>
             </div>
-            <div>
+            <div *ngIf="results?.length > 0">
+              <md-list>
+                <h3 md-subheader>Search Result</h3>
+                <div *ngFor="let user of results">
+                  <md-list-item >
+                    <img *ngIf="user.photoUrl == null" md-list-avatar src="/resources/sw/swApp/distt/assets/img/user.png" alt="...">
+                    <img *ngIf="user.photoUrl != null" md-list-avatar src="{{user.photoUrl}}" alt="...">
+                    <h3 md-line>{{user.displayName}}</h3>
+                    <p md-line >{{user.email}}<p>
+                        <span class="pull-right"><button md-raised-button class="btn-add" (click)="gotoStep4(user.$key,user.displayName)">Select</button></span>
+                  </md-list-item>
+                </div>
+              </md-list>
+            </div>
+            <div *ngIf="results?.length == 0">
+              <md-list>
+                <h3 md-subheader>No results found!!</h3>
+              </md-list>
+            </div>
+            <!--<div>
                 <md-card class="md-card-padd">
                     <h3 md-subheader><span class="sub-head">Recent</span></h3>
                           <mat-chip-list class="horizontal-avator">
-                              <div>
-                                  <img md-card-avatar src="/src/assets/img/user.png" alt="...">
-                                  <md-card-subtitle>Adam Gilcrist</md-card-subtitle>
-                                </div>
-                                <div>
-                                  <img md-card-avatar src="/src/assets/img/user.png" alt="...">
-                                  <md-card-subtitle>Shane Warne</md-card-subtitle>
-                                </div>
-                                <div>
-                                  <img md-card-avatar src="/src/assets/img/user.png" alt="...">
-                                  <md-card-subtitle>Ricky Pointing</md-card-subtitle>
-                                </div>
-                                <div>
-                                  <img md-card-avatar src="/src/assets/img/user.png" alt="...">
-                                   <md-card-subtitle>Andrew Symonds</md-card-subtitle>
-                                </div>
-                                <div>
-                                  <img md-card-avatar src="/src/assets/img/user.png" alt="...">
-                                  <md-card-subtitle>Brate Lee</md-card-subtitle>
+                              <div *ngFor="let friend of friendList">
+                                  <img md-card-avatar src="{{friend.photoUrl}}" alt="...">
+                                  <md-card-subtitle>{{friend.displayName}}</md-card-subtitle>
                                 </div>
                           </mat-chip-list>
                 </md-card>
-            </div>
+            </div>-->
             <div>
-                <md-card class="md-card-padd">
+                <md-card class="md-card-padd" >
                     <h3 md-subheader><span class="sub-head">Friends</span><a class="new-frnd">New Friend></a></h3>
                           <mat-chip-list class="horizontal-avator">
-                              <div>
-                                  <img md-card-avatar src="/src/assets/img/user.png" alt="...">
-                                  <md-card-subtitle>Adam Gilcrist</md-card-subtitle>
+                              <div *ngFor="let friend of friendList" (click)="gotoStep4(friend.$key,friend.displayName)">
+                                  <img md-card-avatar src="{{friend.photoUrl}}" alt="...">
+                                  <md-card-subtitle>{{friend.displayName}}</md-card-subtitle>
                                 </div>
-                                <div>
-                                  <img md-card-avatar src="/src/assets/img/user.png" alt="...">
-                                  <md-card-subtitle>Shane Warne</md-card-subtitle>
-                                </div>
-                                <div>
-                                  <img md-card-avatar src="/src/assets/img/user.png" alt="...">
-                                  <md-card-subtitle>Ricky Pointing</md-card-subtitle>
-                                </div>
-                                <div>
-                                  <img md-card-avatar src="/src/assets/img/user.png" alt="...">
-                                   <md-card-subtitle>Andrew Symonds</md-card-subtitle>
-                                </div>
-                                <div>
-                                  <img md-card-avatar src="/src/assets/img/user.png" alt="...">
-                                  <md-card-subtitle>Brate Lee</md-card-subtitle>
-                                </div>
+                                
                           </mat-chip-list>
                 </md-card>
             </div>

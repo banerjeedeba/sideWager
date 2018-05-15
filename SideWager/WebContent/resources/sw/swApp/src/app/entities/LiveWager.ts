@@ -7,4 +7,6 @@ export class LiveWager{
     amount: number;
     game: Game;
     shortName:string;
+    opKey: string;
+    opName: string;
 }

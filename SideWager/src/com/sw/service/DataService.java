@@ -154,7 +154,7 @@ public class DataService {
 			for(Match match : MATCHES){
 				int sportsId = match.getSport();
 				//temp restriction on these games only
-				if(sportsId == 0 || sportsId == 1 || sportsId == 4 || sportsId == 5 || sportsId==19 || sportsId==9){
+				if(sportsId == 0 || sportsId == 1 || sportsId == 4 || sportsId == 5 || sportsId==19){
 					Sports sport = null;
 					if(SPORTSMAP.keySet().contains(SPORTS.get(sportsId))){
 						sport = SPORTSMAP.get(SPORTS.get(sportsId));
@@ -184,12 +184,16 @@ public class DataService {
 					}
 					game.setHomeTeamShortName(homeTeamShortName);
 					game.setId(match.getId());
-					game.setMatchDate(StringUtils.getDate(match.getMatchTime(), "yyyy-MM-dd'T'HH:mm:ss", "yyyy/MM/dd"));
+					game.setMatchDate(StringUtils.getDate(match.getMatchTime(), "yyyy-MM-dd'T'HH:mm:ss", "MMM dd, yyyy"));
 					game.setMatchTime(StringUtils.getDate(match.getMatchTime(), "yyyy-MM-dd'T'HH:mm:ss", "HH:mma"));
 					if(match.getOdds().size()>=1){
 						Odds odd = match.getOdds().get(0);
 						game.setPointSpread(game.getHomeTeamShortName()+odd.getPointSpreadHome());
-						game.setUnderLine("u "+odd.getTotalNumber());
+						String underLine = odd.getPointSpreadAway();
+						if(!StringUtils.isEmpty(underLine) && underLine.contains("-")){
+							underLine=underLine.replace("-", "");
+						}
+						game.setUnderLine(underLine);
 					}
 					game.setSport(match.getSport());
 					game.setSportName(SPORTS.get(match.getSport()));

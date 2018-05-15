@@ -41,6 +41,11 @@ export class MakeWagerStep5LiveComponent implements OnInit {
     if(this.twager.uoValue!=null){
       this.uoValue = this.twager.uoValue;
     }
+
+    if(this.twager.opName != null){
+      this.selectedFrnd = this.twager.opName;
+    }
+    
   }
 
   gotoTabs()
@@ -49,7 +54,12 @@ export class MakeWagerStep5LiveComponent implements OnInit {
   }
   gotoStep5(){
     this.router.navigate(['home','mkwagerstep5live']);
-    this.wagerService.createLiveWager(this.twager.game, this.twager.selectedTeam, this.uoValue, this.twager.amount);
+    
+    if(this.twager.opName != null){
+      this.wagerService.createOpenWager(this.twager.game, this.twager.selectedTeam,this.uoValue,this.twager.amount,this.twager.opName,this.twager.opKey)
+    } else {
+      this.wagerService.createLiveWager(this.twager.game, this.twager.selectedTeam, this.uoValue, this.twager.amount);
+    }
     this.wagerService.removeTempWager();
   }
 }

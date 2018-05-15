@@ -34,7 +34,11 @@ export class WagerService{
         return;
     }
 
-    createTempWager(game: Game, selectedTeam: string, uovalue:string, amount: number): void{
+    createTempWager(game: Game, selectedTeam: string, uovalue:string, amount: number) :void{
+        this.createTempOpenWager(game,selectedTeam,uovalue,amount,null,null);
+    }
+
+    createTempOpenWager(game: Game, selectedTeam: string, uovalue:string, amount: number, opKey: string, opName: string): void{
         let userKey =  this.auth.user.uid;
         let tempWagerObject:LiveWager = new LiveWager();
         tempWagerObject.userKey = userKey;
@@ -46,6 +50,12 @@ export class WagerService{
         tempWagerObject.game = game;
         if(amount != null)
             tempWagerObject.amount = amount;
+        if(opKey != null){
+            tempWagerObject.opKey = opKey;
+        }
+        if(opName != null){
+            tempWagerObject.opName = opName;
+        }
         console.log(userKey);
         const tempWagerUserPath =  `${this.tempWagerPath}/${userKey}`;
         //const tempWagerUserList = this.db.list(tempWagerUserPath);
@@ -54,25 +64,36 @@ export class WagerService{
         return;
     }
 
-    createOpenWager(game: Game, selectedTeam: string, amount: number, opUserName: string, opUserKey: string ): void{
+    createOpenWager(game: Game, selectedTeam: string, uoValue: string, amount: number, opUserName: string, opUserKey: string ): void{
         let userKey =  this.auth.user.uid;
         let challengerOpenWager:OpenWager = new OpenWager();
         challengerOpenWager.userKey = userKey;
         challengerOpenWager.userName = this.auth.user.displayName;
-        challengerOpenWager.selectedTeam = selectedTeam;
         challengerOpenWager.game = game;
         challengerOpenWager.amount = amount;
+        if(uoValue!= null){
+            challengerOpenWager.uoValue = uoValue;
+        } 
+        if(selectedTeam!= null){
+            challengerOpenWager.selectedTeam = selectedTeam;
+        }
         challengerOpenWager.status = "Challenged "+opUserName;
         challengerOpenWager.opUserKey = opUserKey;
 
         let opponentOpenWager:OpenWager = new OpenWager();
         opponentOpenWager.userKey = userKey;
         opponentOpenWager.userName = this.auth.user.displayName;
-        opponentOpenWager.selectedTeam = selectedTeam;
+        if(uoValue!= null){
+            opponentOpenWager.uoValue = uoValue;
+        } 
+        if(selectedTeam!= null){
+            opponentOpenWager.selectedTeam = selectedTeam;
+        }
         opponentOpenWager.game = game;
         opponentOpenWager.amount = amount;
         opponentOpenWager.status = "Pending";
         opponentOpenWager.opUserKey = opUserKey;
+
 
         const challengerOpenWagerPath = `${this.openWagerPath}/${userKey}`;
         const challengerOpenWagerList = this.db.list(challengerOpenWagerPath);
