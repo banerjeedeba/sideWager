@@ -1,0 +1,13 @@
+.divider-btn{
+    border-top: 1px solid #ccc;
+}
+.divider-btn span{
+    text-align: center;
+    width: 50%;
+}
+.divider-btn span:first-child{
+    border-right: 1px solid #ccc;
+}
+.text-center{
+    text-align: center;
+}

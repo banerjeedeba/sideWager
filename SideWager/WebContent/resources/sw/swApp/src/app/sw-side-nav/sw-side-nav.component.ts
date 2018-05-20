@@ -23,4 +23,7 @@ private wager;
    getFriends(){
     this.router.navigate(['home','friends']);
   }
+  getWeeklyHistory(){
+    this.router.navigate(['home','weeklyhistory']);
+  }
 }

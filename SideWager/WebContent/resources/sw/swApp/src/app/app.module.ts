@@ -10,7 +10,7 @@ import { AngularFireDatabaseModule, AngularFireDatabase, FirebaseListObservable 
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import {RouterModule,Routes} from '@angular/router';
-
+import { MdDialogModule, MdDialogRef, MD_DIALOG_DATA} from '@angular/material'
 import { AppComponent } from './app.component';
 import { SwSideNavComponent } from './sw-side-nav/sw-side-nav.component';
 import { SwSideNavCardComponent } from './sw-side-nav-card/sw-side-nav-card.component';
@@ -37,6 +37,8 @@ import { MakeWagerStep4Component } from './make-wager-step-4/make-wager-step-4.c
 import { MakeWagerStep5LiveComponent } from './make-wager-step-5-live/make-wager-step-5-live.component';
 import { WagerRequestOuConfirm2Component } from './wager-request-ou-confirm2/wager-request-ou-confirm2.component';
 import { MakeWagerStep3Component } from './make-wager-step-3/make-wager-step-3.component';
+import { WagerRequestConfirmModalComponent } from './wager-request-confirm-modal/wager-request-confirm-modal.component';
+import { WeeklyGameListComponent } from './weekly-game-list/weekly-game-list.component';
 
 export const routes:Routes=[
   {path:'home',component:SwSideNavComponent,
@@ -49,7 +51,8 @@ export const routes:Routes=[
     {path:'wagerrequestouconfirm2',component:WagerRequestOuConfirm2Component},
     {path:'mkwagerstep5live',component:MakeWagerStep5LiveComponent},
     {path:'swtab',component:SwTabListComponent},
-    {path:'friends',component:SwFriendsTabComponent}
+    {path:'friends',component:SwFriendsTabComponent},
+    {path:'weeklyhistory',component:WeeklyGameListComponent}
   ]
   },
   {path:'',component:LoginScreenComponent}
@@ -79,12 +82,15 @@ export const routes:Routes=[
     MakeWagerStep4Component,
     MakeWagerStep5LiveComponent,
     WagerRequestOuConfirm2Component,
-    MakeWagerStep3Component
+    MakeWagerStep3Component,
+    WagerRequestConfirmModalComponent,
+    WeeklyGameListComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    MdDialogModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
@@ -92,6 +98,7 @@ export const routes:Routes=[
     BrowserAnimationsModule,
     RouterModule.forRoot(routes)
   ],
+  entryComponents:[WagerRequestConfirmModalComponent],
   providers: [AuthService],
   bootstrap: [AppComponent]
 })

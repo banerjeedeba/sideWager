@@ -3,6 +3,8 @@ import {Router} from '@angular/router';
 import { LiveWager } from '../entities/LiveWager';
 import { FirebaseObjectObservable } from 'angularfire2/database';
 import { WagerService } from '../provider/wager.service';
+import { MdDialog, MdDialogRef, MD_DIALOG_DATA} from '@angular/material';
+import { WagerRequestConfirmModalComponent } from '../wager-request-confirm-modal/wager-request-confirm-modal.component';
 
 @Component({
   selector: 'app-make-wager-step-5-live',
@@ -20,7 +22,7 @@ export class MakeWagerStep5LiveComponent implements OnInit {
   public opTeam;
   public amount;
   public selectedFrnd;
-  constructor(private router:Router,private wagerService:WagerService) { }
+  constructor(private router:Router,private wagerService:WagerService, public dialog: MdDialog) { }
   ngOnInit() {
     this.tempWager = this.wagerService.getTempWagers();
     this.tempWager.subscribe(snapshot=>{
@@ -61,5 +63,20 @@ export class MakeWagerStep5LiveComponent implements OnInit {
       this.wagerService.createLiveWager(this.twager.game, this.twager.selectedTeam, this.uoValue, this.twager.amount);
     }
     this.wagerService.removeTempWager();
+  }
+
+  isConfirm: boolean;
+
+  openDialog(): void {
+    let dialogRef = this.dialog.open(WagerRequestConfirmModalComponent, {
+      width: '250px',
+      data: { isConfirm: this.isConfirm }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.isConfirm = result;
+      console.log('The dialog was closed : '+this.isConfirm);
+      
+    });
   }
 }

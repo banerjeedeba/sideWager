@@ -16,8 +16,8 @@ import { Game } from "../entities/Game";
 export class GamesWagerComponent implements OnInit, OnDestroy {
 
   //Local : 
-  public sportsList:Array<any> = new Array();
-  //public sportsList:Array<Sports> = new Array();
+ // public sportsList:Array<any> = new Array();
+  public sportsList:Array<Sports> = new Array();
   public isLoading=true;
   constructor(public gls:GamelistService,public authService: AuthService,private router:Router
     , private user : UpdateUser, private wagerService:WagerService) {
@@ -29,12 +29,12 @@ export class GamesWagerComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     //Local : 
-    this.sportsList = this.sportsLists;
+    //this.sportsList = this.sportsLists;
     this.gameListSubscribe = this.gls.getListData(this.user.user.ckey)
     .subscribe(data => {
       //Local : 
-      this.sportsList = this.sportsLists;
-      //this.sportsList = data;
+      //this.sportsList = this.sportsLists;
+      this.sportsList = data;
       this.isLoading=false;
       
     },
