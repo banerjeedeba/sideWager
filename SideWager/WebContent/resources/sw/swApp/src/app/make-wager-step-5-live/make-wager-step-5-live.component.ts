@@ -55,8 +55,8 @@ export class MakeWagerStep5LiveComponent implements OnInit {
   this.router.navigate(['home','mkwagerstep4']);
   }
   gotoStep5(){
-    this.router.navigate(['home','mkwagerstep5live']);
     
+    this.router.navigate(['home','swtab']);
     if(this.twager.opName != null){
       this.wagerService.createOpenWager(this.twager.game, this.twager.selectedTeam,this.uoValue,this.twager.amount,this.twager.opName,this.twager.opKey)
     } else {
@@ -76,7 +76,9 @@ export class MakeWagerStep5LiveComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.isConfirm = result;
       console.log('The dialog was closed : '+this.isConfirm);
-      
+      if(this.isConfirm){
+        this.gotoStep5();
+      }
     });
   }
 }
