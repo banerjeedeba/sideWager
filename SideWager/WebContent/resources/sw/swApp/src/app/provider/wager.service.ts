@@ -152,11 +152,26 @@ export class WagerService{
         this.db.object(challengerWagerUserPath).set(challengerOpenWager);
     }
 
+    rejectOpenWager(wager:OpenWager , key:string, challengerOpenWager:OpenWager, challengerKey:string) : void{
+        wager.status="Rejected "+wager.userName+" challenge";
+        const opWagerUserPath =  `${this.openWagerPath}/${wager.opUserKey}/${key}`;
+        //this.db.object(opWagerUserPath).set(wager);
+        this.db.object(opWagerUserPath).remove();
+        
+
+        let challengerStatus:string = challengerOpenWager.status;
+        challengerStatus=challengerStatus.replace("Challenged ","");
+        challengerStatus = challengerStatus+" Rejected";
+        challengerOpenWager.status = challengerStatus;
+        
+
+        const challengerWagerUserPath =  `${this.openWagerPath}/${wager.userKey}/${challengerKey}`;
+        this.db.object(challengerWagerUserPath).set(challengerOpenWager);
+    }
+
     getChallengerOpenWagers(challengerKey:string, date:string): FirebaseListObservable<OpenWager[]>{
-        console.log("date: "+date);
         const challengerWagerPath = `${this.openWagerPath}/${challengerKey}`;
-        let challengerWagerObjects = this.db.list(challengerWagerPath)
-        console.log("getChallengerOpenWagers: "+challengerWagerObjects.$ref.toString());
+        let challengerWagerObjects = this.db.list(challengerWagerPath);
         return challengerWagerObjects;
     }
 

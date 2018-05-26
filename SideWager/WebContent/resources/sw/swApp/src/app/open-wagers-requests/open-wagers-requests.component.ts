@@ -44,6 +44,20 @@ accept(wager:OpenWager , key:string){
   })
 }
 
+reject(wager:OpenWager , key:string){
+  this.challengerOpenWagerSubscribe = this.wagerService.getChallengerOpenWagers(wager.userKey,wager.game.matchDate).subscribe(openWagersList=>{
+    openWagersList.forEach(challengerOpenWager=>{
+      if(wager.selectedTeam==challengerOpenWager.selectedTeam
+        && wager.uoValue == challengerOpenWager.uoValue
+        && wager.game.matchDate == challengerOpenWager.game.matchDate){
+          let challengerwager:any=challengerOpenWager;
+          this.wagerService.rejectOpenWager(wager,key,challengerOpenWager,challengerwager.$key);
+          this.challengerOpenWagerSubscribe.unsubscribe();
+      }
+    })  
+  })
+}
+
 ngOnDestroy(){
   this.openWagerSubscribe.unsubscribe();
 }

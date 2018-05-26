@@ -14,7 +14,7 @@
       <span *ngIf="openWager.selectedTeam" class="selection">{{openWager.userName}} Selected: {{openWager.selectedTeam}}</span>
       <span *ngIf="openWager.uoValue" class="selection">{{openWager.userName}} Selected: {{openWager.uoValue}}</span>
       <div class="pull-right">
-        <i class="material-icons">clear</i>
+        <i class="material-icons" (click)="reject(openWager,openWager.$key)">clear</i>
       </div>
     </md-card-subtitle>
   </div>
