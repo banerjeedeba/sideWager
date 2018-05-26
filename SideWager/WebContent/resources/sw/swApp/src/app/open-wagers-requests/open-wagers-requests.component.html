@@ -1,4 +1,4 @@
-<div *ngIf="openWagers?.length > 0">
+<div *ngIf="openWagersList?.length > 0">
 <div class="header-container">
   <span class="side-credit">SC- Side Credit</span>
   <div class="pull-right">
@@ -7,11 +7,12 @@
   </div>
 </div>
   <div class="scrolable-list">
-<div class="card-container" *ngFor="let openWager of openWagers">
+<div class="card-container" *ngFor="let openWager of openWagersList">
 <md-card class="md-card-padd">
   <div class="bordered-bottom">
     <md-card-subtitle class="md-card-subtitle">
-      <span class="selection">{{openWager.userName}} Selected: {{openWager.selectedTeam}}</span>
+      <span *ngIf="openWager.selectedTeam" class="selection">{{openWager.userName}} Selected: {{openWager.selectedTeam}}</span>
+      <span *ngIf="openWager.uoValue" class="selection">{{openWager.userName}} Selected: {{openWager.uoValue}}</span>
       <div class="pull-right">
         <i class="material-icons">clear</i>
       </div>
@@ -21,10 +22,10 @@
   <md-grid-tile [colspan]="6" [rowspan]="1">
     <ul class="md-list-item-inner">
       <li>
-        <span class="game-team-fullname">{{openWager.game.homeTeam}}</span>
+        <span class="game-team-fullname {{openWager.selectedTeam==openWager.game.homeTeamShortName?'color-green':''}}">{{openWager.game.homeTeam}}</span>
       </li>
       <li>
-        <span class="game-team-fullname color-green">{{openWager.game.awayTeam}}</span>
+        <span class="game-team-fullname {{openWager.selectedTeam==openWager.game.awayTeamShortName?'color-green':''}}">{{openWager.game.awayTeam}}</span>
       </li>
     </ul>
   </md-grid-tile>
@@ -60,7 +61,7 @@
           <span>sc:{{openWager.amount}}</span> 
         </li>
         <li>
-          <button md-raised-button class="btn-accept" (click)="accept()"> ACCEPT</button>
+          <button md-raised-button class="btn-accept" (click)="accept(openWager,openWager.$key)"> ACCEPT</button>
         </li>
     </ul>
   </md-grid-tile>
@@ -69,7 +70,7 @@
 </div>
   </div>
 </div>
-<div *ngIf="openWagers?.length == 0">
+<div *ngIf="openWagersList?.length == 0">
   <md-list>
       <h3 md-subheader>No Open Wager!!</h3>
   </md-list>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OpenWager } from "../entities/OpenWager";
 import {WagerService} from '../provider/wager.service';
+import { FirebaseListObservable } from 'angularfire2/database';
 @Component({
   selector: 'app-open-wagers-requests',
   templateUrl: './open-wagers-requests.component.html',
@@ -10,24 +11,42 @@ import {WagerService} from '../provider/wager.service';
 export class OpenWagersRequestsComponent implements OnInit {
 
   public openWagers :Array<OpenWager> = new Array();
+  public openWagersList :OpenWager[];
   openWagerSubscribe;
+  challengerOpenWagerSubscribe;
+
   public openWagerCount: number = 0;
 
   constructor(private wagerService:WagerService) { }
 
   ngOnInit() {
-    this.openWagerSubscribe = this.wagerService.getPendingOpenWagers().subscribe(openWagersList=>{
-      for(let openWager of openWagersList){
+    this.openWagerSubscribe = this.wagerService.getPendingOpenWagers().subscribe(openWagersListSnapshot=>{
+      this.openWagersList = openWagersListSnapshot;
+      
+      /*for(let openWager of openWagersListSnapshot){
         this.openWagers.push(openWager);
         this.openWagerCount++;
-      }
+      }*/
       
     })
   }
-accept(){
-
+accept(wager:OpenWager , key:string){
+  this.challengerOpenWagerSubscribe = this.wagerService.getChallengerOpenWagers(wager.userKey,wager.game.matchDate).subscribe(openWagersList=>{
+    openWagersList.forEach(challengerOpenWager=>{
+      if(wager.selectedTeam==challengerOpenWager.selectedTeam
+        && wager.uoValue == challengerOpenWager.uoValue
+        && wager.game.matchDate == challengerOpenWager.game.matchDate){
+          let challengerwager:any=challengerOpenWager;
+          this.wagerService.acceptOpenWager(wager,key,challengerOpenWager,challengerwager.$key);
+          this.challengerOpenWagerSubscribe.unsubscribe();
+      }
+    })  
+  })
 }
 
+ngOnDestroy(){
+  this.openWagerSubscribe.unsubscribe();
+}
   
 public listFrinds=[
   {
