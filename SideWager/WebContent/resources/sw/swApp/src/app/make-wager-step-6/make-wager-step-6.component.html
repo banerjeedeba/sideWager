@@ -1,0 +1,80 @@
+<div class="make-wager-parent-container">
+  <div class="make-wager-container">
+    <h2><span> How much?</span><span class="close" (click)="gotoTabs()"><i class="material-icons">clear</i></span></h2>
+          <md-card class="md-card-padd">
+              <md-grid-list cols="18" rowHeight="6em">
+                  <md-grid-tile  [colspan]="7" [rowspan]="1">
+                          <ul class="md-list-item-inner center-text">
+                            <li>
+                              <span class="small-gray-text">You've Selected</span>
+                            </li>
+                            <li>
+                              <span class="large-black-text">Los Angeles</span>
+                            </li>
+                            <li>
+                              <span  class="large-black-text">LAL</span>
+                            </li>
+                          </ul>
+                  </md-grid-tile>
+                  <md-grid-tile  [colspan]="1" [rowspan]="1">
+                      <md-divider class="vertical-divider"></md-divider>
+                  </md-grid-tile>
+                  <md-grid-tile  [colspan]="10" [rowspan]="1">
+                          <ul class="md-list-item-inner left-text">
+                            <li>
+                              <span class="x-small-gray-text">Spread</span>
+                              <span class="small-black-text">LAL-2</span>
+                            </li>
+                            <li>
+                              <span class="x-small-gray-text">vs</span>
+                              <span class="small-black-text"> Sacramento</span>
+                            </li>
+                            <li>
+                              <span class="x-small-gray-text">Oct. 13th, 2017 @10:30 PM</span>
+                            </li>
+                            <li>
+                                <span class="x-small-gray-text">Pro Basketball</span>
+                              </li>
+                          </ul>
+                  </md-grid-tile>
+              </md-grid-list>
+          </md-card>
+          <md-card class="md-card-padd">
+              <md-grid-list cols="18" rowHeight="8em">
+                  <md-grid-tile  [colspan]="18" [rowspan]="1">
+                      <ul class="md-list-item-outer center-text">
+                          <li>
+                            <span class="large-black-text">Friendly Wager</span>
+                          </li>
+                          <li>
+                            <span class="large-black-text">Vs</span>
+                          </li>
+                          <li>
+                            <span  class="large-black-text">Sean Carney</span>
+                          </li>
+                        </ul>
+                  </md-grid-tile>
+              </md-grid-list>
+          </md-card>
+          <md-card class="md-card-padd">
+              <md-grid-list cols="18" rowHeight="6em">
+                  <md-grid-tile  [colspan]="18" [rowspan]="1">
+                      <md-input-container color="white" class="sc-input">
+                          <input mdInput placeholder=""/>
+                       </md-input-container>
+                       <span class="sc-label">SC</span>
+                  </md-grid-tile>
+              </md-grid-list>
+          </md-card>
+          <div class="disclaimer-section">
+            <span> Disclaimer:  Side Credits are for bragging rights only. 
+              At no point should money ever be exchanged.</span>
+          </div>
+  </div>
+  <div class="footer-parent">
+      <div class="footer-links">
+        <a class="back-link" (click)="gotoTabs()"><i class="material-icons">keyboard_arrow_left</i><span>Back</span></a>
+        <a class="next-link" (click)="gotoStep7()"><span>Next</span><i class="material-icons">keyboard_arrow_right</i></a>
+      </div>
+    </div>
+</div>

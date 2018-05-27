@@ -39,6 +39,8 @@ import { WagerRequestOuConfirm2Component } from './wager-request-ou-confirm2/wag
 import { MakeWagerStep3Component } from './make-wager-step-3/make-wager-step-3.component';
 import { WagerRequestConfirmModalComponent } from './wager-request-confirm-modal/wager-request-confirm-modal.component';
 import { WeeklyGameListComponent } from './weekly-game-list/weekly-game-list.component';
+import { MakeWagerStep6Component } from './make-wager-step-6/make-wager-step-6.component';
+import { MakeWagerStep7Component } from './make-wager-step-7/make-wager-step-7.component';
 
 export const routes:Routes=[
   {path:'home',component:SwSideNavComponent,
@@ -50,6 +52,8 @@ export const routes:Routes=[
     {path:'mkwagerstep4',component:MakeWagerStep4Component},
     {path:'wagerrequestouconfirm2',component:WagerRequestOuConfirm2Component},
     {path:'mkwagerstep5live',component:MakeWagerStep5LiveComponent},
+    {path:'mkwagerstep6',component:MakeWagerStep6Component},
+    {path:'mkwagerstep7',component:MakeWagerStep7Component},
     {path:'swtab',component:SwTabListComponent},
     {path:'friends',component:SwFriendsTabComponent},
     {path:'weeklyhistory',component:WeeklyGameListComponent}
@@ -84,7 +88,9 @@ export const routes:Routes=[
     WagerRequestOuConfirm2Component,
     MakeWagerStep3Component,
     WagerRequestConfirmModalComponent,
-    WeeklyGameListComponent
+    WeeklyGameListComponent,
+    MakeWagerStep6Component,
+    MakeWagerStep7Component
   ],
   imports: [
     BrowserModule,

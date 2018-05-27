@@ -1,0 +1,58 @@
+<div class="make-wager-parent-container">
+  <div class="make-wager-container">
+    <h2><span> Seal the deal!</span><span class="close" (click)="gotoTabs()"><i class="material-icons">clear</i></span></h2>
+
+    <md-grid-list cols="13" rowHeight="30em">
+   
+      <md-grid-tile [colspan]="13" [rowspan]="1">
+        <md-card class="md-card-padd-selected">
+          <ul>
+            <li>
+                <span class="youhave-selected-h1">You've selected</span>
+             </li>
+            <li>
+              <span class="youhave-selected-h2">Los Angeles</span>
+            </li>
+            <li>
+              <span class="youhave-selected-h3">LAL</span>
+            </li>
+            <li>
+              <span class="youhave-selected-h5">Game Info:</span>
+            </li>
+            <li>
+              <span class="youhave-selected-h5">vs Sacramento</span>
+            </li>
+            <li>
+              <span class="youhave-selected-h5">Oct. 13th, 2017 @ 10:30PM</span>
+            </li>
+            <li>
+              <span class="youhave-selected-h4">LAL -2</span>
+            </li>
+            <li>
+              <span class="youhave-selected-h5">Wager Info:</span>
+            </li>
+            <li>
+              <span class="youhave-selected-h5">Live Wager</span>
+            </li>
+            <li>
+              <span class="youhave-selected-h4">Up to</span>
+              <span class="youhave-selected-amt">$500.00</span>
+            </li>
+            <li>
+              <span class="youhave-selected-reminder">
+                REMINDER: Pay day is on Wednesdays 
+              </span>
+            </li>
+          </ul>
+        </md-card>
+      </md-grid-tile>
+      
+    </md-grid-list>
+  </div>
+  <div class="footer-parent">
+      <div class="footer-links">
+        <a class="back-link" (click)="gotoTabs()"><i class="material-icons">keyboard_arrow_left</i><span>Back</span></a>
+        <a class="next-link" (click)="gotoStep5()"><span>Confirm</span><i class="material-icons">keyboard_arrow_right</i></a>
+      </div>
+    </div>
+</div>

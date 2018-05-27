@@ -1,0 +1,112 @@
+.make-wager-container{
+    padding: 0.5em;
+    overflow-y: auto;
+    height: calc(92vh - 4em);
+}
+.make-wager-container h2{
+    color: #969696;
+    font-weight: 200;
+    text-align: center;
+    margin-bottom: 0;
+}
+.make-wager-container .close{
+    color: #969696;
+    font-weight: 200;
+    text-align: center;
+    float: right;
+}
+.make-wager-container .close i{
+    font-size: 1.4em;
+}
+.make-wager-container ul{
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+.make-wager-container ul li{
+    list-style: none;
+    padding: 0.5em;
+    text-align: center;
+    font-size: 0.9em;
+    align-content: center;
+}
+.make-wager-container ul li i{
+   font-size: 3em;
+   color:#d02c27;
+}
+.md-card-padd{
+    padding: 0.5em !important;
+    height: 12em;
+    width: 10em;
+}
+.md-card-padd-selected{
+    padding: 0;
+    width: 100%;
+    margin:0.3em;
+}
+.card-container{
+    margin: 0.5em;   
+    padding: 0.5em;
+}
+.youhave-selected-h1{
+    font-size: 2em;
+    color:#969696;
+    font-weight: 300;
+}
+.youhave-selected-h2{
+     font-size: 1.6em;
+    color:#384951;
+    font-weight: 300;
+}
+.youhave-selected-h3{
+     font-size: 1.3em;
+    color:#384951;
+    font-weight: 400;
+}
+.youhave-selected-h4{
+     font-size: 1.3em;
+    color:#384951;
+    font-weight: 600;
+}
+.youhave-selected-h5{
+     font-size: 1.2em;
+    color:#969696;
+    font-weight: 600;
+}
+.youhave-selected-amt{
+    font-size: 2.5em;
+    color:black;
+    font-weight: 300;
+}
+.youhave-selected-reminder{
+    font-size: 0.7em;
+    color:RED;
+    font-weight: 300;
+}
+  
+.footer-links{
+    height:4em; 
+    border-top: 1px solid #ccc; 
+}
+.footer-links a{
+    text-decoration:none;
+    color: #384951;
+    padding: 0.5em;
+    font-size: 1.5em;
+}
+.footer-links .back-link{
+    display: inline-block;
+    float: left;
+}
+.footer-links .next-link{
+    float: right;
+    display: inline-block;
+}
+.footer-links a i{
+    font-size: 1.5em;
+    vertical-align: top;
+    color: #D02c27;
+}
+.footer-links a span{
+    vertical-align: middle;
+}
