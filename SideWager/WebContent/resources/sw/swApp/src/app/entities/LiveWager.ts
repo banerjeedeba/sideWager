@@ -5,8 +5,10 @@ export class LiveWager{
     userName: string;
     userKey: string;
     amount: number;
+    betamount: number;
     game: Game;
     shortName:string;
     opKey: string;
     opName: string;
+    wagerKey: string;
 }

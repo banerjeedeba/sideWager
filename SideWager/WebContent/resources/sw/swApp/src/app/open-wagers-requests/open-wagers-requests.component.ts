@@ -59,7 +59,9 @@ reject(wager:OpenWager , key:string){
 }
 
 ngOnDestroy(){
-  this.openWagerSubscribe.unsubscribe();
+  if(this.openWagerSubscribe!=undefined){
+    this.openWagerSubscribe.unsubscribe();
+  }
 }
   
 public listFrinds=[

@@ -4,15 +4,23 @@
           <md-card class="md-card-padd">
               <md-grid-list cols="18" rowHeight="6em">
                   <md-grid-tile  [colspan]="7" [rowspan]="1">
-                          <ul class="md-list-item-inner center-text">
+                          <ul *ngIf="uoValue != null" class="md-list-item-inner center-text">
                             <li>
                               <span class="small-gray-text">You've Selected</span>
                             </li>
                             <li>
-                              <span class="large-black-text">Los Angeles</span>
+                              <span class="large-black-text">{{uoValue}}</span>
+                            </li>
+                          </ul>
+                          <ul *ngIf="uoValue == null" class="md-list-item-inner center-text">
+                            <li>
+                              <span class="small-gray-text">You've Selected</span>
                             </li>
                             <li>
-                              <span  class="large-black-text">LAL</span>
+                              <span class="large-black-text">{{selectedFullName}}</span>
+                            </li>
+                            <li>
+                              <span  class="large-black-text">{{selectedTeam}}</span>
                             </li>
                           </ul>
                   </md-grid-tile>
@@ -23,14 +31,19 @@
                           <ul class="md-list-item-inner left-text">
                             <li>
                               <span class="x-small-gray-text">Spread</span>
-                              <span class="small-black-text">LAL-2</span>
+                              <span class="small-black-text">{{twager.game.pointSpread}}</span>
                             </li>
-                            <li>
+                            <li *ngIf="uoValue != null">
+                              <span class="small-black-text"> {{twager.game.homeTeam}}</span>
                               <span class="x-small-gray-text">vs</span>
-                              <span class="small-black-text"> Sacramento</span>
+                              <span class="small-black-text"> {{twager.game.awayTeam}}</span>
+                            </li>
+                            <li *ngIf="uoValue == null">
+                              <span class="x-small-gray-text">vs</span>
+                              <span class="small-black-text"> {{opTeam}}</span>
                             </li>
                             <li>
-                              <span class="x-small-gray-text">Oct. 13th, 2017 @10:30 PM</span>
+                              <span class="x-small-gray-text">{{twager.game.matchDate}} @{{twager.game.matchTime}}</span>
                             </li>
                             <li>
                                 <span class="x-small-gray-text">Pro Basketball</span>
@@ -44,13 +57,11 @@
                   <md-grid-tile  [colspan]="18" [rowspan]="1">
                       <ul class="md-list-item-outer center-text">
                           <li>
-                            <span class="large-black-text">Friendly Wager</span>
+                            <span class="large-black-text">Live Wager up to</span>
                           </li>
+                          
                           <li>
-                            <span class="large-black-text">Vs</span>
-                          </li>
-                          <li>
-                            <span  class="large-black-text">Sean Carney</span>
+                            <span  class="large-black-text">{{twager.amount}}</span>
                           </li>
                         </ul>
                   </md-grid-tile>
@@ -60,7 +71,7 @@
               <md-grid-list cols="18" rowHeight="6em">
                   <md-grid-tile  [colspan]="18" [rowspan]="1">
                       <md-input-container color="white" class="sc-input">
-                          <input mdInput placeholder=""/>
+                          <input mdInput [(ngModel)]="betAmount" placeholder=""/>
                        </md-input-container>
                        <span class="sc-label">SC</span>
                   </md-grid-tile>
@@ -74,7 +85,7 @@
   <div class="footer-parent">
       <div class="footer-links">
         <a class="back-link" (click)="gotoTabs()"><i class="material-icons">keyboard_arrow_left</i><span>Back</span></a>
-        <a class="next-link" (click)="gotoStep7()"><span>Next</span><i class="material-icons">keyboard_arrow_right</i></a>
+        <a class="next-link" (click)="gotoStep7(twager)"><span>Next</span><i class="material-icons">keyboard_arrow_right</i></a>
       </div>
     </div>
 </div>

@@ -16,8 +16,10 @@ export class LiveWagersComponent implements OnInit, OnDestroy {
   friendListSubscribe;
   liveWagersSubscribe;
   constructor(private router:Router, private wagerService:WagerService,private user : UpdateUser) { }
-  accept(){
-    this.router.navigate(['home']);
+  accept(wager:LiveWager, wagerKey:string){
+    this.router.navigate(['home','mkwagerstep6']);
+    wager.wagerKey = wagerKey;
+    this.wagerService.createTempOpenWagerFromLiveWager(wager);
   }
   ngOnInit() {
     this.friendListSubscribe = this.user.getFriendList().subscribe(friends => {
