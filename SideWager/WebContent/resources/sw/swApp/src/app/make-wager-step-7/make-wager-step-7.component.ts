@@ -67,34 +67,36 @@ export class MakeWagerStep7Component implements OnInit {
       //update live wager amount
       let liveWagerObject = this.wagerService.getLiveWager(this.twager.userKey, this.twager.wagerKey);
         let liveWagersubscribe = liveWagerObject.subscribe(liveWagerSnapshot=>{
-            liveWagersubscribe.unsubscribe();
-            let liveWager:any = liveWagerSnapshot;
-            console.log("livewager ");
-            console.log(liveWager);
-            if(liveWager.$value==null){
-                this.result = "Live wager is not available!!";
-                console.log(this.result);
-            }
-            if(liveWager.amount > this.twager.betamount){
-                //update live wager amount
-              this.wagerService.updateLiveWagerAmount(this.twager.game, this.twager.selectedTeam,this.uoValue,this.twager.betamount,this.twager.opName,this.twager.opKey,this.twager.userName, this.twager.userKey, this.twager.wagerKey, liveWager);
-              if(this.wagerService.createAcceptLiveOpenWager(this.twager.game, this.twager.selectedTeam,this.uoValue,this.twager.betamount,this.twager.opName,this.twager.opKey,this.twager.userName, this.twager.userKey))
-              {
-                this.wagerService.removeTempAcceptLiveWager();
-                this.router.navigate(['home','swtab']);
+            setTimeout( () => {
+              liveWagersubscribe.unsubscribe();
+              let liveWager:any = liveWagerSnapshot;
+            
+              if(liveWager.$value===null){
+                  this.result = "Live wager is not available!!";
+                  console.log(this.result);
+                  return;
               }
-                
-            } else if(liveWager.amount==this.twager.betamount){
-                //delete live wager
-                this.wagerService.removeLiveWager(this.twager.userKey, this.twager.wagerKey);
-                if(this.wagerService.createAcceptLiveOpenWager(this.twager.game, this.twager.selectedTeam,this.uoValue,this.twager.betamount,this.twager.opName,this.twager.opKey,this.twager.userName, this.twager.userKey)){
+              if(liveWager.amount > this.twager.betamount){
+                  //update live wager amount
+                this.wagerService.updateLiveWagerAmount(this.twager.game, this.twager.selectedTeam,this.uoValue,this.twager.betamount,this.twager.opName,this.twager.opKey,this.twager.userName, this.twager.userKey, this.twager.wagerKey, liveWager);
+                if(this.wagerService.createAcceptLiveOpenWager(this.twager.game, this.twager.selectedTeam,this.uoValue,this.twager.betamount,this.twager.opName,this.twager.opKey,this.twager.userName, this.twager.userKey))
+                {
                   this.wagerService.removeTempAcceptLiveWager();
                   this.router.navigate(['home','swtab']);
                 }
-            } else if(liveWager.amount < this.twager.betamount){
-              this.result = "Live wager current available balance is "+liveWager.amount+" . Please select an amount within "+liveWager.amount;
-              console.log(this.result);
-            }
+                  
+              } else if(liveWager.amount==this.twager.betamount){
+                  //delete live wager
+                  this.wagerService.removeLiveWager(this.twager.userKey, this.twager.wagerKey);
+                  if(this.wagerService.createAcceptLiveOpenWager(this.twager.game, this.twager.selectedTeam,this.uoValue,this.twager.betamount,this.twager.opName,this.twager.opKey,this.twager.userName, this.twager.userKey)){
+                    this.wagerService.removeTempAcceptLiveWager();
+                    this.router.navigate(['home','swtab']);
+                  }
+              } else if(liveWager.amount < this.twager.betamount){
+                this.result = "Live wager current available balance is "+liveWager.amount+" . Please select an amount within "+liveWager.amount;
+                console.log(this.result);
+              }
+            }, 10 );
           })
    }
 
