@@ -65,4 +65,8 @@ export class WagerRequestOuConfirm2Component implements OnInit {
     // this.wagerService.removeTempWager();
   }
 
+  gotoTabs(){
+    
+  }
+
 }

@@ -5,7 +5,8 @@
 <md-card class="md-card-padd">
   <div class="bordered-bottom">
     <md-card-subtitle>
-      <span class="selection">{{liveWager.userName}} Selected: {{liveWager.selectedTeam}} </span>
+      <span *ngIf="liveWager.uoValue==null" class="selection">{{liveWager.userName}} Selected: {{liveWager.selectedTeam}} </span>
+      <span *ngIf="liveWager.uoValue!=null" class="selection">{{liveWager.userName}} Selected: {{liveWager.uoValue}} </span>
       <div class="pull-right">
         <span class="upto-text">up to</span> 
         <span class="amount">sc{{liveWager.amount}}</span>
@@ -16,10 +17,10 @@
   <md-grid-tile [colspan]="4" [rowspan]="1">
     <ul class="md-list-item-inner">
       <li>
-        <span class="game-team-fullname">{{liveWager.game.homeTeam}}</span>
+        <span class="game-team-fullname {{liveWager.selectedTeam==liveWager.game.homeTeamShortName?'color-green':''}}">{{liveWager.game.homeTeam}}</span>
       </li>
       <li>
-        <span class="game-team-fullname">{{liveWager.game.awayTeam}}</span>
+        <span class="game-team-fullname {{liveWager.selectedTeam==liveWager.game.awayTeamShortName?'color-green':''}}">{{liveWager.game.awayTeam}}</span>
       </li>
     </ul>
   </md-grid-tile>

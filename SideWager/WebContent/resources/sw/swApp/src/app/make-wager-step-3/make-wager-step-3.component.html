@@ -1,6 +1,6 @@
 <div class="make-wager-parent-container">
     <div class="make-wager-container">
-      <h2><span> Pick a victim</span><span class="close" (click)="gotoTabs()"><i class="material-icons">clear</i></span></h2>
+      <h2><span> Pick a victim</span><span class="close" (click)="close()"><i class="material-icons">clear</i></span></h2>
             <md-card class="md-card-padd">
                 <md-grid-list cols="18" rowHeight="6em">
                     <md-grid-tile  [colspan]="7" [rowspan]="1">
@@ -89,7 +89,7 @@
           <div class="footer-parent">
             <div class="footer-links">
               <a class="back-link" (click)="gotoTabs()"><i class="material-icons">keyboard_arrow_left</i><span>Back</span></a>
-              <a class="next-link" (click)="gotoStep5()"><span>Next</span><i class="material-icons">keyboard_arrow_right</i></a>
+              <a class="next-link" ><span>Next</span><i class="material-icons">keyboard_arrow_right</i></a>
             </div>
           </div>
         </div>

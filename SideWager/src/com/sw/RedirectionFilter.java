@@ -44,6 +44,7 @@ public class RedirectionFilter implements Filter {
         String requestUrl = req.getRequestURL().toString();
         System.out.println("Filter : "+requestUrl);
         if(!requestUrl.contains("/rest/") 
+        		&& !requestUrl.contains("pki-validation")
         		&& !requestUrl.contains("/resources/")
         		&& !requestUrl.equalsIgnoreCase("https://www.sidewagerapp.com/")){
         	res.sendRedirect("https://www.sidewagerapp.com/");

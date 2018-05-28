@@ -116,4 +116,8 @@ export class MakeWagerStep7Component implements OnInit {
       }
     });
   }
+
+  close(){
+    this.router.navigate(['home','swtab']);
+  }
 }

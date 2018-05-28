@@ -45,6 +45,10 @@ export class MakeWagerStep4Component implements OnInit {
     if(this.twager.opName != null){
       this.selectedFrnd = this.twager.opName;
     }
+
+    if(this.twager.amount!=null){
+      this.amount = this.twager.amount;
+    }
   }
   gotoTabs()
   {
@@ -58,5 +62,9 @@ export class MakeWagerStep4Component implements OnInit {
       this.wagerService.createTempWager(this.twager.game,this.twager.selectedTeam,this.uoValue,this.amount);
     }
     
+  }
+
+  close(){
+    this.router.navigate(['home','swtab']);
   }
 }

@@ -49,4 +49,8 @@ gotoStep3(){
   this.router.navigate(['home','mkwagerstep3']);
   
 }
+
+close(){
+  this.router.navigate(['home','swtab']);
+}
 }

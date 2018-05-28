@@ -1,6 +1,6 @@
 <div class="make-wager-parent-container">
 <div class="make-wager-container">
-<h2><span> What kind of Wager?</span><span class="close" (click)="gotoTabs()"><i class="material-icons">clear</i></span></h2>
+<h2><span> What kind of Wager?</span><span class="close" (click)="close()"><i class="material-icons">clear</i></span></h2>
 <md-grid-list cols="13" rowHeight="14em">
   <md-grid-tile [colspan]="6" [rowspan]="1">
     <span (click)="gotoStep3()">
@@ -124,7 +124,7 @@
 <div class="footer-parent">
   <div class="footer-links">
     <a class="back-link" (click)="gotoTabs()"><i class="material-icons">keyboard_arrow_left</i><span>Back</span></a>
-    <a class="next-link" ><span>Next</span><i class="material-icons">keyboard_arrow_right</i></a>
+    <a class="next-link" ></a>
   </div>
 </div>
 </div>

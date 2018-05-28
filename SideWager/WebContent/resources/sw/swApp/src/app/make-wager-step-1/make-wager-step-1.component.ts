@@ -29,6 +29,9 @@ gotoTabs()
 {
 this.router.navigate(['home','swtab']);
 }
+close(){
+  this.router.navigate(['home','swtab']);
+}
 gotoStep2(teamName){
   this.router.navigate(['home','mkwagerstep2']);
   this.wagerService.createTempWager(this.twager.game,teamName, null,null);

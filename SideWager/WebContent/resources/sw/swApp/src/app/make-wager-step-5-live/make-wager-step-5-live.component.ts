@@ -81,4 +81,8 @@ export class MakeWagerStep5LiveComponent implements OnInit {
       }
     });
   }
+
+  close(){
+    this.router.navigate(['home','swtab']);
+  }
 }

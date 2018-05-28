@@ -64,4 +64,8 @@ export class MakeWagerStep6Component implements OnInit {
     wager.betamount=this.betAmount;
     this.wagerService.createTempOpenWagerFromLiveWager(wager);
   }
+
+  close(){
+    this.router.navigate(['home','swtab']);
+  }
 }
