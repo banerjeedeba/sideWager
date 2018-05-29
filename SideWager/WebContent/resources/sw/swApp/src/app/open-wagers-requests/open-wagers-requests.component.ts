@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MdDialog, MdDialogRef, MD_DIALOG_DATA} from '@angular/material';
 import { OpenWager } from "../entities/OpenWager";
 import {WagerService} from '../provider/wager.service';
 import { FirebaseListObservable } from 'angularfire2/database';
+import { WagerRequestConfirmModalComponent } from '../wager-request-confirm-modal/wager-request-confirm-modal.component';
+
 @Component({
   selector: 'app-open-wagers-requests',
   templateUrl: './open-wagers-requests.component.html',
@@ -17,7 +20,7 @@ export class OpenWagersRequestsComponent implements OnInit {
 
   public openWagerCount: number = 0;
 
-  constructor(private wagerService:WagerService) { }
+  constructor(private wagerService:WagerService,public dialog: MdDialog) { }
 
   ngOnInit() {
     this.openWagerSubscribe = this.wagerService.getPendingOpenWagers().subscribe(openWagersListSnapshot=>{
@@ -30,6 +33,25 @@ export class OpenWagersRequestsComponent implements OnInit {
       
     })
   }
+
+  
+  isConfirmValue: boolean;
+
+  openDialog(wager:OpenWager , key:string): void {
+    let dialogRef = this.dialog.open(WagerRequestConfirmModalComponent, {
+      width: '250px',
+      data: { isConfirm: this.isConfirmValue }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.isConfirmValue = result;
+      console.log('The dialog was closed : '+this.isConfirmValue);
+      if(this.isConfirmValue){
+        this.accept(wager,key);
+      }
+    });
+  }
+
 accept(wager:OpenWager , key:string){
   this.challengerOpenWagerSubscribe = this.wagerService.getChallengerOpenWagers(wager.userKey,wager.game.matchDate).subscribe(openWagersList=>{
     openWagersList.forEach(challengerOpenWager=>{

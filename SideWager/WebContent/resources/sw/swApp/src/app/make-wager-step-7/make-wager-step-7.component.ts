@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import { FirebaseObjectObservable } from 'angularfire2/database';
 import { LiveWager } from '../entities/LiveWager';
 import { WagerService } from '../provider/wager.service';
-import { MdDialog} from '@angular/Material';
+import { MdDialog, MdDialogRef, MD_DIALOG_DATA} from '@angular/material';
 import { WagerRequestConfirmModalComponent } from '../wager-request-confirm-modal/wager-request-confirm-modal.component';
 @Component({
   selector: 'app-make-wager-step-7',
@@ -100,18 +100,18 @@ export class MakeWagerStep7Component implements OnInit {
           })
    }
 
-   isConfirm: boolean;
+   isConfirmVal: boolean;
 
   openDialog(): void {
     let dialogRef = this.dialog.open(WagerRequestConfirmModalComponent, {
       width: '250px',
-      data: { isConfirm: this.isConfirm }
+      data: { isConfirm: this.isConfirmVal }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.isConfirm = result;
-      console.log('The dialog was closed : '+this.isConfirm);
-      if(this.isConfirm){
+      this.isConfirmVal = result;
+      console.log('The dialog was closed : '+this.isConfirmVal);
+      if(this.isConfirmVal){
         this.gotoStep5();
       }
     });
