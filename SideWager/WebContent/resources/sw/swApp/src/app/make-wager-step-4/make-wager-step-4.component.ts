@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import { WagerService } from '../provider/wager.service';
 import { FirebaseObjectObservable } from 'angularfire2/database';
 import { LiveWager } from '../entities/LiveWager';
+import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-make-wager-step-4',
@@ -20,6 +21,8 @@ export class MakeWagerStep4Component implements OnInit {
   public opTeam;
   public amount;
   public selectedFrnd;
+  public errorMessage; 
+
   constructor(private router:Router,private wagerService:WagerService) { }
 
   ngOnInit() {
@@ -27,6 +30,7 @@ export class MakeWagerStep4Component implements OnInit {
     this.tempWager.subscribe(snapshot=>{
       this.twager = snapshot;
     })
+
     this.selectedTeam = this.twager.selectedTeam;
     if(this.twager.game.awayTeamShortName==this.twager.selectedTeam){
       this.selectedFullName = this.twager.game.awayTeam;
@@ -55,6 +59,10 @@ export class MakeWagerStep4Component implements OnInit {
   this.router.navigate(['home','mkwagerstep2']);
   }
   gotoStep5(){
+    if (this.amount==null ||this.amount =='' || this.amount==0) {
+      this.errorMessage='Please enter the amount!';
+      return;
+    }
     this.router.navigate(['home','mkwagerstep5live']);
     if(this.twager.opName != null){
       this.wagerService.createTempOpenWager(this.twager.game,this.twager.selectedTeam,this.uoValue,this.amount,this.twager.opKey,this.twager.opName);

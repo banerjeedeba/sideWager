@@ -20,6 +20,7 @@ export class MakeWagerStep6Component implements OnInit {
   public amount;
   public betAmount;
   public selectedFrnd;
+  public errorMessage;
   constructor(private router:Router,private wagerService:WagerService) { }
   ngOnInit() {
     this.tempWager = this.wagerService.getTempAcceptLiveWagers();
@@ -60,6 +61,10 @@ export class MakeWagerStep6Component implements OnInit {
   this.router.navigate(['home','swtab']);
   }
   gotoStep7(wager:LiveWager){
+    if (this.betAmount==null ||this.betAmount =='' || this.betAmount==0) {
+      this.errorMessage='Please enter a valid amount!';
+      return;
+    }
     this.router.navigate(['home','mkwagerstep7']);
     wager.betamount=this.betAmount;
     this.wagerService.createTempOpenWagerFromLiveWager(wager);

@@ -76,6 +76,9 @@
                        <span class="sc-label">SC</span>
                   </md-grid-tile>
               </md-grid-list>
+              <div class="error-section" ng-if="errorMessage!=''">
+                  <span>{{errorMessage}}</span>
+              </div>
           </md-card>
           <div class="disclaimer-section">
             <span> Disclaimer:  Side Credits are for bragging rights only. 

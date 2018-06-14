@@ -7,6 +7,7 @@
     color: #969696;
     font-weight: 200;
     text-align: center;
+    margin: 0;
 }
 .make-wager-container .close{
     color: #969696;
@@ -112,7 +113,13 @@
     vertical-align: middle;
 }
 .disclaimer-section{
-    padding: 2.5em;
+    padding: 1em 2.5em;
     font-size: 0.9em;
     color: black;
+}
+.error-section{
+    font-size: 0.9em;
+    color: #D02c27;
+    font-weight: 600;
+    padding: 1em 2.5em;
 }

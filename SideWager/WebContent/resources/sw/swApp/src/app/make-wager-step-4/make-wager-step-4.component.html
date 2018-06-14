@@ -96,11 +96,14 @@
               <md-grid-list cols="18" rowHeight="6em">
                   <md-grid-tile  [colspan]="18" [rowspan]="1">
                       <md-input-container color="white" class="sc-input">
-                          <input mdInput [(ngModel)]="amount" placeholder=""/>
+                          <input mdInput [(ngModel)]="amount" placeholder="" type="number" required/>
                        </md-input-container>
                        <span class="sc-label">SC</span>
                   </md-grid-tile>
               </md-grid-list>
+              <div class="error-section" ng-if="errorMessage!=''">
+                  <span>{{errorMessage}}</span>
+              </div>
           </md-card>
           <div class="disclaimer-section">
             <span> Disclaimer:  Side Credits are for bragging rights only. 
