@@ -1,3 +1,4 @@
+<!-- Results -->
 <div class="request-container">
   <div class="pull-right">
     <span class="upto-text">Weekly Total:</span><span class="color-green">550sc</span>
@@ -6,8 +7,8 @@
  <md-grid-list cols="13" rowHeight="3em">
   <md-grid-tile [colspan]="2" [rowspan]="1" class="text-content">Friend</md-grid-tile>
   <md-grid-tile [colspan]="4" [rowspan]="1" class="text-content"></md-grid-tile>
+  <md-grid-tile [colspan]="3" [rowspan]="1" class="text-content"># of Games</md-grid-tile>
   <md-grid-tile [colspan]="3" [rowspan]="1" class="text-content">Side Credits</md-grid-tile>
-  <md-grid-tile [colspan]="3" [rowspan]="1" class="text-content">Games</md-grid-tile>
 </md-grid-list>
 <div class="card-container" *ngFor="let win of listWinnings">
 <md-card class="no-padding">
@@ -26,7 +27,7 @@
     <span>{{win.weeklyHTP}}</span>
   </md-grid-tile>-->
   <md-grid-tile [colspan]="3" [rowspan]="1">
-    <span class="color-red">{{win.Amount}}sc</span>
+0
   </md-grid-tile>
   <!--<md-grid-tile [colspan]="1" [rowspan]="1">
       <div *ngIf="win.paymentStatus == 'Y'">
@@ -37,7 +38,8 @@
       </div> 
   </md-grid-tile>-->
   <md-grid-tile [colspan]="4" [rowspan]="1">
-    <button md-raised-button class="btn-view-games">View<br/> Games</button>
+      <span class="color-green">{{win.Amount}}sc</span>
+    <!-- <button md-raised-button class="btn-view-games">View<br/> Games</button> -->
       <!--<div *ngIf="win.paymentStatus == 'N'">
 	      <button md-raised-button class="btn-confirm-payment">Tap when<br/> Paid up</button>
       </div> 	

@@ -18,7 +18,7 @@
         <div class="pull-right">
           <!-- <span class="upto-text">up to</span>  -->
           <span class="amount">
-            550sc
+            <!-- 550sc -->
             <!-- {{liveWager.amount}} -->
           </span>
         </div>
@@ -82,15 +82,17 @@
       <md-divider class="vertical-divider"></md-divider>
      </md-grid-tile>
     <md-grid-tile [colspan]="3" [rowspan]="1">
-      <!-- <span>Wager Accepted</span> -->
-      <span>SC</span>
-      <!-- <i class="material-icons">
-          check_circle
-      </i> -->
-      <i class="material-icons">
-          cancel
-          </i>
-      <!-- <button md-raised-button class="btn-accept" (click)="accept()"> ACCEPT</button> -->
+      <div>
+      <!-- <span class="color-green-text">Wager Accepted</span> -->
+        <span class="color-red-text">-200 SC</span>
+        <!-- <i class="material-icons color-green">
+            check_circle
+        </i> -->
+        <i class="material-icons color-red">
+            cancel
+            </i>
+        <!-- <button md-raised-button class="btn-accept" (click)="accept()"> ACCEPT</button> -->
+    </div>
     </md-grid-tile>
   </md-grid-list>
   </md-card>

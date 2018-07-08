@@ -14,7 +14,7 @@
 <div class="card-container" *ngFor="let game of sports.gameList">
 <md-card class="md-card-padd">
 <md-grid-list cols="16" rowHeight="5em">
-  <md-grid-tile [colspan]="4" [rowspan]="1">
+  <md-grid-tile [colspan]="5" [rowspan]="1">
     <ul class="md-list-item-inner">
       <li>
         <span class="game-team-fullname">{{game.homeTeam}}</span>
@@ -44,7 +44,7 @@
       </li>
     </ul>
   </md-grid-tile>
-  <md-grid-tile [colspan]="3" [rowspan]="1">
+  <md-grid-tile [colspan]="2" [rowspan]="1">
     <span class="game-time">{{game.matchTime}}</span>
    </md-grid-tile>
    <md-grid-tile [colspan]="1" [rowspan]="1">

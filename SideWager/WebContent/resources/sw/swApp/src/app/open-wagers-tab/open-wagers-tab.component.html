@@ -2,10 +2,11 @@
 <md-tab-group md-stretch-tabs class="tab-group-container">
    <md-tab>
     <ng-template md-tab-label>
-      <b class="open-wager-tabs">Winnings</b>
+      <b class="open-wager-tabs">Wagers</b>
       <md-chip color="primary" class="chip-custom">2</md-chip>
     </ng-template>
-    <app-open-wagers-winnings></app-open-wagers-winnings>
+    <!-- <app-open-wagers-winnings></app-open-wagers-winnings> -->
+    <app-weekly-game-list></app-weekly-game-list>
   </md-tab>
   <md-tab>
     <ng-template md-tab-label>
@@ -16,7 +17,7 @@
   </md-tab>
   <md-tab>
     <ng-template md-tab-label>
-      <b class="open-wager-tabs">Losses</b>
+      <b class="open-wager-tabs">Results</b>
       <md-chip color="primary" class="chip-custom">2</md-chip>
     </ng-template>
     <app-open-wagers-losses></app-open-wagers-losses>
