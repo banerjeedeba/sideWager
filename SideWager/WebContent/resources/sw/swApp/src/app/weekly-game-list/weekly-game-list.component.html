@@ -1,42 +1,42 @@
-<div class="date-comp">
+<!-- <div class="date-comp">
     <button md-button (click)="prevDate()"><i class="material-icons">keyboard_arrow_left</i></button>
     <button md-button><i class="material-icons">today</i>{{currentDate| date: 'yMMMMEEEEd'}}</button>
     <button md-button (click)="nextDate()"><i class="material-icons">keyboard_arrow_right</i></button>
-</div>
+</div> -->
 
-<div> <!-- *ngIf="liveWagers?.length > 0" -->
+<div *ngIf="openWagersList?.length > 0"> <!-- *ngIf="liveWagers?.length > 0" -->
     <div class="scrolable-list">
-  <div class="card-container">
+  <div class="card-container" *ngFor="let openWager of openWagersList">
       <!-- *ngFor="let liveWager of liveWagers" -->
-  <md-card class="md-card-padd">
+  <md-card class="md-card-padd" *ngIf="openWager.status !='Pending'">
     <div class="bordered-bottom">
       <md-card-subtitle>
         <span class="selection">
-           Matt Firish Selected: TOR
-          <!-- {{liveWager.userName}} Selected: {{liveWager.selectedTeam}} -->
+           <!-- Matt Firish Selected: TOR -->
+          {{openWager.userName}} Selected: {{openWager.selectedTeam}}
          </span>
         <div class="pull-right">
           <!-- <span class="upto-text">up to</span>  -->
-          <span class="amount">
+          <span class="amount" *ngIf="openWager.isWinner==null">
             <!-- 550sc -->
-            <!-- {{liveWager.amount}} -->
+            {{openWager.amount}}sc
           </span>
         </div>
       </md-card-subtitle>
     </div>
   <md-grid-list cols="16" rowHeight="5em">
-    <md-grid-tile [colspan]="4" [rowspan]="1">
+    <md-grid-tile [colspan]="5" [rowspan]="1">
       <ul class="md-list-item-inner">
         <li>
           <span class="game-team-fullname">
-            Toranto
-            <!-- {{liveWager.game.homeTeam}} -->
+            <!-- Toranto -->
+            {{openWager.game.homeTeam}}
           </span>
         </li>
         <li>
           <span class="game-team-fullname">
-            Chicago
-            <!-- {{liveWager.game.awayTeam}} -->
+            <!-- Chicago -->
+            {{openWager.game.awayTeam}}
           </span>
         </li>
       </ul>
@@ -45,14 +45,14 @@
       <ul class="md-list-item-inner">
         <li>
           <span class="game-team-name">
-            TOR
-            <!-- {{liveWager.game.homeTeamShortName}} -->
+            <!-- TOR -->
+            {{openWager.game.homeTeamShortName}}
           </span>
         </li>
         <li>
           <span class="game-team-name">
-            CHI
-            <!-- {{liveWager.game.awayTeamShortName}} -->
+            <!-- CHI -->
+            {{openWager.game.awayTeamShortName}}
           </span>
         </li>
       </ul>
@@ -61,36 +61,47 @@
       <ul class="md-list-item-inner md-list-item-inner-child">
         <li>
           <span class="game-team-name">
-            TOR-6.5
-            <!-- {{liveWager.game.pointSpread}} -->
+            <!-- TOR-6.5 -->
+            {{openWager.game.pointSpread}}
           </span>
         </li>
         <li>
           <span class="game-team-name">
-            u102.5
-            <!-- {{liveWager.game.underLine}} -->
+            <!-- u102.5 -->
+            {{openWager.game.underLine}}
           </span>
         </li>
       </ul>
     </md-grid-tile>
-    <md-grid-tile [colspan]="3" [rowspan]="1">
-      <span class="game-time">8:00PM
-        <!-- {{liveWager.game.matchTime}} -->
+    <md-grid-tile [colspan]="2" [rowspan]="1">
+      <span class="game-time">
+        <!-- 8:00PM -->
+        {{openWager.game.matchDate |date:'M/d'}}
+        {{openWager.game.matchTime}}
       </span>
      </md-grid-tile>
      <md-grid-tile [colspan]="1" [rowspan]="1">
       <md-divider class="vertical-divider"></md-divider>
      </md-grid-tile>
     <md-grid-tile [colspan]="3" [rowspan]="1">
-      <div>
-      <!-- <span class="color-green-text">Wager Accepted</span> -->
-        <span class="color-red-text">-200 SC</span>
-        <!-- <i class="material-icons color-green">
+    <div>
+    <div *ngIf="openWager.isWinner!=null">
+      <div *ngIf="openWager.isWinner">
+        <span class="color-green-text">{{openWager.amount}} SC</span>
+        <i class="material-icons color-green">
             check_circle
-        </i> -->
+        </i>
+      </div>
+      <div *ngIf="!openWager.isWinner">
+        <span class="color-red-text">-{{openWager.amount}} SC</span>
         <i class="material-icons color-red">
             cancel
-            </i>
+        </i>
+      </div>
+    </div>
+    <span class="color-gray-text" *ngIf="(openWager.status| slice:0:10) == 'Challenged' && openWager.isWinner==null">Pending</span>
+    <span class="color-green-text" *ngIf="(openWager.status| slice:0:10) != 'Challenged' && openWager.isWinner==null">Wager Accepted</span>
+    
         <!-- <button md-raised-button class="btn-accept" (click)="accept()"> ACCEPT</button> -->
     </div>
     </md-grid-tile>
@@ -99,7 +110,7 @@
   </div>
     </div>
   </div>
-  <div><!-- *ngIf="liveWagers?.length == 0">-->
+  <div *ngIf="openWagersList?.length == 0">
       <md-list>
           <h3 md-subheader>No Live Wager!!</h3>
       </md-list>

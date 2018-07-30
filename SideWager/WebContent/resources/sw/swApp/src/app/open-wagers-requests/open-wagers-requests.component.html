@@ -1,11 +1,11 @@
 <div *ngIf="openWagersList?.length > 0">
-<div class="header-container">
+<!-- <div class="header-container">
   <span class="side-credit">SC- Side Credit</span>
   <div class="pull-right">
     <span class="upto-text-summary">weekly Total:</span>
     <span class="amount color-green">550SC</span>
   </div>
-</div>
+</div> -->
   <div class="scrolable-list">
 <div class="card-container" *ngFor="let openWager of openWagersList">
 <md-card class="md-card-padd">
@@ -58,7 +58,7 @@
   <md-grid-tile [colspan]="5" [rowspan]="1">
     <ul class="md-list-item-inner md-list-item-inner-child">
         <li class="game-price">
-          <span>sc:{{openWager.amount}}</span> 
+          <span>{{openWager.amount}} sc</span> 
         </li>
         <li>
           <button md-raised-button class="btn-accept" (click)="openDialog(openWager,openWager.$key)"> ACCEPT</button>

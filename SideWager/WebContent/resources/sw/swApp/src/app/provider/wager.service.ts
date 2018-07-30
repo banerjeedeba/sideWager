@@ -234,7 +234,12 @@ export class WagerService{
         });
         return openWagerUserList;
     }
-
+    getAllOpenWagers() : FirebaseListObservable<OpenWager[]>{
+        let userKey =  this.auth.user.uid;
+        const openWagerUserPath =  `${this.openWagerPath}/${userKey}`;
+        let openWagerUserList = this.db.list(openWagerUserPath);
+        return openWagerUserList;
+    }
     acceptOpenWager(wager:OpenWager , key:string, challengerOpenWager:OpenWager, challengerKey:string) : void{
         wager.status="Accepted "+wager.userName+" challenge";
         const opWagerUserPath =  `${this.openWagerPath}/${wager.opUserKey}/${key}`;

@@ -10,6 +10,9 @@ export class OpenWagersLossesComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
+
+    
   }
 public listWinnings=[
   {

@@ -8,4 +8,5 @@ export class OpenWager{
     opUserKey: string;
     selectedTeam: string;
     uoValue: string;
+    isWinner?:boolean;
 }
