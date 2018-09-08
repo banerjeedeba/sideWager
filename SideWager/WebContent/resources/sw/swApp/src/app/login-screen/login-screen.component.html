@@ -1,8 +1,11 @@
  <div class="login-container">
-  <h1><span>SideWAGER</span></h1> 
-  <p>A peer to peer SPORTSBOOK</p> 
+   <div class="login-header">
+      <h1><span>SideWAGER</span></h1> 
+      <p>A peer to peer SPORTSBOOK</p> 
+   </div>
+  
   <ul class="login-list-items">
-    <li> 
+    <!-- <li> 
         <input placeholder="Email" value="" required 
             [(ngModel)] = "email">
     </li>
@@ -15,13 +18,16 @@
      </li>
      <li>
        <button md-raised-button class="btn-ann" (click)="registerWithEmail()">Register</button>
-     </li>
+     </li> <md-icon>input</md-icon>-->
     <li> 
-      <button md-raised-button class="btn-google" (click)="loginWithGoogle()"><md-icon>input</md-icon>Login with Google</button>
+      <button md-raised-button class="btn-google" (click)="loginWithGoogle()">
+        <img src="../../assets/img/google-logo.png" class="google-img"/>
+        <span class="google-text">Sign in with Google</span>
+      </button>
     </li>
-    <li> 
+    <!-- <li> 
      <button md-raised-button class="btn-fb" (click)="loginWithFaceBook()"><md-icon>perm_identity</md-icon>Login with facebook</button>
-     </li>
+     </li> -->
   </ul>
  </div>
   
