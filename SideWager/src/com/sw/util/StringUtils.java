@@ -100,11 +100,24 @@ public class StringUtils {
 		return json;
 	}
 	
+	public static int getIntFromString(String value){
+		int sum = -1;
+		if(!StringUtils.isEmpty(value)){
+			for(int i=0;i<value.length();i++){
+				sum+=value.charAt(i);
+			}
+		}
+		return sum;
+	}
+	
 	public static void main(String[] args) {
 		try {
-			System.out.println(StringUtils.getDate("2017-07-10T09:00:00", "yyyy-MM-dd'T'HH:mm:ss", "yyyy/MM/dd"));
+			//System.out.println(StringUtils.getDate("2017-07-10T09:00:00", "yyyy-MM-dd'T'HH:mm:ss", "yyyy/MM/dd"));
 			System.out.println(StringUtils.getDate("2017-07-10T09:00:00", "yyyy-MM-dd'T'HH:mm:ss", "HH:mma"));
 			getJsonString("test.txt");
+			
+			System.out.println(getIntFromString("C0rOtLAY5pc7EYHZuk6fjEboc843"));
+			System.out.println(getIntFromString("Mu2y3JQ1OKTMxkbQv1Z8FphiFPC2"));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
