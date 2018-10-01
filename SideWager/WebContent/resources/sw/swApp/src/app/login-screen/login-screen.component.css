@@ -65,13 +65,13 @@ input{
     border-radius: 0.4em;
 }
 .login-header{
-    padding-top:40%;
+    padding-top:20vh;
 }
 .login-list-items{
 list-style: none;
 align-content: center;
 padding-left:0;
-margin-top: 30%;
+margin-top: 20vh;
 }
 button{
     border: 0.2em solid #fff;

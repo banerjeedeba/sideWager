@@ -1,19 +1,33 @@
 import { Component, OnInit } from '@angular/core';
+import {OpenWagerTabCountService} from '../provider/open-wager-tab-count.service';
 
 @Component({
   selector: 'app-open-wagers-losses',
   templateUrl: './open-wagers-losses.component.html',
-  styleUrls: ['./open-wagers-losses.component.css']
+  styleUrls: ['./open-wagers-losses.component.css'],
+  providers: []
 })
 export class OpenWagersLossesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private openWagerTabCountService:OpenWagerTabCountService) { }
 
   ngOnInit() {
-
-
-    
+    this.openWagersResultListTabCount = this.listWinnings.length.toString();
+    this.sendTabCount();
   }
+  openWagersResultListTabCount:string="0";
+  sendTabCount(): void {
+    // send message to subscribers via observable subject
+    this.openWagerTabCountService.setResultTabCount(this.openWagersResultListTabCount.toString());
+  }
+
+  clearTabcount(): void {
+      // clear message
+      this.openWagerTabCountService.resetTabCount();
+  }
+  
+
+
 public listWinnings=[
   {
     "Name":"Brent Boner",

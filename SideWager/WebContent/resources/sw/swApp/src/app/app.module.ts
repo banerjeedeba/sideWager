@@ -19,6 +19,7 @@ import { SwTabListComponent } from './sw-tab-list/sw-tab-list.component';
 import { GamesWagerComponent } from './games-wager/games-wager.component';
 import { environment } from '../environments/environment';
 import {AuthService} from './provider/auth.service';
+import {OpenWagerTabCountService} from './provider/open-wager-tab-count.service';
 import { LoginScreenComponent } from './login-screen/login-screen.component';
 import { SplashScreenComponent } from './splash-screen/splash-screen.component';
 import { LiveWagersComponent } from './live-wagers/live-wagers.component';
@@ -105,7 +106,7 @@ export const routes:Routes=[
     RouterModule.forRoot(routes)
   ],
   entryComponents:[WagerRequestConfirmModalComponent],
-  providers: [AuthService],
+  providers: [AuthService,OpenWagerTabCountService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

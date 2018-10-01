@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { MdDialog, MdDialogRef, MD_DIALOG_DATA} from '@angular/material';
 import { OpenWager } from "../entities/OpenWager";
 import {WagerService} from '../provider/wager.service';
 import { FirebaseListObservable } from 'angularfire2/database';
 import { WagerRequestConfirmModalComponent } from '../wager-request-confirm-modal/wager-request-confirm-modal.component';
+import {OpenWagerTabCountService} from '../provider/open-wager-tab-count.service';
 
 @Component({
   selector: 'app-open-wagers-requests',
@@ -19,21 +20,36 @@ export class OpenWagersRequestsComponent implements OnInit {
   challengerOpenWagerSubscribe;
 
   public openWagerCount: number = 0;
-
-  constructor(private wagerService:WagerService,public dialog: MdDialog) { }
+  openWagersRequestListTabCount: string = "0";
+  constructor(private wagerService:WagerService,public dialog: MdDialog,private openWagerTabCountService:OpenWagerTabCountService) { }
 
   ngOnInit() {
+    debugger;
     this.openWagerSubscribe = this.wagerService.getPendingOpenWagers().subscribe(openWagersListSnapshot=>{
+      debugger;
       this.openWagersList = openWagersListSnapshot;
-      
+      this.openWagersRequestListTabCount = this.openWagersList.length.toString();
+      //this.clearTabcount();
+      this.sendTabCount();
       /*for(let openWager of openWagersListSnapshot){
         this.openWagers.push(openWager);
         this.openWagerCount++;
       }*/
       
+    },()=>{
+      //console.log("this.openWagersListTabCount :: ngOnInit" +this.openWagersList);
     })
   }
+  
+  sendTabCount(): void {
+    // send message to subscribers via observable subject
+    this.openWagerTabCountService.setRequestTabCount(this.openWagersRequestListTabCount.toString());
+  }
 
+  clearTabcount(): void {
+      // clear message
+      this.openWagerTabCountService.resetTabCount();
+  }
   
   isConfirmValue: boolean;
 
