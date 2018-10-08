@@ -58,9 +58,9 @@ export class MakeWagerStep5LiveComponent implements OnInit {
     
     this.router.navigate(['home','swtab']);
     if(this.twager.opName != null){
-      this.wagerService.createOpenWager(this.twager.game, this.twager.selectedTeam,this.uoValue,this.twager.amount,this.twager.opName,this.twager.opKey)
+      this.wagerService.createOpenWager(this.twager.game, this.twager.selectedTeam,this.twager.selected,this.uoValue,this.twager.amount,this.twager.opName,this.twager.opKey)
     } else {
-      this.wagerService.createLiveWager(this.twager.game, this.twager.selectedTeam, this.uoValue, this.twager.amount);
+      this.wagerService.createLiveWager(this.twager.game, this.twager.selectedTeam,this.twager.selected, this.uoValue, this.twager.amount);
     }
     this.wagerService.removeTempWager();
   }

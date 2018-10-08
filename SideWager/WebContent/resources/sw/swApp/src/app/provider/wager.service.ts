@@ -8,6 +8,7 @@ import { Game } from "../entities/Game";
 import { LiveWager } from "../entities/LiveWager";
 import { OpenWager } from "../entities/OpenWager";
 import { Promise } from 'firebase/app';
+import { WagerInfo } from '../entities/WagerInfo';
 @Injectable()
 export class WagerService{
 
@@ -15,38 +16,60 @@ export class WagerService{
     private tempWagerPath : string = '/tempwager';
     private tempAcceptLiveWagerPath : string = '/tempAcceptLiveWager';
     private openWagerPath : string = '/openwager';
+    private activeGamePath : string = '/activegames';
+    private wagerInfoPath : string = '/wagerinfo';
 
     constructor(public auth: AuthService,
         private db: AngularFireDatabase) { }
 
-    createLiveWager(game: Game, selectedTeam: string, uovalue:string, amount: number): void{
+    createLiveWager(game: Game, selectedTeam: string, selected: string, uovalue:string, amount: number): void{
         let userKey =  this.auth.user.uid;
         let liveWagerObject:LiveWager = new LiveWager();
         liveWagerObject.userKey = userKey;
         liveWagerObject.userName = this.auth.user.displayName;
         if(selectedTeam != null)
             liveWagerObject.selectedTeam = selectedTeam;
+        if(selected != null)
+            liveWagerObject.selected = selected;
         if(uovalue != null)
             liveWagerObject.uoValue = uovalue;
         liveWagerObject.game = game;
         liveWagerObject.amount = amount;
         const liveWagerUserPath =  `${this.liveWagerPath}/${userKey}`;
         const liveWagerUserList = this.db.list(liveWagerUserPath);
-        liveWagerUserList.push(liveWagerObject);
+        liveWagerUserList.push(liveWagerObject).then(newItem=>{
+            
+            let gamedate :string = game.matchDate;
+            console.log('gamedate'+gamedate+game.id+newItem.key);
+            const activeGameFullPath = `${this.activeGamePath}/${gamedate}/${game.id}`;
+            const activeGameList = this.db.object(activeGameFullPath);
+            game.type = "live";
+            activeGameList.set(game);
+
+            const wagerInfoFullPath = `${this.wagerInfoPath}/${game.id}`
+            const wagerInfoList = this.db.list(wagerInfoFullPath);
+            let wagerInfo:WagerInfo = new WagerInfo();
+            wagerInfo.userId = userKey;
+            wagerInfo.wagerId = newItem.key;
+            wagerInfoList.push(wagerInfo);
+        });
+        
         return;
     }
 
-    createTempWager(game: Game, selectedTeam: string, uovalue:string, amount: number) :void{
-        this.createTempOpenWager(game,selectedTeam,uovalue,amount,null,null);
+    createTempWager(game: Game, selectedTeam: string, selected: string, uovalue:string, amount: number) :void{
+        this.createTempOpenWager(game,selectedTeam,selected,uovalue,amount,null,null);
     }
 
-    createTempOpenWager(game: Game, selectedTeam: string, uovalue:string, amount: number, opKey: string, opName: string): void{
+    createTempOpenWager(game: Game, selectedTeam: string, selected: string, uovalue:string, amount: number, opKey: string, opName: string): void{
         let userKey =  this.auth.user.uid;
         let tempWagerObject:LiveWager = new LiveWager();
         tempWagerObject.userKey = userKey;
         tempWagerObject.userName = this.auth.user.displayName;
         if(selectedTeam != null)
             tempWagerObject.selectedTeam = selectedTeam;
+        if(selected != null)
+            tempWagerObject.selected = selected;
         if(uovalue != null)
             tempWagerObject.uoValue = uovalue;
         tempWagerObject.game = game;
@@ -73,6 +96,8 @@ export class WagerService{
         tempWagerObject.userName = wager.userName;
         if(wager.selectedTeam != null)
             tempWagerObject.selectedTeam = wager.selectedTeam;
+        if(wager.selected != null)
+            tempWagerObject.selected = wager.selected;
         if(wager.uoValue != null)
             tempWagerObject.uoValue = wager.uoValue;
         tempWagerObject.game = wager.game;
@@ -122,7 +147,7 @@ export class WagerService{
         return this.db.object(liveWagerUserPath).remove();
     }
 
-    createAcceptLiveOpenWager(game: Game, selectedTeam: string, uoValue: string, amount: number, opUserName: string, opUserKey: string, userName:string, userKey:string ): boolean{
+    createAcceptLiveOpenWager(game: Game, selectedTeam: string, selected: string, uoValue: string, amount: number, opUserName: string, opUserKey: string, userName:string, userKey:string ): boolean{
         //let userKey =  this.auth.user.uid;
         let challengerOpenWager:OpenWager = new OpenWager();
         challengerOpenWager.userKey = userKey;
@@ -134,6 +159,9 @@ export class WagerService{
         } 
         if(selectedTeam!= null){
             challengerOpenWager.selectedTeam = selectedTeam;
+        }
+        if(selected!= null){
+            challengerOpenWager.selected = selected;
         }
         challengerOpenWager.status = opUserName+" Accepted";
         challengerOpenWager.opUserKey = opUserKey;
@@ -147,6 +175,9 @@ export class WagerService{
         if(selectedTeam!= null){
             opponentOpenWager.selectedTeam = selectedTeam;
         }
+        if(selected!= null){
+            opponentOpenWager.selected = selected;
+        }
         opponentOpenWager.game = game;
         opponentOpenWager.amount = amount;
         opponentOpenWager.status = "Accepted "+userName+" challenge";
@@ -155,15 +186,44 @@ export class WagerService{
 
         const challengerOpenWagerPath = `${this.openWagerPath}/${userKey}`;
         const challengerOpenWagerList = this.db.list(challengerOpenWagerPath);
-        challengerOpenWagerList.push(challengerOpenWager);
+        challengerOpenWagerList.push(challengerOpenWager).then(newItem=>{
+            
+            let gamedate :string = game.matchDate;
+            const activeGameFullPath = `${this.activeGamePath}/${gamedate}/${game.id}`;
+            const activeGameList = this.db.object(activeGameFullPath);
+            game.type = "openlive";
+            activeGameList.set(game);
+
+            const wagerInfoFullPath = `${this.wagerInfoPath}/${game.id}`
+            const wagerInfoList = this.db.list(wagerInfoFullPath);
+            let wagerInfo:WagerInfo = new WagerInfo();
+            wagerInfo.userId = userKey;
+            wagerInfo.wagerId = newItem.key;
+            wagerInfoList.push(wagerInfo);
+        });
 
         const opponentOpenWagerPath = `${this.openWagerPath}/${opUserKey}`;
         const opponentOpenWagerList = this.db.list(opponentOpenWagerPath);
-        opponentOpenWagerList.push(opponentOpenWager);
+        opponentOpenWagerList.push(opponentOpenWager).then(newItem=>{
+            
+            let gamedate :string = game.matchDate;
+            const activeGameFullPath = `${this.activeGamePath}/${gamedate}/${game.id}`;
+            const activeGameList = this.db.object(activeGameFullPath);
+            game.type = "openlive";
+            activeGameList.set(game);
+
+            const wagerInfoFullPath = `${this.wagerInfoPath}/${game.id}`
+            const wagerInfoList = this.db.list(wagerInfoFullPath);
+            let wagerInfo:WagerInfo = new WagerInfo();
+            wagerInfo.userId = opUserKey;
+            wagerInfo.wagerId = newItem.key;
+            wagerInfoList.push(wagerInfo);
+        });
+
         return true;
     }
 
-    createOpenWager(game: Game, selectedTeam: string, uoValue: string, amount: number, opUserName: string, opUserKey: string ): void{
+    createOpenWager(game: Game, selectedTeam: string, selected: string, uoValue: string, amount: number, opUserName: string, opUserKey: string ): void{
         let userKey =  this.auth.user.uid;
         let challengerOpenWager:OpenWager = new OpenWager();
         challengerOpenWager.userKey = userKey;
@@ -175,6 +235,9 @@ export class WagerService{
         } 
         if(selectedTeam!= null){
             challengerOpenWager.selectedTeam = selectedTeam;
+        }
+        if(selected!= null){
+            challengerOpenWager.selected = selected;
         }
         challengerOpenWager.status = "Challenged "+opUserName;
         challengerOpenWager.opUserKey = opUserKey;
@@ -188,6 +251,9 @@ export class WagerService{
         if(selectedTeam!= null){
             opponentOpenWager.selectedTeam = selectedTeam;
         }
+        if(selected!= null){
+            opponentOpenWager.selected = selected;
+        }
         opponentOpenWager.game = game;
         opponentOpenWager.amount = amount;
         opponentOpenWager.status = "Pending";
@@ -196,11 +262,41 @@ export class WagerService{
 
         const challengerOpenWagerPath = `${this.openWagerPath}/${userKey}`;
         const challengerOpenWagerList = this.db.list(challengerOpenWagerPath);
-        challengerOpenWagerList.push(challengerOpenWager);
+        challengerOpenWagerList.push(challengerOpenWager).then(newItem=>{
+            
+            let gamedate :string = game.matchDate;
+            const activeGameFullPath = `${this.activeGamePath}/${gamedate}/${game.id}`;
+            const activeGameList = this.db.object(activeGameFullPath);
+            game.type = "open";
+            activeGameList.set(game);
+
+            const wagerInfoFullPath = `${this.wagerInfoPath}/${game.id}`
+            const wagerInfoList = this.db.list(wagerInfoFullPath);
+            let wagerInfo:WagerInfo = new WagerInfo();
+            wagerInfo.userId = userKey;
+            wagerInfo.wagerId = newItem.key;
+            wagerInfoList.push(wagerInfo);
+        });
 
         const opponentOpenWagerPath = `${this.openWagerPath}/${opUserKey}`;
         const opponentOpenWagerList = this.db.list(opponentOpenWagerPath);
-        opponentOpenWagerList.push(opponentOpenWager);
+        opponentOpenWagerList.push(opponentOpenWager).then(newItem=>{
+            
+            let gamedate :string = game.matchDate;
+            const activeGameFullPath = `${this.activeGamePath}/${gamedate}/${game.id}`;
+            const activeGameList = this.db.object(activeGameFullPath);
+            game.type = "open";
+            activeGameList.set(game);
+
+            const wagerInfoFullPath = `${this.wagerInfoPath}/${game.id}`
+            const wagerInfoList = this.db.list(wagerInfoFullPath);
+            let wagerInfo:WagerInfo = new WagerInfo();
+            wagerInfo.userId = opUserKey;
+            wagerInfo.wagerId = newItem.key;
+            wagerInfoList.push(wagerInfo);
+        });
+
+        
         return;
     }
 

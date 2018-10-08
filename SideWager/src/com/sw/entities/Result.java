@@ -1,20 +1,37 @@
 package com.sw.entities;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Result {
 
+	@SerializedName("ID")
 	private String id;
+	@SerializedName("HomeScore")
 	private String homeScore;
+	@SerializedName("AwayScore")
 	private String awayScore;
-	private OddType oddType;
+	@SerializedName("OddType")
+	private String oddType;
+	@SerializedName("Final")
 	private boolean finalValue;
+	@SerializedName("TennisFinalScore")
 	private String tennisFinalScore;
+	@SerializedName("AETScore")
 	private String aetScore;
+	@SerializedName("PKScore")
 	private String pkScore;
-	private FinalType finalType;
+	@SerializedName("FinalType")
+	private String finalType;
+	@SerializedName("Name")
 	private String name;
+	@SerializedName("Position")
 	private String position;
+	@SerializedName("FinalPosition")
 	private String finalPosition;
+	@SerializedName("BinaryScore")
 	private String binaryScore;
+	@SerializedName("EventID")
+	private String eventId;
 	public String getId() {
 		return id;
 	}
@@ -33,10 +50,10 @@ public class Result {
 	public void setAwayScore(String awayScore) {
 		this.awayScore = awayScore;
 	}
-	public OddType getOddType() {
+	public String getOddType() {
 		return oddType;
 	}
-	public void setOddType(OddType oddType) {
+	public void setOddType(String oddType) {
 		this.oddType = oddType;
 	}
 	public boolean isFinalValue() {
@@ -63,10 +80,10 @@ public class Result {
 	public void setPkScore(String pkScore) {
 		this.pkScore = pkScore;
 	}
-	public FinalType getFinalType() {
+	public String getFinalType() {
 		return finalType;
 	}
-	public void setFinalType(FinalType finalType) {
+	public void setFinalType(String finalType) {
 		this.finalType = finalType;
 	}
 	public String getName() {
@@ -93,28 +110,26 @@ public class Result {
 	public void setBinaryScore(String binaryScore) {
 		this.binaryScore = binaryScore;
 	}
-	public Result(String id, String homeScore, String awayScore, OddType oddType, boolean finalValue,
-			String tennisFinalScore, String aetScore, String pkScore, FinalType finalType, String name, String position,
-			String finalPosition, String binaryScore) {
-		super();
-		this.id = id;
-		this.homeScore = homeScore;
-		this.awayScore = awayScore;
-		this.oddType = oddType;
-		this.finalValue = finalValue;
-		this.tennisFinalScore = tennisFinalScore;
-		this.aetScore = aetScore;
-		this.pkScore = pkScore;
-		this.finalType = finalType;
-		this.name = name;
-		this.position = position;
-		this.finalPosition = finalPosition;
-		this.binaryScore = binaryScore;
+	public String getEventId() {
+		return eventId;
 	}
+	public void setEventId(String eventId) {
+		this.eventId = eventId;
+	}
+	
 	public Result() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	@Override
+	public String toString() {
+		return "Result [id=" + id + ", homeScore=" + homeScore + ", awayScore=" + awayScore + ", oddType=" + oddType
+				+ ", finalValue=" + finalValue + ", tennisFinalScore=" + tennisFinalScore + ", aetScore=" + aetScore
+				+ ", pkScore=" + pkScore + ", finalType=" + finalType + ", name=" + name + ", position=" + position
+				+ ", finalPosition=" + finalPosition + ", binaryScore=" + binaryScore + ", eventId=" + eventId + "]";
+	}
+	
+	
 	
 	
 	

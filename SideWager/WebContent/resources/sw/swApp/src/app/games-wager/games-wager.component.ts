@@ -15,8 +15,7 @@ import { Game } from "../entities/Game";
 })
 export class GamesWagerComponent implements OnInit, OnDestroy {
 
-  //Local : 
- // public sportsList:Array<any> = new Array();
+  //Local :    public sportsList:Array<any> = new Array();
   public sportsList:Array<Sports> = new Array();
   public isLoading=true;
   constructor(public gls:GamelistService,public authService: AuthService,private router:Router
@@ -28,12 +27,10 @@ export class GamesWagerComponent implements OnInit, OnDestroy {
   wagerSservieSubscribe;
 
   ngOnInit() {
-    //Local : 
-    //this.sportsList = this.sportsLists;
+    //Local :      this.sportsList = this.sportsLists;
     this.gameListSubscribe = this.gls.getListData(this.user.user.ckey)
     .subscribe(data => {
-      //Local : 
-      //this.sportsList = this.sportsLists;
+      //Local :    this.sportsList = this.sportsLists;
       this.sportsList = data;
       this.isLoading=false;
       
@@ -63,7 +60,7 @@ export class GamesWagerComponent implements OnInit, OnDestroy {
   makeWager(game: Game){
     this.router.navigate(['home','mkwagerstep1']);
     //this.makeWagerService.setGame(game);
-    this.wagerService.createTempWager(game,null,null,null);
+    this.wagerService.createTempWager(game,null,null,null,null);
     //this.wagerService.createLiveWager(game, game.homeTeamShortName, 500);
     //this.wagerService.createOpenWager(game, game.homeTeamShortName, 500, 'Debanjan Banerjee', '3yCzgU8VjFVX87s0EchIGZhFNpi1')
   }
@@ -98,6 +95,7 @@ public sportsLists=[{
   "underLine":"102.5",
   "matchDate":"Oct 15, 2017",
   "matchTime":"8:00PM",
+  "id":"1234"
 }]},
 {"shortName":"PQR",
 "gameList":[{
@@ -109,6 +107,7 @@ public sportsLists=[{
   "underLine":"105.5",
   "matchDate":"Oct 15, 2017",
   "matchTime":" 8:00PM",
+  "id":"5678"
 }]},
 {"shortName":"XYZ",
 "gameList":[{
@@ -120,6 +119,7 @@ public sportsLists=[{
   "underLine":"101",
   "matchDate":"Oct 15, 2017",
   "matchTime":"10:30PM",
+  "id":"9101112"
 }]
 }
 ];

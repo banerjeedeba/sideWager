@@ -79,7 +79,7 @@ export class MakeWagerStep7Component implements OnInit {
               if(liveWager.amount > this.twager.betamount){
                   //update live wager amount
                 this.wagerService.updateLiveWagerAmount(this.twager.game, this.twager.selectedTeam,this.uoValue,this.twager.betamount,this.twager.opName,this.twager.opKey,this.twager.userName, this.twager.userKey, this.twager.wagerKey, liveWager);
-                if(this.wagerService.createAcceptLiveOpenWager(this.twager.game, this.twager.selectedTeam,this.uoValue,this.twager.betamount,this.twager.opName,this.twager.opKey,this.twager.userName, this.twager.userKey))
+                if(this.wagerService.createAcceptLiveOpenWager(this.twager.game, this.twager.selectedTeam,this.twager.selected,this.uoValue,this.twager.betamount,this.twager.opName,this.twager.opKey,this.twager.userName, this.twager.userKey))
                 {
                   this.wagerService.removeTempAcceptLiveWager();
                   this.router.navigate(['home','swtab']);
@@ -88,7 +88,7 @@ export class MakeWagerStep7Component implements OnInit {
               } else if(liveWager.amount==this.twager.betamount){
                   //delete live wager
                   this.wagerService.removeLiveWager(this.twager.userKey, this.twager.wagerKey);
-                  if(this.wagerService.createAcceptLiveOpenWager(this.twager.game, this.twager.selectedTeam,this.uoValue,this.twager.betamount,this.twager.opName,this.twager.opKey,this.twager.userName, this.twager.userKey)){
+                  if(this.wagerService.createAcceptLiveOpenWager(this.twager.game, this.twager.selectedTeam,this.twager.selected,this.uoValue,this.twager.betamount,this.twager.opName,this.twager.opKey,this.twager.userName, this.twager.userKey)){
                     this.wagerService.removeTempAcceptLiveWager();
                     this.router.navigate(['home','swtab']);
                   }

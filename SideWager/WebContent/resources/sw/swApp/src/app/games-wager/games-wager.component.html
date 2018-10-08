@@ -37,19 +37,19 @@
   <md-grid-tile [colspan]="3" [rowspan]="1">
     <ul class="md-list-item-inner md-list-item-inner-child">
       <li>
-        <span class="game-team-name">{{game.pointSpread}}</span>
+        <span class="game-team-name">{{game.homeTeamShortName}}</span>
       </li>
       <li>
-        <span class="game-team-name">{{game.underLine}}</span>
+        <span class="game-team-name">{{game.pointSpread}}</span>
       </li>
     </ul>
   </md-grid-tile>
   <md-grid-tile [colspan]="2" [rowspan]="1">
     <span class="game-time">{{game.matchTime}}</span>
    </md-grid-tile>
-   <md-grid-tile [colspan]="1" [rowspan]="1">
+   <!--<md-grid-tile [colspan]="1" [rowspan]="1">
     <md-divider class="vertical-divider"></md-divider>
-   </md-grid-tile>
+   </md-grid-tile>-->
   <md-grid-tile [colspan]="3" [rowspan]="1">
     <button md-raised-button class="btn-wager" (click)="makeWager(game)"> WAGER</button>
   </md-grid-tile>

@@ -32,12 +32,12 @@ this.router.navigate(['home','swtab']);
 close(){
   this.router.navigate(['home','swtab']);
 }
-gotoStep2(teamName){
+gotoStep2(teamName,selected){
   this.router.navigate(['home','mkwagerstep2']);
-  this.wagerService.createTempWager(this.twager.game,teamName, null,null);
+  this.wagerService.createTempWager(this.twager.game,teamName,selected, null,null);
 }
 gotouoStep2(uoValue:string, game:Game){
   this.router.navigate(['home','mkwagerstep2']);
-  this.wagerService.createTempWager(this.twager.game,null,uoValue+game.underLine,null);
+  this.wagerService.createTempWager(this.twager.game,null,game.underLine,uoValue+game.underLine,null);
 }
 }

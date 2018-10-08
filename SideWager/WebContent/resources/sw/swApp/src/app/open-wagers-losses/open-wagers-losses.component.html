@@ -3,55 +3,115 @@
   <div class="pull-right">
     <span class="upto-text">Weekly Total:</span><span class="color-green">550sc</span>
   </div>
-<div class="header-section">
- <md-grid-list cols="13" rowHeight="3em">
-  <md-grid-tile [colspan]="2" [rowspan]="1" class="text-content">Friend</md-grid-tile>
-  <md-grid-tile [colspan]="4" [rowspan]="1" class="text-content"></md-grid-tile>
-  <md-grid-tile [colspan]="3" [rowspan]="1" class="text-content"># of Games</md-grid-tile>
-  <md-grid-tile [colspan]="3" [rowspan]="1" class="text-content">Side Credits</md-grid-tile>
-</md-grid-list>
-<div class="card-container" *ngFor="let win of listWinnings">
-<md-card class="no-padding">
-<md-grid-list cols="13" rowHeight="4em">
-  <md-grid-tile [colspan]="2" [rowspan]="1">
-    <div class="friends">
-      <img class="img-circle" src="{{win.imgSource}}" alt="Picture of {{win.Name}}"/>
+  <div *ngIf="openWagersList?.length > 0"> <!-- *ngIf="liveWagers?.length > 0" -->
+    <div class="scrolable-list">
+  <div *ngFor="let openWager of openWagersList">    
+  <div class="card-container" *ngIf="openWager.status !='Pending' && openWager.isWinner!=null">
+      <!-- *ngFor="let liveWager of liveWagers" -->
+  <md-card class="md-card-padd" >
+    <div class="bordered-bottom">
+      <md-card-subtitle>
+        <span *ngIf="openWager.uoValue==null" class="selection">{{openWager.userName}} Selected: {{openWager.selectedTeam}} </span>
+        <span *ngIf="openWager.uoValue!=null" class="selection">{{openWager.userName}} Selected: {{openWager.uoValue}} </span>
+        <div class="pull-right">
+          <!-- <span class="upto-text">up to</span>  -->
+          <span class="amount" *ngIf="openWager.isWinner==null">
+            <!-- 550sc -->
+            {{openWager.amount}}sc
+          </span>
+        </div>
+      </md-card-subtitle>
     </div>
-      <!--<div md-card-avatar><i class="material-icons">account_circle</i></div>-->
-     
-  </md-grid-tile>
-  <md-grid-tile [colspan]="4" [rowspan]="1" class="align-left">
-  <span class="text-content">{{win.Name}}</span>
-  </md-grid-tile>
-  <!--<md-grid-tile [colspan]="2" [rowspan]="1">
-    <span>{{win.weeklyHTP}}</span>
-  </md-grid-tile>-->
-  <md-grid-tile [colspan]="3" [rowspan]="1">
-0
-  </md-grid-tile>
-  <!--<md-grid-tile [colspan]="1" [rowspan]="1">
-      <div *ngIf="win.paymentStatus == 'Y'">
-         <i class="material-icons color-green">check_circle</i>
-      </div> 	
-      <div *ngIf="win.paymentStatus == 'W'">
-        <i class="material-icons color-gray">schedule</i>
-      </div> 
-  </md-grid-tile>-->
-  <md-grid-tile [colspan]="4" [rowspan]="1">
-      <span class="color-green">{{win.Amount}}sc</span>
-    <!-- <button md-raised-button class="btn-view-games">View<br/> Games</button> -->
-      <!--<div *ngIf="win.paymentStatus == 'N'">
-	      <button md-raised-button class="btn-confirm-payment">Tap when<br/> Paid up</button>
-      </div> 	
-      <div *ngIf="win.paymentStatus == 'Y'">
-        <span class="color-green">Payment Confirmed</span>
-      </div> 	
-      <div *ngIf="win.paymentStatus == 'W'">
-        <span class="color-gray">Waiting on Payment</span>
-      </div> -->
-  </md-grid-tile>
-</md-grid-list>  
-</md-card>
-</div>
+  <md-grid-list cols="16" rowHeight="5em">
+    <md-grid-tile [colspan]="5" [rowspan]="1">
+      <ul class="md-list-item-inner">
+        <li>
+          <span class="game-team-fullname">
+            <!-- Toranto -->
+            {{openWager.game.homeTeam}}
+          </span>
+        </li>
+        <li>
+          <span class="game-team-fullname">
+            <!-- Chicago -->
+            {{openWager.game.awayTeam}}
+          </span>
+        </li>
+      </ul>
+    </md-grid-tile>
+    <md-grid-tile [colspan]="2" [rowspan]="1">
+      <ul class="md-list-item-inner">
+        <li>
+          <span class="game-team-name">
+            <!-- TOR -->
+            {{openWager.game.homeTeamShortName}}
+          </span>
+        </li>
+        <li>
+          <span class="game-team-name">
+            <!-- CHI -->
+            {{openWager.game.awayTeamShortName}}
+          </span>
+        </li>
+      </ul>
+    </md-grid-tile>
+    <md-grid-tile [colspan]="3" [rowspan]="1">
+      <ul class="md-list-item-inner md-list-item-inner-child">
+        <li>
+          <span class="game-team-name">
+            <!-- TOR-6.5 -->
+            {{openWager.game.pointSpread}}
+          </span>
+        </li>
+        <li>
+          <span class="game-team-name">
+            <!-- u102.5 -->
+            {{openWager.game.underLine}}
+          </span>
+        </li>
+      </ul>
+    </md-grid-tile>
+    <md-grid-tile [colspan]="2" [rowspan]="1">
+      <span class="game-time">
+        <!-- 8:00PM -->
+        {{openWager.game.matchDate |date:'M/d'}}
+        {{openWager.game.matchTime}}
+      </span>
+     </md-grid-tile>
+     <md-grid-tile [colspan]="1" [rowspan]="1">
+      <md-divider class="vertical-divider"></md-divider>
+     </md-grid-tile>
+    <md-grid-tile [colspan]="3" [rowspan]="1">
+    <div>
+    <div *ngIf="openWager.isWinner!=null">
+      <div *ngIf="openWager.isWinner">
+        <span class="color-green-text">{{openWager.amount}} SC</span>
+        <i class="material-icons color-green">
+            check_circle
+        </i>
+      </div>
+      <div *ngIf="!openWager.isWinner">
+        <span class="color-red-text">-{{openWager.amount}} SC</span>
+        <i class="material-icons color-red">
+            cancel
+        </i>
+      </div>
+    </div>
+    <span class="color-gray-text" *ngIf="(openWager.status| slice:0:10) == 'Challenged' && openWager.isWinner==null">Pending</span>
+    <span class="color-green-text" *ngIf="(openWager.status| slice:0:10) != 'Challenged' && openWager.isWinner==null">Wager Accepted</span>
+    
+        <!-- <button md-raised-button class="btn-accept" (click)="accept()"> ACCEPT</button> -->
+    </div>
+    </md-grid-tile>
+  </md-grid-list>
+  </md-card>
+  </div>
+  </div>
+    </div>
+  </div>
+  <div *ngIf="openWagersList?.length == 0">
+      <md-list>
+          <h3 md-subheader>No Live Wager!!</h3>
+      </md-list>
   </div>
 </div>

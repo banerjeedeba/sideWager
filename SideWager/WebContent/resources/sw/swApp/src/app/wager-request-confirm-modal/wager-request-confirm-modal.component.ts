@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MdDialog, MdDialogRef, MD_DIALOG_DATA, MdDialogClose, MdDialogActions, MdButton} from '@angular/material';
+import { MdDialog, MdDialogRef, MD_DIALOG_DATA,MdDialogConfig, MdDialogClose, MdDialogActions, MdButton} from '@angular/material';
 
 @Component({
   selector: 'app-wager-request-confirm-modal',
@@ -19,6 +19,6 @@ export class WagerRequestConfirmModalComponent implements OnInit {
   }
   cancel(){
     this.dialogRef.close( false);
-  }
+  } 
 
 }

@@ -84,7 +84,7 @@ export class MakeWagerStep3Component implements OnInit {
   }
   gotoStep4(frndKey,frndName){
     this.router.navigate(['home','mkwagerstep4']);
-    this.wagerService.createTempOpenWager(this.twager.game,this.twager.selectedTeam,this.uoValue,this.amount,frndKey,frndName);
+    this.wagerService.createTempOpenWager(this.twager.game,this.twager.selectedTeam,this.twager.selected,this.uoValue,this.amount,frndKey,frndName);
   }
 
   ngOnDestroy(){

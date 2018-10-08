@@ -65,9 +65,9 @@ export class MakeWagerStep4Component implements OnInit {
     }
     this.router.navigate(['home','mkwagerstep5live']);
     if(this.twager.opName != null){
-      this.wagerService.createTempOpenWager(this.twager.game,this.twager.selectedTeam,this.uoValue,this.amount,this.twager.opKey,this.twager.opName);
+      this.wagerService.createTempOpenWager(this.twager.game,this.twager.selectedTeam,this.twager.selected,this.uoValue,this.amount,this.twager.opKey,this.twager.opName);
     } else {
-      this.wagerService.createTempWager(this.twager.game,this.twager.selectedTeam,this.uoValue,this.amount);
+      this.wagerService.createTempWager(this.twager.game,this.twager.selectedTeam,this.twager.selected,this.uoValue,this.amount);
     }
     
   }

@@ -14,6 +14,7 @@ public class Game {
 	private String matchDate;
 	private String pointSpread;
 	private String underLine;
+	private String type;
 	public String getId() {
 		return id;
 	}
@@ -85,6 +86,19 @@ public class Game {
 	}
 	public void setUnderLine(String underLine) {
 		this.underLine = underLine;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	@Override
+	public String toString() {
+		return "Game [id=" + id + ", homeTeam=" + homeTeam + ", awayTeam=" + awayTeam + ", homeTeamShortName="
+				+ homeTeamShortName + ", awayTeamShortName=" + awayTeamShortName + ", sport=" + sport + ", sportName="
+				+ sportName + ", wholeMatchTime=" + wholeMatchTime + ", matchTime=" + matchTime + ", matchDate="
+				+ matchDate + ", pointSpread=" + pointSpread + ", underLine=" + underLine + ", type=" + type + "]";
 	}
 	
 	

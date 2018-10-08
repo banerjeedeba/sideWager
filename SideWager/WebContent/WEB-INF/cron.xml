@@ -6,4 +6,22 @@
     <schedule>every day 20:00</schedule>
     <timezone>America/New_York</timezone>
   </cron>
+  <cron>
+    <url>/publish/game_data</url>
+    <description>game data</description>
+    <schedule>every 1 hours</schedule>
+    <timezone>America/New_York</timezone>
+  </cron>
+  <cron>
+    <url>/data/gamelistupdate</url>
+    <description>game data update</description>
+    <schedule>every 10 min</schedule>
+    <timezone>America/New_York</timezone>
+  </cron>
+  <cron>
+    <url>/data/checkGameStatus</url>
+    <description>check game status</description>
+    <schedule>every 10 min</schedule>
+    <timezone>America/New_York</timezone>
+  </cron>
 </cronentries>

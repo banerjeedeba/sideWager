@@ -11,4 +11,5 @@ export class Game{
     matchDate: string;
     pointSpread: string;
     underLine: string;
+    type: string;
 }

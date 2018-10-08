@@ -104,7 +104,7 @@ public class OddsUpdate {
 		}
 	}
 	
-	private String getResults() throws Exception
+	public static String getResults() throws Exception
 	{
 		String oddsUrl = "https://jsonodds.com/api/results";
 		Map<String, String> headerParams = new HashMap<String, String>();
