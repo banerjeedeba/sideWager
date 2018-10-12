@@ -363,27 +363,8 @@ public class DataService {
 				String homeScoreString = result.getHomeScore();
 				String awayScoreString = result.getAwayScore();
 				if(homeScoreString!=null && awayScoreString!=null){
-					//int homeScore = Integer.parseInt(homeScoreString);
-					//int awayScore = Integer.parseInt(awayScoreString);
-					/*switch(game.getType()){
-						case "openlive":
-							cleardb = "no";
-						case "live":
-							if(StringUtils.isEmpty(cleardb)){
-								cleardb = "yes";
-							}
-							updateLiveWager(game.getId(),cleardb);
-							if(cleardb.equals("yes")){
-								break;
-							}
-						case "open":
-							if("Finished".equals(result.getFinalType())){
-								updateOpenWager(game.getId(),homeScoreString,awayScoreString,todaysDate,"yes");
-							} else {
-								updateOpenWager(game.getId(),null,null,todaysDate,"no");
-							}
-					}*/
-					System.out.println("game type"+game.getType());
+					
+					/*System.out.println("game type"+game.getType());
 					if("openlive".equals(game.getType())){
 						cleardb = "no";
 						updateLiveWager(game.getId(),cleardb);
@@ -395,13 +376,13 @@ public class DataService {
 					} else if("live".equals(game.getType())){
 						cleardb = "yes";
 						updateLiveWager(game.getId(),cleardb);
-					}else if("open".equals(game.getType())){
+					}else if("open".equals(game.getType())){*/
 						if("Finished".equals(result.getFinalType())){
 							updateOpenWager(game.getId(),homeScoreString,awayScoreString,todaysDate,"yes");
 						} else {
 							updateOpenWager(game.getId(),null,null,todaysDate,"no");
 						}
-					}
+					//}
 				}
 				
 				//games.add(game);

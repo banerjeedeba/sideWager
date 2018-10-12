@@ -46,7 +46,7 @@ export class WagerService{
             game.type = "live";
             activeGameList.set(game);
 
-            const wagerInfoFullPath = `${this.wagerInfoPath}/${game.id}`
+            const wagerInfoFullPath = `${this.wagerInfoPath}/${game.id}/live`
             const wagerInfoList = this.db.list(wagerInfoFullPath);
             let wagerInfo:WagerInfo = new WagerInfo();
             wagerInfo.userId = userKey;
@@ -194,7 +194,7 @@ export class WagerService{
             game.type = "openlive";
             activeGameList.set(game);
 
-            const wagerInfoFullPath = `${this.wagerInfoPath}/${game.id}`
+            const wagerInfoFullPath = `${this.wagerInfoPath}/${game.id}/open`
             const wagerInfoList = this.db.list(wagerInfoFullPath);
             let wagerInfo:WagerInfo = new WagerInfo();
             wagerInfo.userId = userKey;
@@ -206,13 +206,7 @@ export class WagerService{
         const opponentOpenWagerList = this.db.list(opponentOpenWagerPath);
         opponentOpenWagerList.push(opponentOpenWager).then(newItem=>{
             
-            let gamedate :string = game.matchDate;
-            const activeGameFullPath = `${this.activeGamePath}/${gamedate}/${game.id}`;
-            const activeGameList = this.db.object(activeGameFullPath);
-            game.type = "openlive";
-            activeGameList.set(game);
-
-            const wagerInfoFullPath = `${this.wagerInfoPath}/${game.id}`
+            const wagerInfoFullPath = `${this.wagerInfoPath}/${game.id}/open`
             const wagerInfoList = this.db.list(wagerInfoFullPath);
             let wagerInfo:WagerInfo = new WagerInfo();
             wagerInfo.userId = opUserKey;
@@ -270,7 +264,7 @@ export class WagerService{
             game.type = "open";
             activeGameList.set(game);
 
-            const wagerInfoFullPath = `${this.wagerInfoPath}/${game.id}`
+            const wagerInfoFullPath = `${this.wagerInfoPath}/${game.id}/open`
             const wagerInfoList = this.db.list(wagerInfoFullPath);
             let wagerInfo:WagerInfo = new WagerInfo();
             wagerInfo.userId = userKey;
@@ -288,7 +282,7 @@ export class WagerService{
             game.type = "open";
             activeGameList.set(game);
 
-            const wagerInfoFullPath = `${this.wagerInfoPath}/${game.id}`
+            const wagerInfoFullPath = `${this.wagerInfoPath}/${game.id}/open`
             const wagerInfoList = this.db.list(wagerInfoFullPath);
             let wagerInfo:WagerInfo = new WagerInfo();
             wagerInfo.userId = opUserKey;

@@ -94,8 +94,8 @@ export const checkGameResult = functions.https.onRequest((request, response) => 
 export const updateOpenGameResult = functions.https.onRequest(async (request, response) => {
   try{
     const gameId:string = request.query.a;
-    const homeScore:number = request.query.b;
-    const awayScore:number = request.query.c;
+    const homeScore:number = Number(request.query.b);
+    const awayScore:number = Number(request.query.c);
     const gameDate:string = request.query.d;
     const gameFinished:string= request.query.e;
     let isGameFinshed:boolean = false;
@@ -106,129 +106,163 @@ export const updateOpenGameResult = functions.https.onRequest(async (request, re
     console.log("gameId: "+gameId+".....home score: "+homeScore+".....away score: "+awayScore);
     const result = await admin.database().ref('wagerinfo/'+gameId).once('value');
     const games = result.val();
-    const promises = [];
+    const livePromises = [];
+    const openPromises = [];
     for(const game in games){
-      const gameValue = games[game];
-      const userId = gameValue['userId'];
-      const wagerId = gameValue['wagerId'];
-      const p = admin.database().ref('openwager/'+userId+"/"+wagerId).once('value');
-      promises.push(p);
+      console.log(game);
+      if(game==="live"){
+        const liveList = games[game];
+        for(const live in liveList){
+          const gameValue = liveList[live];
+          const userId = gameValue['userId'];
+          const wagerId = gameValue['wagerId'];
+          console.log('live user:'+userId+' wagerid: '+wagerId);
+          const livep = admin.database().ref('livewager/'+userId+"/"+wagerId).remove();
+          livePromises.push(livep);
+        }
+      }
+      if(game==="open"){
+        const openList = games[game];
+        console.log(openList);
+        for(const openGame in openList){
+          const gameValue = openList[openGame];
+          const userId = gameValue['userId'];
+          const wagerId = gameValue['wagerId'];
+          console.log('open user:'+userId+' wagerid: '+wagerId);
+          const openp = admin.database().ref('openwager/'+userId+"/"+wagerId).once('value');
+          openPromises.push(openp);
+        }
+      }
     }
-    const snapshots = await Promise.all(promises);
+    await Promise.all(livePromises);
+    const snapshots = await Promise.all(openPromises);
     const updatePromises = [];
     const removePromises = [];
     const scorePromises = [];
     snapshots.forEach(snaps=>{
+      console.log("loop start");
       const openwager = snaps.val();
-      const wagerId = snaps.key;
-      const selected = openwager.selected;
-      const uoValue = openwager.uoValue;
-      let userWinner:string;
-      console.log("selected: "+selected)
-      console.log("uoValue: "+uoValue)
-      if((!(selected==null)) && (selected.includes("home")||selected.includes("away"))){ //user selects team
-        console.log("user selects team")
-        if(homeScore>awayScore){
-          if(selected==="home"){
-            userWinner = "true";
-          } else {
-            userWinner = "false";
-          }
-        } else if(awayScore>homeScore){
-          if(selected==="away"){
-            userWinner = "true";
-          } else {
-            userWinner = "false";
-          }
-        } else if(awayScore===homeScore){
-          userWinner="draw";
-        }
-      } else if((!(uoValue==null)) && (uoValue.includes("o")||uoValue.includes("u"))){    //user selects under/Over
+      if(!(openwager==null)){
+        const wagerId = snaps.key;
+        const selected = openwager.selected;
+        const uoValue = openwager.uoValue;
+        let userWinner:string;
         
-        const total:number = homeScore + awayScore;
-        console.log("user selects under/Over total: "+total);
-        if(total>selected){
-          if(uoValue.includes("o")){
-            userWinner = "true";
-          } else {
-            userWinner = "false";
+        console.log("selected: "+selected)
+        console.log("uoValue: "+uoValue)
+        if((!(selected==null)) && (selected.includes("home")||selected.includes("away"))){ //user selects team
+          console.log("user selects team")
+          if(homeScore>awayScore){
+            if(selected==="home"){
+              userWinner = "true";
+            } else {
+              userWinner = "false";
+            }
+          } else if(awayScore>homeScore){
+            if(selected==="away"){
+              userWinner = "true";
+            } else {
+              userWinner = "false";
+            }
+          } else if(awayScore===homeScore){
+            userWinner="draw";
           }
-        } else if(total<selected){
-          if(uoValue.includes("o")){
-            userWinner = "true";
-          } else {
-            userWinner = "false";
-          }
-        } else if(total===selected){
-          userWinner="draw";
-        }
-      }
-      if(!(openwager == null)){
-        const status = openwager.status;
-        if(status.includes('Challenged') || status.includes('Pending') || status.includes('Rejected')){
-          let userId = "";
-          if(status.includes('Pending')){
-            userId = openwager.opUserKey;
-          }
-          if(status.includes('Challenged') || status.includes('Rejected')){
-            userId = openwager.userKey;
-          }
-          const p = admin.database().ref('openwager/'+userId+"/"+wagerId).remove();
-          removePromises.push(p);
-          cleardb = true;
-        }
-        let score: {[k: string]: any} = {};
-        if(status.includes('Accepted') && status.includes('challenge')){
-          const userId = openwager.opUserKey;
-          if(userWinner === "true"){
-            openwager.status = "You loose";
-            openwager.isWinner = false;
-            score.value = openwager.amount;
-            score.event = "sub";
-            const scorePromiseOpSub = admin.database().ref('scores/'+userId).push(score);
-            scorePromises.push(scorePromiseOpSub);
-            cleardb = true;
-          } else if(userWinner === "false"){
-            openwager.status = "You won";
-            openwager.isWinner = true;
-            score.value = openwager.amount;
-            score.event = "add";
-            const scorePromiseOpAdd = admin.database().ref('scores/'+userId).push(score);
-            scorePromises.push(scorePromiseOpAdd);
-            cleardb = true;
-          } else if(userWinner==="draw"){
-            //TODO logic for draw
-          }
-          const updateOpPromise = admin.database().ref('openwager/'+userId+"/"+wagerId).set(openwager);
-          updatePromises.push(updateOpPromise);
+        } else if((!(uoValue==null)) && (uoValue.includes("o")||uoValue.includes("u"))){    //user selects under/Over
           
-        }
-        if(status.includes('Accepted') && !status.includes('challenge')){
-          const userId = openwager.userKey;
-          if(userWinner === "true"){
-            openwager.status = "You won";
-            openwager.isWinner = true;
-            score.value = openwager.amount;
-            score.event = "add";
-            const scorePromiseAdd = admin.database().ref('scores/'+userId).push(score);
-            scorePromises.push(scorePromiseAdd);
-            cleardb = true;
-          } else if(userWinner === "false"){
-            openwager.status = "You loose";
-            openwager.isWinner = false;
-            score.value = openwager.amount;
-            score.event = "sub";
-            const scorePromiseSub = admin.database().ref('scores/'+userId).push(score);
-            scorePromises.push(scorePromiseSub);
-            cleardb = true;
-          } else if(userWinner==="draw"){
-            //TODO logic for draw
+          const total:number = homeScore + awayScore;
+          console.log("user selects under/Over total: "+total);
+          const selectedValue:number = Number(selected);
+          if(total>selectedValue){
+            console.log("over");
+            if(uoValue.includes("o")){
+              userWinner = "true";
+            } else {
+              userWinner = "false";
+            }
+          } else if(total<selectedValue){
+            console.log("under");
+            if(uoValue.includes("o")){
+              userWinner = "true";
+            } else {
+              userWinner = "false";
+            }
+          } else if(total===selectedValue){
+            userWinner="draw";
           }
-          const updatePromise = admin.database().ref('openwager/'+userId+"/"+wagerId).set(openwager);
-          updatePromises.push(updatePromise);
+        }
+        console.log(userWinner);
+        if(!(openwager == null)){
+          const status = openwager.status;
+          console.log(status);
+          if(status.includes('Challenged') || status.includes('Pending') || status.includes('Rejected')){
+            let userId = "";
+            if(status.includes('Pending')){
+              userId = openwager.opUserKey;
+            }
+            if(status.includes('Challenged') || status.includes('Rejected')){
+              userId = openwager.userKey;
+            }
+            const p = admin.database().ref('openwager/'+userId+"/"+wagerId).remove();
+            removePromises.push(p);
+            cleardb = true;
+          }
+          console.log("score");
+          let score: {[k: string]: any} = {};
+          console.log("after score");
+          if(status.includes('Accepted') && status.includes('challenge')){
+            const userId = openwager.opUserKey;
+            if(userWinner === "true"){
+              openwager.status = "You loose";
+              openwager.isWinner = false;
+              score.value = openwager.amount;
+              score.event = "sub";
+              const scorePromiseOpSub = admin.database().ref('scores/'+userId).push(score);
+              scorePromises.push(scorePromiseOpSub);
+              cleardb = true;
+            } else if(userWinner === "false"){
+              openwager.status = "You won";
+              openwager.isWinner = true;
+              score.value = openwager.amount;
+              score.event = "add";
+              const scorePromiseOpAdd = admin.database().ref('scores/'+userId).push(score);
+              scorePromises.push(scorePromiseOpAdd);
+              cleardb = true;
+            } else if(userWinner==="draw"){
+              //TODO logic for draw
+            }
+            const updateOpPromise = admin.database().ref('openwager/'+userId+"/"+wagerId).set(openwager);
+            updatePromises.push(updateOpPromise);
+            
+          }
+          if(status.includes('Accepted') && !status.includes('challenge')){
+            const userId = openwager.userKey;
+            if(userWinner === "true"){
+              openwager.status = "You won";
+              openwager.isWinner = true;
+              score.value = openwager.amount;
+              score.event = "add";
+              const scorePromiseAdd = admin.database().ref('scores/'+userId).push(score);
+              scorePromises.push(scorePromiseAdd);
+              cleardb = true;
+            } else if(userWinner === "false"){
+              openwager.status = "You loose";
+              openwager.isWinner = false;
+              score.value = openwager.amount;
+              score.event = "sub";
+              const scorePromiseSub = admin.database().ref('scores/'+userId).push(score);
+              scorePromises.push(scorePromiseSub);
+              cleardb = true;
+            } else if(userWinner==="draw"){
+              //TODO logic for draw
+            }
+            const updatePromise = admin.database().ref('openwager/'+userId+"/"+wagerId).set(openwager);
+            updatePromises.push(updatePromise);
+          }
+          console.log("all condition end");
         }
       }
     })
+    console.log("loop end");
     await Promise.all(removePromises);
     await Promise.all(updatePromises);
     await Promise.all(scorePromises);

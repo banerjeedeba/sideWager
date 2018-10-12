@@ -73,7 +73,10 @@ accept(wager:OpenWager , key:string){
     openWagersList.forEach(challengerOpenWager=>{
       if(wager.selectedTeam==challengerOpenWager.selectedTeam
         && wager.uoValue == challengerOpenWager.uoValue
-        && wager.game.matchDate == challengerOpenWager.game.matchDate){
+        && wager.game.matchDate == challengerOpenWager.game.matchDate
+        && wager.opUserKey == challengerOpenWager.opUserKey
+        && wager.userKey == challengerOpenWager.userKey
+        && wager.amount == challengerOpenWager.amount){
           let challengerwager:any=challengerOpenWager;
           this.wagerService.acceptOpenWager(wager,key,challengerOpenWager,challengerwager.$key);
           this.challengerOpenWagerSubscribe.unsubscribe();
@@ -87,7 +90,10 @@ reject(wager:OpenWager , key:string){
     openWagersList.forEach(challengerOpenWager=>{
       if(wager.selectedTeam==challengerOpenWager.selectedTeam
         && wager.uoValue == challengerOpenWager.uoValue
-        && wager.game.matchDate == challengerOpenWager.game.matchDate){
+        && wager.game.matchDate == challengerOpenWager.game.matchDate
+        && wager.opUserKey == challengerOpenWager.opUserKey
+        && wager.userKey == challengerOpenWager.userKey
+        && wager.amount == challengerOpenWager.amount){
           let challengerwager:any=challengerOpenWager;
           this.wagerService.rejectOpenWager(wager,key,challengerOpenWager,challengerwager.$key);
           this.challengerOpenWagerSubscribe.unsubscribe();
