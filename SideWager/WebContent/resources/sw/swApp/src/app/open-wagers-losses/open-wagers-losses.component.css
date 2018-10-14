@@ -1,7 +1,154 @@
 .pull-right{
     float:right;
 }
-.btn-confirm-payment {
+.request-container{
+    padding: 0.7em;
+    min-height:80vh; 
+    max-height: 80vh;
+    overflow-y: scroll;
+}
+ .upto-text{
+    font-size: 0.6em;
+    margin-right: 0.4em;
+    font-weight: 500;
+ }
+.wager-header{
+    font-size: 1.5em;
+    color:#4D4D4D;
+    margin: 0.5em 0;
+    padding-left: 1em;
+    }
+    .game-time{
+    color:#969696;
+    font-size: 0.5em;
+    text-align: center;
+    }
+    
+    .game-team-fullname{
+        font-size: 0.8em;
+        font-weight: 700;
+        font-size: 0.8em;
+        font-weight: 700;
+        overflow: hidden;
+        text-align: left;
+        display: block;
+        width: 90%;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        min-width: 0;
+        margin-left:0.2em;
+    }
+    .game-team-name{
+        font-size: 0.8em;
+       padding-left: 0 !important;
+       font-weight:500; 
+       text-align: center;
+    }
+    .md-list-item-inner {
+        padding: 0 !important;
+        margin: 0 !important;
+        list-style: none;
+        line-height: 2em;
+        width: 100%;
+    }
+    .md-list-item-inner li{
+        text-align: center;
+    }
+    .md-list-item-inner-child{
+        line-height: 1em;
+    }
+    .md-card-padd{
+       padding: 0.5em !important;
+    }
+    .btn-accept {
+    color: #FFFFFF;
+    font-size: 0.6em;
+    font-weight: 400;
+    background-color:#2A9FD8;
+    height: 3em;
+    line-height: 1.5em;
+    }
+    .card-container{
+    margin: 0.5em;   
+    padding: 0.5em;
+    }
+    .vertical-divider {
+      border-top-width: 0;
+      border-right-width: 1px;
+      border-right-style: solid;
+      color:#969696;
+      height: 65%;
+    }
+    .pull-right{
+        float:right;
+    }
+    .tot-amount{
+        height: 20px;
+    }
+    .color-green-tot{
+        color: #06C957;
+        font-weight: 500;
+        font-size: 1em;
+        text-align: center;
+        float: right;
+        }
+    .bordered-bottom{
+        border-bottom : 1px solid #ccc;
+    }
+    .selection{
+        font-size: 1em;
+        color: #000;
+        font-weight: 500;
+    }
+    .amount{
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #000;
+    }
+    .upto-text{
+    font-size: 0.9em;
+    margin-right: 0.2em;
+    font-weight: 800;
+    }
+    .scrolable-list{
+        max-height: 78vh;
+        min-height: 78vh;
+        /* overflow-y: scroll; */
+    }
+    .color-green{
+        color: #06C957;
+        font-weight: 500;
+        text-align: center;
+        display: block;
+        font-size: 1em;
+    }
+    .color-green-text{
+        color: #06C957;
+        font-weight: 500;
+        text-align: center;
+        display: block;
+        font-size: 0.8em;
+    }
+    .color-red{
+        color:#F44336;
+        font-size: 2em;
+        display: block;
+    }
+    .color-red-text{
+        color:#F44336;
+        font-size: 0.8em;
+        display: block;
+    }
+
+    .color-gray-text{
+        color: gray;
+        font-weight: 500;
+        text-align: center;
+        display: block;
+        font-size: 0.8em;
+    }
+    
+/* .btn-confirm-payment {
 color: #FFFFFF;
 font-size: 0.8em;
 font-weight: 400;
@@ -9,12 +156,7 @@ padding:0.5em 0;
 line-height:1em;
 background-color:#F44336;
 }
-.request-container{
-    padding: 0.7em;
-    min-height:80vh; 
-    max-height: 80vh;
-    overflow-y: scroll;
-}
+
 .color-green{
 color: #06C957;
 font-weight: 500;
@@ -36,7 +178,6 @@ font-size: 1em;
 .friends{
    font-weight: bold; 
    font-size: 1em !important;
-    /*width:100%;*/
     text-align: center;
 }
 .img-circle {
@@ -58,18 +199,13 @@ font-size: 1em;
     text-align: left !important;
 }
 .card-container{
-/*margin: 0.5em;   */
 padding: 0.5em;
 }
 .no-padding{
     padding: 0;
     padding-right: 0.5em;
 }
-.upto-text{
-font-size: 0.6em;
-margin-right: 0.4em;
-font-weight: 500;
-}
+
 .btn-view-games {
 color: #FFFFFF;
 font-size: 0.8em;
@@ -78,3 +214,4 @@ padding:0.5em 0;
 line-height:1.2em;
 background-color:#4CAF50;
 }
+ */

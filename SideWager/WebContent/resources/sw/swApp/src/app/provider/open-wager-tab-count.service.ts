@@ -14,29 +14,23 @@ export class OpenWagerTabCountService {
   }
 
   getTabCount(): Observable<any> {
-    debugger;
       return this.subject.asObservable();
   }
   setTabCount(message: string) {
-    debugger;
       this.subject.next(message);
   }
 
   getRequestTabCount(): Observable<any> {
-    debugger;
       return this.subjectRequest.asObservable();
   }
   setRequestTabCount(message: string) {
-    debugger;
       this.subjectRequest.next(message);
   }
 
   getResultTabCount(): Observable<any> {
-    debugger;
       return this.subjectResult.asObservable();
   }
   setResultTabCount(message: string) {
-    debugger;
       this.subjectResult.next(message);
   }
 

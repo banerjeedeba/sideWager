@@ -24,9 +24,7 @@ export class OpenWagersRequestsComponent implements OnInit {
   constructor(private wagerService:WagerService,public dialog: MdDialog,private openWagerTabCountService:OpenWagerTabCountService) { }
 
   ngOnInit() {
-    debugger;
     this.openWagerSubscribe = this.wagerService.getPendingOpenWagers().subscribe(openWagersListSnapshot=>{
-      debugger;
       this.openWagersList = openWagersListSnapshot;
       this.openWagersRequestListTabCount = this.openWagersList.length.toString();
       //this.clearTabcount();
